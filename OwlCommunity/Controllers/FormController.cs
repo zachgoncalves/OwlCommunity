@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using OwlCommunity.Classes;
+using OwlCommunity.Views;
 
 namespace OwlCommunity.Controllers
 {
@@ -23,7 +25,7 @@ namespace OwlCommunity.Controllers
         public static void resetForm(Views.MainForm f)
         {
             //  Reset button components
-            f.btnClear.Enabled = true;
+            f.btnClearForm.Enabled = true;
             f.btnDelete.Enabled = true;
             f.btnEdit.Enabled = true;
             f.btnFind.Enabled = true;
