@@ -79,18 +79,18 @@ namespace OwlCommunity.Models
         // Save data from form to object
         public virtual void Save(Views.MainForm f)
         {
-            hiddenName = f.txtOwlMemberName.Text;
-            hiddenBirthDate = DateTime.Parse(f.txtOwlMemberBirthDate.Text);
-            hiddenID = Convert.ToInt32(f.txtOwlMemberID.Text);
+            hiddenName = f.txtMemberName.Text;
+            hiddenBirthDate = DateTime.Parse(f.txtMemberBD.Text);
+            hiddenID = Convert.ToInt32(f.txtMemberID.Text);
         }  // end Save
 
 
         // Display data in object on form
         public virtual void Display(Views.MainForm f)
         {
-            f.txtOwlMemberName.Text = hiddenName;
-            f.txtOwlMemberBirthDate.Text = hiddenBirthDate.ToShortDateString();
-            f.txtOwlMemberID.Text = hiddenID.ToString();
+            f.txtMemberName.Text = hiddenName;
+            f.txtMemberBD.Text = hiddenBirthDate.ToShortDateString();
+            f.txtMemberID.Text = hiddenID.ToString();
         }  // end Display
 
 
