@@ -55,7 +55,7 @@
             this.lblMemberName = new System.Windows.Forms.Label();
             this.txtMemberName = new System.Windows.Forms.TextBox();
             this.lblMemberID = new System.Windows.Forms.Label();
-            this.btnMemberID = new System.Windows.Forms.TextBox();
+            this.txtMemberID = new System.Windows.Forms.TextBox();
             this.gbFaculty = new System.Windows.Forms.GroupBox();
             this.lblFacultyRank = new System.Windows.Forms.Label();
             this.txtFacultyRank = new System.Windows.Forms.TextBox();
@@ -67,12 +67,12 @@
             this.btnCreateFaculty = new System.Windows.Forms.Button();
             this.btnCreateChair = new System.Windows.Forms.Button();
             this.gbFormControls = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDisplay = new System.Windows.Forms.Button();
             this.lblEnterID = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnDisplay = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.gbOwlMember.SuspendLayout();
@@ -130,7 +130,7 @@
             this.gbOwlMember.Controls.Add(this.lblMemberName);
             this.gbOwlMember.Controls.Add(this.txtMemberName);
             this.gbOwlMember.Controls.Add(this.lblMemberID);
-            this.gbOwlMember.Controls.Add(this.btnMemberID);
+            this.gbOwlMember.Controls.Add(this.txtMemberID);
             this.gbOwlMember.Controls.Add(this.gbFaculty);
             this.gbOwlMember.Location = new System.Drawing.Point(16, 121);
             this.gbOwlMember.Name = "gbOwlMember";
@@ -344,13 +344,13 @@
             this.lblMemberID.TabIndex = 2;
             this.lblMemberID.Text = "ID";
             // 
-            // btnMemberID
+            // txtMemberID
             // 
-            this.btnMemberID.Location = new System.Drawing.Point(35, 19);
-            this.btnMemberID.Name = "btnMemberID";
-            this.btnMemberID.Size = new System.Drawing.Size(100, 20);
-            this.btnMemberID.TabIndex = 1;
-            this.btnMemberID.Tag = "";
+            this.txtMemberID.Location = new System.Drawing.Point(35, 19);
+            this.txtMemberID.Name = "txtMemberID";
+            this.txtMemberID.Size = new System.Drawing.Size(100, 20);
+            this.txtMemberID.TabIndex = 1;
+            this.txtMemberID.Tag = "";
             // 
             // gbFaculty
             // 
@@ -461,6 +461,46 @@
             this.gbFormControls.TabStop = false;
             this.gbFormControls.Text = "Data Processing Controls";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(435, 63);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(350, 63);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 18;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(119, 63);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 17;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnDisplay
+            // 
+            this.btnDisplay.Location = new System.Drawing.Point(31, 63);
+            this.btnDisplay.Name = "btnDisplay";
+            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
+            this.btnDisplay.TabIndex = 16;
+            this.btnDisplay.Text = "Display";
+            this.btnDisplay.UseVisualStyleBackColor = true;
+            // 
             // lblEnterID
             // 
             this.lblEnterID.AutoSize = true;
@@ -477,46 +517,6 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 14;
             this.textBox1.Tag = "";
-            // 
-            // btnDisplay
-            // 
-            this.btnDisplay.Location = new System.Drawing.Point(33, 63);
-            this.btnDisplay.Name = "btnDisplay";
-            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
-            this.btnDisplay.TabIndex = 16;
-            this.btnDisplay.Text = "Display";
-            this.btnDisplay.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(123, 63);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 17;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(350, 63);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 18;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.Red;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(435, 63);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
             // 
             // btnClearForm
             // 
@@ -573,53 +573,52 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblDesc;
-        private System.Windows.Forms.Button btnCreateUndergrad;
-        private System.Windows.Forms.Button btnCreateGraduate;
-        private System.Windows.Forms.GroupBox gbOwlMember;
-        private System.Windows.Forms.Button btnCreateFaculty;
-        private System.Windows.Forms.Button btnCreateChair;
-        private System.Windows.Forms.GroupBox gbFaculty;
-        private System.Windows.Forms.GroupBox gbChair;
-        private System.Windows.Forms.Label lblMemberBD;
-        private System.Windows.Forms.TextBox txtMemberBD;
-        private System.Windows.Forms.Label lblMemberName;
-        private System.Windows.Forms.TextBox txtMemberName;
-        private System.Windows.Forms.Label lblMemberID;
-        private System.Windows.Forms.TextBox btnMemberID;
-        private System.Windows.Forms.Label lblFacultyRank;
-        private System.Windows.Forms.TextBox txtFacultyRank;
-        private System.Windows.Forms.Label lblFacultyDept;
-        private System.Windows.Forms.TextBox txtFacultyDept;
-        private System.Windows.Forms.Label lblChairStipend;
-        private System.Windows.Forms.TextBox txtChairStipend;
-        private System.Windows.Forms.GroupBox gbStudent;
-        private System.Windows.Forms.Label lblStudentGPA;
-        private System.Windows.Forms.TextBox txtStudentGPA;
-        private System.Windows.Forms.Label lblStudentMajor;
-        private System.Windows.Forms.TextBox txtStudentMajor;
-        private System.Windows.Forms.GroupBox gbUndergrad;
-        private System.Windows.Forms.GroupBox gbGraduate;
-        private System.Windows.Forms.Label lblStudentCredits;
-        private System.Windows.Forms.TextBox txtStudentCredits;
-        private System.Windows.Forms.Label lblTuition;
-        private System.Windows.Forms.TextBox txtStudentTuition;
-        private System.Windows.Forms.Label lblStudentYear;
-        private System.Windows.Forms.TextBox txtStudentYear;
-        private System.Windows.Forms.Label lblGradProgram;
-        private System.Windows.Forms.TextBox txtGradProgram;
-        private System.Windows.Forms.TextBox txtGradStipend;
-        private System.Windows.Forms.Label lblGradStipend;
-        private System.Windows.Forms.GroupBox gbFormControls;
-        private System.Windows.Forms.Label lblEnterID;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnDisplay;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnClearForm;
-        private System.Windows.Forms.Button btnExit;
+        public System.Windows.Forms.Label lblTitle;
+        public System.Windows.Forms.Label lblDesc;
+        public System.Windows.Forms.Button btnCreateUndergrad;
+        public System.Windows.Forms.Button btnCreateGraduate;
+        public System.Windows.Forms.Button btnCreateFaculty;
+        public System.Windows.Forms.Button btnCreateChair;
+        public System.Windows.Forms.Label lblMemberBD;
+        public System.Windows.Forms.TextBox txtMemberBD;
+        public System.Windows.Forms.Label lblMemberName;
+        public System.Windows.Forms.TextBox txtMemberName;
+        public System.Windows.Forms.Label lblMemberID;
+        public System.Windows.Forms.TextBox txtMemberID;
+        public System.Windows.Forms.Button btnClearForm;
+        public System.Windows.Forms.GroupBox gbOwlMember;
+        public System.Windows.Forms.GroupBox gbFaculty;
+        public System.Windows.Forms.GroupBox gbChair;
+        public System.Windows.Forms.GroupBox gbStudent;
+        public System.Windows.Forms.GroupBox gbUndergrad;
+        public System.Windows.Forms.GroupBox gbGraduate;
+        public System.Windows.Forms.Label lblFacultyRank;
+        public System.Windows.Forms.TextBox txtFacultyRank;
+        public System.Windows.Forms.Label lblFacultyDept;
+        public System.Windows.Forms.TextBox txtFacultyDept;
+        public System.Windows.Forms.Label lblChairStipend;
+        public System.Windows.Forms.TextBox txtChairStipend;
+        public System.Windows.Forms.Label lblStudentGPA;
+        public System.Windows.Forms.TextBox txtStudentGPA;
+        public System.Windows.Forms.Label lblStudentMajor;
+        public System.Windows.Forms.TextBox txtStudentMajor;
+        public System.Windows.Forms.Label lblStudentCredits;
+        public System.Windows.Forms.TextBox txtStudentCredits;
+        public System.Windows.Forms.Label lblTuition;
+        public System.Windows.Forms.TextBox txtStudentTuition;
+        public System.Windows.Forms.Label lblStudentYear;
+        public System.Windows.Forms.TextBox txtStudentYear;
+        public System.Windows.Forms.Label lblGradProgram;
+        public System.Windows.Forms.TextBox txtGradProgram;
+        public System.Windows.Forms.TextBox txtGradStipend;
+        public System.Windows.Forms.Label lblGradStipend;
+        public System.Windows.Forms.GroupBox gbFormControls;
+        public System.Windows.Forms.Label lblEnterID;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Button btnEdit;
+        public System.Windows.Forms.Button btnDisplay;
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.Button btnSave;
+        public System.Windows.Forms.Button btnExit;
     }
 }

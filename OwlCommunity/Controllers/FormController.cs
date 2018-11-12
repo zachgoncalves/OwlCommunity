@@ -28,44 +28,44 @@ namespace OwlCommunity.Controllers
             f.btnClearForm.Enabled = true;
             f.btnDelete.Enabled = true;
             f.btnEdit.Enabled = true;
-            f.btnFind.Enabled = true;
+            f.btnDisplay.Enabled = true;
             f.btnCreateFaculty.Enabled = true;
             f.btnCreateFaculty.Text = "Create Faculty";
-            f.btnCreateChairperson.Enabled = true;
-            f.btnCreateChairperson.Text = "Create Chairperson";
-            f.btnCreateGraduateStudent.Enabled = true;
-            f.btnCreateGraduateStudent.Text = "Create Graduate Student";
-            f.btnCreateUndergraduateStudent.Enabled = true;
-            f.btnCreateUndergraduateStudent.Text = "Create Undergraduate";
+            f.btnCreateChair.Enabled = true;
+            f.btnCreateChair.Text = "Create Chairperson";
+            f.btnCreateGraduate.Enabled = true;
+            f.btnCreateGraduate.Text = "Create Graduate Student";
+            f.btnCreateUndergrad.Enabled = true;
+            f.btnCreateUndergrad.Text = "Create Undergraduate";
 
             // Reset group components
-            f.grpOwlMember.Enabled = true;
-            f.grpOwlMember.BackColor = Color.Gainsboro;
-            f.grpStudent.Enabled = false;
-            f.grpStudent.BackColor = Color.Gainsboro;
-            f.grpFaculty.Enabled = false;
-            f.grpFaculty.BackColor = Color.Gainsboro;
-            f.grpUndergraduateStudent.Enabled = false;
-            f.grpUndergraduateStudent.BackColor = Color.Gainsboro;
-            f.grpGraduateStudent.Enabled = false;
-            f.grpGraduateStudent.BackColor = Color.Gainsboro;
-            f.grpChairperson.BackColor = Color.Gainsboro;
-            f.grpChairperson.Enabled = false;
+            f.gbOwlMember.Enabled = true;
+            f.gbOwlMember.BackColor = Color.Gainsboro;
+            f.gbStudent.Enabled = false;
+            f.gbStudent.BackColor = Color.Gainsboro;
+            f.gbFaculty.Enabled = false;
+            f.gbFaculty.BackColor = Color.Gainsboro;
+            f.gbUndergrad.Enabled = false;
+            f.gbUndergrad.BackColor = Color.Gainsboro;
+            f.gbGraduate.Enabled = false;
+            f.gbGraduate.BackColor = Color.Gainsboro;
+            f.gbChair.BackColor = Color.Gainsboro;
+            f.gbChair.Enabled = false;
 
             // Reset Text boxes
-            f.txtOwlMemberID.Enabled = false;
-            f.txtOwlMemberName.Enabled = false;
-            f.txtOwlMemberBirthDate.Enabled = false;
-            f.txtFacultyDepartment.Enabled = false;
+            f.txtMemberID.Enabled = false;
+            f.txtMemberName.Enabled = false;
+            f.txtMemberBD.Enabled = false;
+            f.txtFacultyDept.Enabled = false;
             f.txtFacultyRank.Enabled = false;
             f.txtStudentMajor.Enabled = false;
             f.txtStudentMajor.Enabled = false;
-            f.txtUndergraduateStudentTuition.Enabled = false;
-            f.txtUndergraduateStudentYear.Enabled = false;
-            f.txtUndergraduateStudentCredits.Enabled = false;
-            f.txtGraduateStudentDegreeProgram.Enabled = false;
-            f.txtGraduateStudentStipend.Enabled = false;
-            f.txtFacultyDepartment.Enabled = false;
+            f.txtStudentTuition.Enabled = false;
+            f.txtStudentYear.Enabled = false;
+            f.txtStudentCredits.Enabled = false;
+            f.txtGradProgram.Enabled = false;
+            f.txtGradStipend.Enabled = false;
+            f.txtFacultyDept.Enabled = false;
             f.txtFacultyRank.Enabled = false;
         }
 
@@ -74,19 +74,19 @@ namespace OwlCommunity.Controllers
         //    when in add mode
         public static void formAddMode(Views.MainForm f)
         {
-            f.btnClear.Enabled = true;
+            f.btnClearForm.Enabled = true;
             f.btnDelete.Enabled = false;
             f.btnEdit.Enabled = false;
-            f.btnFind.Enabled = false;
+            f.btnDisplay.Enabled = false;
         } 
 
 
         // Enable/disable buttons when not in edit mode
         public static void activateAddButtons(Views.MainForm f)
         {
-            f.btnCreateGraduateStudent.Enabled = true;
-            f.btnCreateChairperson.Enabled = true;
-            f.btnCreateUndergraduateStudent.Enabled = true;
+            f.btnCreateGraduate.Enabled = true;
+            f.btnCreateChair.Enabled = true;
+            f.btnCreateUndergrad.Enabled = true;
             f.btnCreateFaculty.Enabled = true;
         }  
 
@@ -94,9 +94,9 @@ namespace OwlCommunity.Controllers
         // Enable/disable buttons when not in edit mode
         public static void deactivateAddButtons(Views.MainForm f)
         {
-            f.btnCreateGraduateStudent.Enabled = false;
-            f.btnCreateChairperson.Enabled = false;
-            f.btnCreateUndergraduateStudent.Enabled = false;
+            f.btnCreateGraduate.Enabled = false;
+            f.btnCreateChair.Enabled = false;
+            f.btnCreateUndergrad.Enabled = false;
             f.btnCreateFaculty.Enabled = false;
         } 
 
@@ -104,8 +104,8 @@ namespace OwlCommunity.Controllers
         // Enables OwlMember textboxes and highlights the OwlMember groupbox
         public static void activateOwlMember(Views.MainForm f)
         {
-            f.grpOwlMember.Enabled = true;
-            f.grpOwlMember.BackColor = Color.LimeGreen;
+            f.gbOwlMember.Enabled = true;
+            f.gbOwlMember.BackColor = Color.LimeGreen;
 
         }
 
@@ -114,8 +114,8 @@ namespace OwlCommunity.Controllers
         public static void activateStudent(Views.MainForm f)
         {
             activateOwlMember(f);
-            f.grpStudent.Enabled = true;
-            f.grpStudent.BackColor = Color.LimeGreen;
+            f.gbStudent.Enabled = true;
+            f.gbStudent.BackColor = Color.LimeGreen;
         }  
 
 
@@ -123,9 +123,9 @@ namespace OwlCommunity.Controllers
         public static void activateFaculty(Views.MainForm f)
         {
             activateOwlMember(f);
-            f.grpFaculty.Enabled = true;
-            f.grpFaculty.BackColor = Color.LimeGreen;
-            f.grpStudent.BackColor = Color.Red;
+            f.gbFaculty.Enabled = true;
+            f.gbFaculty.BackColor = Color.LimeGreen;
+            f.gbStudent.BackColor = Color.Red;
         } 
 
 
@@ -133,8 +133,8 @@ namespace OwlCommunity.Controllers
         public static void activateUndergraduateStudent(Views.MainForm f)
         {
             activateStudent(f);   // Student must be activated too
-            f.grpUndergraduateStudent.Enabled = true;
-            f.grpUndergraduateStudent.BackColor = Color.LimeGreen;
+            f.gbUndergrad.Enabled = true;
+            f.gbUndergrad.BackColor = Color.LimeGreen;
         }  
 
 
@@ -142,8 +142,8 @@ namespace OwlCommunity.Controllers
         public static void activateGraduateStudent(Views.MainForm f)
         {
             activateStudent(f);  // Student must be activated too
-            f.grpGraduateStudent.Enabled = true;
-            f.grpGraduateStudent.BackColor = Color.LimeGreen;
+            f.gbGraduate.Enabled = true;
+            f.gbGraduate.BackColor = Color.LimeGreen;
         }
 
 
@@ -151,8 +151,8 @@ namespace OwlCommunity.Controllers
         public static void activateChairperson(Views.MainForm f)
         {
             activateFaculty(f);  // Faculty must be activated too
-            f.grpChairperson.Enabled = true;
-            f.grpChairperson.BackColor = Color.LimeGreen;
+            f.gbChair.Enabled = true;
+            f.gbChair.BackColor = Color.LimeGreen;
         }
 
 
@@ -161,8 +161,8 @@ namespace OwlCommunity.Controllers
         {
             deactivateStudent(f);
             deactivateFaculty(f);
-            f.grpOwlMember.Enabled = false;
-            f.grpOwlMember.BackColor = Color.Red;
+            f.gbOwlMember.Enabled = false;
+            f.gbOwlMember.BackColor = Color.Red;
         }
 
 
@@ -171,40 +171,40 @@ namespace OwlCommunity.Controllers
         {
             deactivateUndergraduateStudent(f);   // Must deactivate UG Student too
             deactivateGraduateStudent(f);        // Must deactivate Grad Student too
-            f.grpStudent.Enabled = false;
-            f.grpStudent.BackColor = Color.Red;
+            f.gbStudent.Enabled = false;
+            f.gbStudent.BackColor = Color.Red;
         }  // end deactivateStudent
 
 
         // Disables Faculty textboxes and highlights the Faculty groupbox
         public static void deactivateFaculty(Views.MainForm f)
         {
-            f.grpFaculty.Enabled = false;
-            f.grpFaculty.BackColor = Color.Red;
+            f.gbFaculty.Enabled = false;
+            f.gbFaculty.BackColor = Color.Red;
         } 
 
 
         // Disables Undergraduate Student textboxes and highlights the Undergrad groupbox
         public static void deactivateUndergraduateStudent(Views.MainForm f)
         {
-            f.grpUndergraduateStudent.Enabled = false;
-            f.grpUndergraduateStudent.BackColor = Color.Red;
+            f.gbUndergrad.Enabled = false;
+            f.gbUndergrad.BackColor = Color.Red;
         }
 
 
         // Disables Graduate Student textboxes and highlights the Grad Student groupbox
         public static void deactivateGraduateStudent(Views.MainForm f)
         {
-            f.grpGraduateStudent.Enabled = false;
-            f.grpGraduateStudent.BackColor = Color.Red;
+            f.gbGraduate.Enabled = false;
+            f.gbGraduate.BackColor = Color.Red;
         } 
 
 
         // Disables Chairperson textboxes and highlights the Chairperson groupbox
         public static void deactivateChairperson(Views.MainForm f)
         {
-            f.grpFaculty.Enabled = false;
-            f.grpChairperson.BackColor = Color.Red;
+            f.gbFaculty.Enabled = false;
+            f.gbChair.BackColor = Color.Red;
         }  
 
 
@@ -212,20 +212,20 @@ namespace OwlCommunity.Controllers
         // Clear all textboxes on the form
         public static void clear(Views.MainForm f)
         {
-            f.txtOwlMemberName.Text = "";
-            f.txtOwlMemberBirthDate.Text = "";
-            f.txtOwlMemberID.Text = "";
-            f.txtOwlMemberID.Focus();
-            f.txtFacultyDepartment.Text = "";
+            f.txtMemberName.Text = "";
+            f.txtMemberBD.Text = "";
+            f.txtMemberID.Text = "";
+            f.txtMemberID.Focus();
+            f.txtFacultyDept.Text = "";
             f.txtFacultyRank.Text = "";
             f.txtStudentMajor.Text = "";
             f.txtStudentGPA.Text = "";
-            f.txtUndergraduateStudentTuition.Text = "";
-            f.txtUndergraduateStudentYear.Text = "";
-            f.txtUndergraduateStudentCredits.Text = "";
-            f.txtGraduateStudentStipend.Text = "";
-            f.txtGraduateStudentDegreeProgram.Text = "";
-            f.txtChairpersonStipend.Text = "";
+            f.txtStudentTuition.Text = "";
+            f.txtStudentYear.Text = "";
+            f.txtStudentCredits.Text = "";
+            f.txtGradStipend.Text = "";
+            f.txtGradProgram.Text = "";
+            f.txtChairStipend.Text = "";
             resetForm(f);
         } 
 
