@@ -52,15 +52,17 @@ namespace OwlCommunity.Models
         }
 
         // Save data from form to object
-        public virtual void Save(Views.MainForm f)
+        public override void Save(Views.MainForm f)
         {
+            base.Save(f);
             rank = f.txtFacultyRank.Text;
             department = f.txtFacultyDept.Text;
         }
 
         // Display data in object on form
-        public virtual void Display(Views.MainForm f)
+        public override void Display(Views.MainForm f)
         {
+            base.Display(f);
             f.txtFacultyRank.Text = rank;
             f.txtFacultyDept.Text = department;
         } 

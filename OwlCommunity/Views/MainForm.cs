@@ -21,7 +21,7 @@ namespace OwlCommunity.Views
 
         private void btnCreateUndergrad_Click(object sender, EventArgs e)
         {
-            GlobalData.form.activateUndergraduateStudent
+            FormController.activateAddButtons(this);
         }
     }
 }

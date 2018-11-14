@@ -21,7 +21,7 @@ namespace OwlCommunity.Models
         }
 
         // Constructor that sets attributes 
-        public UndergraduateStudent(int id, string name, DateTime dob, decimal gpa, string major, 
+        public UndergraduateStudent(string name, int id, DateTime dob, decimal gpa, string major, 
             decimal tuition, int credits, string year) : base(name, id, dob, major, gpa)
         {
             studentTuition = tuition;
@@ -91,7 +91,10 @@ namespace OwlCommunity.Models
         public override string ToString()
         {
             string s = base.ToString() + "\n";
-            s += "Undergraduate Student Info: " + "Tuition: " + studentTuition.ToString() + "Credits: " + studentCredits.ToString() + "Year: " + studentYear;
+            s += "Undergraduate Student Info: " + "\n";
+            s += "Tuition: " + studentTuition.ToString() + "\n";
+            s += "Credits: " + studentCredits.ToString() + "\n";
+            s += "Year   : " + studentYear;
             return s;
         }
     }
