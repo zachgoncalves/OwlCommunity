@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OwlCommunity.Controllers;
+using OwlCommunity.Classes;
 
 namespace OwlCommunity.Views
 {
@@ -15,6 +17,11 @@ namespace OwlCommunity.Views
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void btnCreateUndergrad_Click(object sender, EventArgs e)
+        {
+            GlobalData.form.activateUndergraduateStudent
         }
     }
 }

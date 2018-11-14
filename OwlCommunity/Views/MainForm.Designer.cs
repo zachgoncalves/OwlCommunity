@@ -51,7 +51,6 @@
             this.lblStudentMajor = new System.Windows.Forms.Label();
             this.txtStudentMajor = new System.Windows.Forms.TextBox();
             this.lblMemberBD = new System.Windows.Forms.Label();
-            this.txtMemberBD = new System.Windows.Forms.TextBox();
             this.lblMemberName = new System.Windows.Forms.Label();
             this.txtMemberName = new System.Windows.Forms.TextBox();
             this.lblMemberID = new System.Windows.Forms.Label();
@@ -75,6 +74,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.dtBD = new System.Windows.Forms.DateTimePicker();
+            this.cbYear = new System.Windows.Forms.ComboBox();
             this.gbOwlMember.SuspendLayout();
             this.gbStudent.SuspendLayout();
             this.gbGraduate.SuspendLayout();
@@ -88,9 +89,10 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(12, 20);
+            this.lblTitle.Location = new System.Drawing.Point(16, 25);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(198, 20);
+            this.lblTitle.Size = new System.Drawing.Size(246, 25);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Owl Community Data Entry";
             // 
@@ -98,43 +100,49 @@
             // 
             this.lblDesc.AutoSize = true;
             this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesc.Location = new System.Drawing.Point(12, 40);
+            this.lblDesc.Location = new System.Drawing.Point(16, 49);
+            this.lblDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(301, 17);
+            this.lblDesc.Size = new System.Drawing.Size(359, 20);
             this.lblDesc.TabIndex = 1;
             this.lblDesc.Text = "Please select the action you wish to complete. ";
             // 
             // btnCreateUndergrad
             // 
-            this.btnCreateUndergrad.Location = new System.Drawing.Point(14, 70);
+            this.btnCreateUndergrad.Location = new System.Drawing.Point(19, 86);
+            this.btnCreateUndergrad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreateUndergrad.Name = "btnCreateUndergrad";
-            this.btnCreateUndergrad.Size = new System.Drawing.Size(154, 27);
+            this.btnCreateUndergrad.Size = new System.Drawing.Size(205, 33);
             this.btnCreateUndergrad.TabIndex = 2;
             this.btnCreateUndergrad.Text = "New Undergraduate Student";
             this.btnCreateUndergrad.UseVisualStyleBackColor = true;
+            this.btnCreateUndergrad.Click += new System.EventHandler(this.btnCreateUndergrad_Click);
             // 
             // btnCreateGraduate
             // 
-            this.btnCreateGraduate.Location = new System.Drawing.Point(174, 70);
+            this.btnCreateGraduate.Location = new System.Drawing.Point(232, 86);
+            this.btnCreateGraduate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreateGraduate.Name = "btnCreateGraduate";
-            this.btnCreateGraduate.Size = new System.Drawing.Size(154, 27);
+            this.btnCreateGraduate.Size = new System.Drawing.Size(205, 33);
             this.btnCreateGraduate.TabIndex = 3;
             this.btnCreateGraduate.Text = "New Graduate Student";
             this.btnCreateGraduate.UseVisualStyleBackColor = true;
             // 
             // gbOwlMember
             // 
+            this.gbOwlMember.Controls.Add(this.dtBD);
             this.gbOwlMember.Controls.Add(this.gbStudent);
             this.gbOwlMember.Controls.Add(this.lblMemberBD);
-            this.gbOwlMember.Controls.Add(this.txtMemberBD);
             this.gbOwlMember.Controls.Add(this.lblMemberName);
             this.gbOwlMember.Controls.Add(this.txtMemberName);
             this.gbOwlMember.Controls.Add(this.lblMemberID);
             this.gbOwlMember.Controls.Add(this.txtMemberID);
             this.gbOwlMember.Controls.Add(this.gbFaculty);
-            this.gbOwlMember.Location = new System.Drawing.Point(16, 121);
+            this.gbOwlMember.Location = new System.Drawing.Point(21, 149);
+            this.gbOwlMember.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbOwlMember.Name = "gbOwlMember";
-            this.gbOwlMember.Size = new System.Drawing.Size(545, 357);
+            this.gbOwlMember.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbOwlMember.Size = new System.Drawing.Size(727, 439);
             this.gbOwlMember.TabIndex = 4;
             this.gbOwlMember.TabStop = false;
             this.gbOwlMember.Text = "Create Owl Member";
@@ -147,9 +155,11 @@
             this.gbStudent.Controls.Add(this.txtStudentGPA);
             this.gbStudent.Controls.Add(this.lblStudentMajor);
             this.gbStudent.Controls.Add(this.txtStudentMajor);
-            this.gbStudent.Location = new System.Drawing.Point(7, 193);
+            this.gbStudent.Location = new System.Drawing.Point(9, 238);
+            this.gbStudent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbStudent.Name = "gbStudent";
-            this.gbStudent.Size = new System.Drawing.Size(532, 164);
+            this.gbStudent.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbStudent.Size = new System.Drawing.Size(709, 202);
             this.gbStudent.TabIndex = 7;
             this.gbStudent.TabStop = false;
             this.gbStudent.Text = "Student";
@@ -160,9 +170,11 @@
             this.gbGraduate.Controls.Add(this.txtGradProgram);
             this.gbGraduate.Controls.Add(this.txtGradStipend);
             this.gbGraduate.Controls.Add(this.lblGradStipend);
-            this.gbGraduate.Location = new System.Drawing.Point(262, 53);
+            this.gbGraduate.Location = new System.Drawing.Point(349, 65);
+            this.gbGraduate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbGraduate.Name = "gbGraduate";
-            this.gbGraduate.Size = new System.Drawing.Size(270, 111);
+            this.gbGraduate.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbGraduate.Size = new System.Drawing.Size(360, 137);
             this.gbGraduate.TabIndex = 13;
             this.gbGraduate.TabStop = false;
             this.gbGraduate.Text = "Graduate Student";
@@ -170,48 +182,55 @@
             // lblGradProgram
             // 
             this.lblGradProgram.AutoSize = true;
-            this.lblGradProgram.Location = new System.Drawing.Point(23, 48);
+            this.lblGradProgram.Location = new System.Drawing.Point(31, 59);
+            this.lblGradProgram.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGradProgram.Name = "lblGradProgram";
-            this.lblGradProgram.Size = new System.Drawing.Size(84, 13);
+            this.lblGradProgram.Size = new System.Drawing.Size(113, 17);
             this.lblGradProgram.TabIndex = 17;
             this.lblGradProgram.Text = "Degree Program";
             // 
             // txtGradProgram
             // 
-            this.txtGradProgram.Location = new System.Drawing.Point(113, 45);
+            this.txtGradProgram.Location = new System.Drawing.Point(151, 55);
+            this.txtGradProgram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtGradProgram.Name = "txtGradProgram";
-            this.txtGradProgram.Size = new System.Drawing.Size(103, 20);
+            this.txtGradProgram.Size = new System.Drawing.Size(136, 22);
             this.txtGradProgram.TabIndex = 16;
             this.txtGradProgram.Tag = "";
             // 
             // txtGradStipend
             // 
-            this.txtGradStipend.Location = new System.Drawing.Point(113, 19);
+            this.txtGradStipend.Location = new System.Drawing.Point(151, 23);
+            this.txtGradStipend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtGradStipend.Name = "txtGradStipend";
-            this.txtGradStipend.Size = new System.Drawing.Size(103, 20);
+            this.txtGradStipend.Size = new System.Drawing.Size(136, 22);
             this.txtGradStipend.TabIndex = 14;
             this.txtGradStipend.Tag = "";
             // 
             // lblGradStipend
             // 
             this.lblGradStipend.AutoSize = true;
-            this.lblGradStipend.Location = new System.Drawing.Point(22, 22);
+            this.lblGradStipend.Location = new System.Drawing.Point(29, 27);
+            this.lblGradStipend.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGradStipend.Name = "lblGradStipend";
-            this.lblGradStipend.Size = new System.Drawing.Size(43, 13);
+            this.lblGradStipend.Size = new System.Drawing.Size(56, 17);
             this.lblGradStipend.TabIndex = 15;
             this.lblGradStipend.Text = "Stipend";
             // 
             // gbUndergrad
             // 
+            this.gbUndergrad.Controls.Add(this.cbYear);
             this.gbUndergrad.Controls.Add(this.lblStudentYear);
             this.gbUndergrad.Controls.Add(this.txtStudentYear);
             this.gbUndergrad.Controls.Add(this.lblStudentCredits);
             this.gbUndergrad.Controls.Add(this.txtStudentCredits);
             this.gbUndergrad.Controls.Add(this.lblTuition);
             this.gbUndergrad.Controls.Add(this.txtStudentTuition);
-            this.gbUndergrad.Location = new System.Drawing.Point(0, 53);
+            this.gbUndergrad.Location = new System.Drawing.Point(0, 65);
+            this.gbUndergrad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbUndergrad.Name = "gbUndergrad";
-            this.gbUndergrad.Size = new System.Drawing.Size(263, 111);
+            this.gbUndergrad.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbUndergrad.Size = new System.Drawing.Size(351, 137);
             this.gbUndergrad.TabIndex = 12;
             this.gbUndergrad.TabStop = false;
             this.gbUndergrad.Text = "Undergraduate Student";
@@ -219,136 +238,143 @@
             // lblStudentYear
             // 
             this.lblStudentYear.AutoSize = true;
-            this.lblStudentYear.Location = new System.Drawing.Point(24, 73);
+            this.lblStudentYear.Location = new System.Drawing.Point(32, 90);
+            this.lblStudentYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudentYear.Name = "lblStudentYear";
-            this.lblStudentYear.Size = new System.Drawing.Size(29, 13);
+            this.lblStudentYear.Size = new System.Drawing.Size(38, 17);
             this.lblStudentYear.TabIndex = 13;
             this.lblStudentYear.Text = "Year";
             // 
             // txtStudentYear
             // 
-            this.txtStudentYear.Location = new System.Drawing.Point(72, 71);
+            this.txtStudentYear.Location = new System.Drawing.Point(96, 87);
+            this.txtStudentYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStudentYear.Name = "txtStudentYear";
-            this.txtStudentYear.Size = new System.Drawing.Size(56, 20);
+            this.txtStudentYear.Size = new System.Drawing.Size(73, 22);
             this.txtStudentYear.TabIndex = 12;
             this.txtStudentYear.Tag = "";
             // 
             // lblStudentCredits
             // 
             this.lblStudentCredits.AutoSize = true;
-            this.lblStudentCredits.Location = new System.Drawing.Point(24, 48);
+            this.lblStudentCredits.Location = new System.Drawing.Point(32, 59);
+            this.lblStudentCredits.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudentCredits.Name = "lblStudentCredits";
-            this.lblStudentCredits.Size = new System.Drawing.Size(39, 13);
+            this.lblStudentCredits.Size = new System.Drawing.Size(52, 17);
             this.lblStudentCredits.TabIndex = 11;
             this.lblStudentCredits.Text = "Credits";
             // 
             // txtStudentCredits
             // 
-            this.txtStudentCredits.Location = new System.Drawing.Point(72, 45);
+            this.txtStudentCredits.Location = new System.Drawing.Point(96, 55);
+            this.txtStudentCredits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStudentCredits.Name = "txtStudentCredits";
-            this.txtStudentCredits.Size = new System.Drawing.Size(56, 20);
+            this.txtStudentCredits.Size = new System.Drawing.Size(73, 22);
             this.txtStudentCredits.TabIndex = 10;
             this.txtStudentCredits.Tag = "";
             // 
             // lblTuition
             // 
             this.lblTuition.AutoSize = true;
-            this.lblTuition.Location = new System.Drawing.Point(23, 22);
+            this.lblTuition.Location = new System.Drawing.Point(31, 27);
+            this.lblTuition.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTuition.Name = "lblTuition";
-            this.lblTuition.Size = new System.Drawing.Size(39, 13);
+            this.lblTuition.Size = new System.Drawing.Size(51, 17);
             this.lblTuition.TabIndex = 9;
             this.lblTuition.Text = "Tuition";
             // 
             // txtStudentTuition
             // 
-            this.txtStudentTuition.Location = new System.Drawing.Point(72, 19);
+            this.txtStudentTuition.Location = new System.Drawing.Point(96, 23);
+            this.txtStudentTuition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStudentTuition.Name = "txtStudentTuition";
-            this.txtStudentTuition.Size = new System.Drawing.Size(100, 20);
+            this.txtStudentTuition.Size = new System.Drawing.Size(132, 22);
             this.txtStudentTuition.TabIndex = 8;
             this.txtStudentTuition.Tag = "";
             // 
             // lblStudentGPA
             // 
             this.lblStudentGPA.AutoSize = true;
-            this.lblStudentGPA.Location = new System.Drawing.Point(274, 22);
+            this.lblStudentGPA.Location = new System.Drawing.Point(365, 27);
+            this.lblStudentGPA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudentGPA.Name = "lblStudentGPA";
-            this.lblStudentGPA.Size = new System.Drawing.Size(29, 13);
+            this.lblStudentGPA.Size = new System.Drawing.Size(37, 17);
             this.lblStudentGPA.TabIndex = 11;
             this.lblStudentGPA.Text = "GPA";
             // 
             // txtStudentGPA
             // 
-            this.txtStudentGPA.Location = new System.Drawing.Point(313, 19);
+            this.txtStudentGPA.Location = new System.Drawing.Point(417, 23);
+            this.txtStudentGPA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStudentGPA.Name = "txtStudentGPA";
-            this.txtStudentGPA.Size = new System.Drawing.Size(76, 20);
+            this.txtStudentGPA.Size = new System.Drawing.Size(100, 22);
             this.txtStudentGPA.TabIndex = 10;
             this.txtStudentGPA.Tag = "";
             // 
             // lblStudentMajor
             // 
             this.lblStudentMajor.AutoSize = true;
-            this.lblStudentMajor.Location = new System.Drawing.Point(23, 22);
+            this.lblStudentMajor.Location = new System.Drawing.Point(31, 27);
+            this.lblStudentMajor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudentMajor.Name = "lblStudentMajor";
-            this.lblStudentMajor.Size = new System.Drawing.Size(33, 13);
+            this.lblStudentMajor.Size = new System.Drawing.Size(43, 17);
             this.lblStudentMajor.TabIndex = 9;
             this.lblStudentMajor.Text = "Major";
             // 
             // txtStudentMajor
             // 
-            this.txtStudentMajor.Location = new System.Drawing.Point(62, 19);
+            this.txtStudentMajor.Location = new System.Drawing.Point(83, 23);
+            this.txtStudentMajor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStudentMajor.Name = "txtStudentMajor";
-            this.txtStudentMajor.Size = new System.Drawing.Size(171, 20);
+            this.txtStudentMajor.Size = new System.Drawing.Size(227, 22);
             this.txtStudentMajor.TabIndex = 8;
             this.txtStudentMajor.Tag = "";
             // 
             // lblMemberBD
             // 
             this.lblMemberBD.AutoSize = true;
-            this.lblMemberBD.Location = new System.Drawing.Point(347, 22);
+            this.lblMemberBD.Location = new System.Drawing.Point(463, 27);
+            this.lblMemberBD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMemberBD.Name = "lblMemberBD";
-            this.lblMemberBD.Size = new System.Drawing.Size(49, 13);
+            this.lblMemberBD.Size = new System.Drawing.Size(65, 17);
             this.lblMemberBD.TabIndex = 6;
             this.lblMemberBD.Text = "Birthdate";
-            // 
-            // txtMemberBD
-            // 
-            this.txtMemberBD.Location = new System.Drawing.Point(402, 19);
-            this.txtMemberBD.Name = "txtMemberBD";
-            this.txtMemberBD.Size = new System.Drawing.Size(137, 20);
-            this.txtMemberBD.TabIndex = 5;
-            this.txtMemberBD.Tag = "";
             // 
             // lblMemberName
             // 
             this.lblMemberName.AutoSize = true;
-            this.lblMemberName.Location = new System.Drawing.Point(154, 22);
+            this.lblMemberName.Location = new System.Drawing.Point(205, 27);
+            this.lblMemberName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMemberName.Name = "lblMemberName";
-            this.lblMemberName.Size = new System.Drawing.Size(35, 13);
+            this.lblMemberName.Size = new System.Drawing.Size(45, 17);
             this.lblMemberName.TabIndex = 4;
             this.lblMemberName.Text = "Name";
             // 
             // txtMemberName
             // 
-            this.txtMemberName.Location = new System.Drawing.Point(191, 19);
+            this.txtMemberName.Location = new System.Drawing.Point(255, 23);
+            this.txtMemberName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMemberName.Name = "txtMemberName";
-            this.txtMemberName.Size = new System.Drawing.Size(137, 20);
+            this.txtMemberName.Size = new System.Drawing.Size(181, 22);
             this.txtMemberName.TabIndex = 3;
             this.txtMemberName.Tag = "";
             // 
             // lblMemberID
             // 
             this.lblMemberID.AutoSize = true;
-            this.lblMemberID.Location = new System.Drawing.Point(11, 22);
+            this.lblMemberID.Location = new System.Drawing.Point(15, 27);
+            this.lblMemberID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMemberID.Name = "lblMemberID";
-            this.lblMemberID.Size = new System.Drawing.Size(18, 13);
+            this.lblMemberID.Size = new System.Drawing.Size(21, 17);
             this.lblMemberID.TabIndex = 2;
             this.lblMemberID.Text = "ID";
             // 
             // txtMemberID
             // 
-            this.txtMemberID.Location = new System.Drawing.Point(35, 19);
+            this.txtMemberID.Location = new System.Drawing.Point(47, 23);
+            this.txtMemberID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMemberID.Name = "txtMemberID";
-            this.txtMemberID.Size = new System.Drawing.Size(100, 20);
+            this.txtMemberID.Size = new System.Drawing.Size(132, 22);
             this.txtMemberID.TabIndex = 1;
             this.txtMemberID.Tag = "";
             // 
@@ -359,9 +385,11 @@
             this.gbFaculty.Controls.Add(this.lblFacultyDept);
             this.gbFaculty.Controls.Add(this.gbChair);
             this.gbFaculty.Controls.Add(this.txtFacultyDept);
-            this.gbFaculty.Location = new System.Drawing.Point(7, 67);
+            this.gbFaculty.Location = new System.Drawing.Point(9, 82);
+            this.gbFaculty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbFaculty.Name = "gbFaculty";
-            this.gbFaculty.Size = new System.Drawing.Size(532, 119);
+            this.gbFaculty.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFaculty.Size = new System.Drawing.Size(709, 146);
             this.gbFaculty.TabIndex = 0;
             this.gbFaculty.TabStop = false;
             this.gbFaculty.Text = "Faculty";
@@ -369,26 +397,29 @@
             // lblFacultyRank
             // 
             this.lblFacultyRank.AutoSize = true;
-            this.lblFacultyRank.Location = new System.Drawing.Point(230, 22);
+            this.lblFacultyRank.Location = new System.Drawing.Point(307, 27);
+            this.lblFacultyRank.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFacultyRank.Name = "lblFacultyRank";
-            this.lblFacultyRank.Size = new System.Drawing.Size(33, 13);
+            this.lblFacultyRank.Size = new System.Drawing.Size(41, 17);
             this.lblFacultyRank.TabIndex = 10;
             this.lblFacultyRank.Text = "Rank";
             // 
             // txtFacultyRank
             // 
-            this.txtFacultyRank.Location = new System.Drawing.Point(269, 19);
+            this.txtFacultyRank.Location = new System.Drawing.Point(359, 23);
+            this.txtFacultyRank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFacultyRank.Name = "txtFacultyRank";
-            this.txtFacultyRank.Size = new System.Drawing.Size(100, 20);
+            this.txtFacultyRank.Size = new System.Drawing.Size(132, 22);
             this.txtFacultyRank.TabIndex = 9;
             this.txtFacultyRank.Tag = "";
             // 
             // lblFacultyDept
             // 
             this.lblFacultyDept.AutoSize = true;
-            this.lblFacultyDept.Location = new System.Drawing.Point(23, 22);
+            this.lblFacultyDept.Location = new System.Drawing.Point(31, 27);
+            this.lblFacultyDept.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFacultyDept.Name = "lblFacultyDept";
-            this.lblFacultyDept.Size = new System.Drawing.Size(62, 13);
+            this.lblFacultyDept.Size = new System.Drawing.Size(82, 17);
             this.lblFacultyDept.TabIndex = 8;
             this.lblFacultyDept.Text = "Department";
             // 
@@ -396,9 +427,11 @@
             // 
             this.gbChair.Controls.Add(this.lblChairStipend);
             this.gbChair.Controls.Add(this.txtChairStipend);
-            this.gbChair.Location = new System.Drawing.Point(0, 55);
+            this.gbChair.Location = new System.Drawing.Point(0, 68);
+            this.gbChair.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbChair.Name = "gbChair";
-            this.gbChair.Size = new System.Drawing.Size(532, 64);
+            this.gbChair.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbChair.Size = new System.Drawing.Size(709, 79);
             this.gbChair.TabIndex = 0;
             this.gbChair.TabStop = false;
             this.gbChair.Text = "Chairperson";
@@ -406,42 +439,47 @@
             // lblChairStipend
             // 
             this.lblChairStipend.AutoSize = true;
-            this.lblChairStipend.Location = new System.Drawing.Point(23, 29);
+            this.lblChairStipend.Location = new System.Drawing.Point(31, 36);
+            this.lblChairStipend.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChairStipend.Name = "lblChairStipend";
-            this.lblChairStipend.Size = new System.Drawing.Size(102, 13);
+            this.lblChairStipend.Size = new System.Drawing.Size(137, 17);
             this.lblChairStipend.TabIndex = 12;
             this.lblChairStipend.Text = "Chairperson Stipend";
             // 
             // txtChairStipend
             // 
-            this.txtChairStipend.Location = new System.Drawing.Point(133, 26);
+            this.txtChairStipend.Location = new System.Drawing.Point(177, 32);
+            this.txtChairStipend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtChairStipend.Name = "txtChairStipend";
-            this.txtChairStipend.Size = new System.Drawing.Size(100, 20);
+            this.txtChairStipend.Size = new System.Drawing.Size(132, 22);
             this.txtChairStipend.TabIndex = 11;
             this.txtChairStipend.Tag = "";
             // 
             // txtFacultyDept
             // 
-            this.txtFacultyDept.Location = new System.Drawing.Point(91, 19);
+            this.txtFacultyDept.Location = new System.Drawing.Point(121, 23);
+            this.txtFacultyDept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFacultyDept.Name = "txtFacultyDept";
-            this.txtFacultyDept.Size = new System.Drawing.Size(100, 20);
+            this.txtFacultyDept.Size = new System.Drawing.Size(132, 22);
             this.txtFacultyDept.TabIndex = 7;
             this.txtFacultyDept.Tag = "";
             // 
             // btnCreateFaculty
             // 
-            this.btnCreateFaculty.Location = new System.Drawing.Point(334, 70);
+            this.btnCreateFaculty.Location = new System.Drawing.Point(445, 86);
+            this.btnCreateFaculty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreateFaculty.Name = "btnCreateFaculty";
-            this.btnCreateFaculty.Size = new System.Drawing.Size(154, 27);
+            this.btnCreateFaculty.Size = new System.Drawing.Size(205, 33);
             this.btnCreateFaculty.TabIndex = 5;
             this.btnCreateFaculty.Text = "New Faculty Member";
             this.btnCreateFaculty.UseVisualStyleBackColor = true;
             // 
             // btnCreateChair
             // 
-            this.btnCreateChair.Location = new System.Drawing.Point(494, 70);
+            this.btnCreateChair.Location = new System.Drawing.Point(659, 86);
+            this.btnCreateChair.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreateChair.Name = "btnCreateChair";
-            this.btnCreateChair.Size = new System.Drawing.Size(154, 27);
+            this.btnCreateChair.Size = new System.Drawing.Size(205, 33);
             this.btnCreateChair.TabIndex = 6;
             this.btnCreateChair.Text = "New Chairperson";
             this.btnCreateChair.UseVisualStyleBackColor = true;
@@ -454,9 +492,11 @@
             this.gbFormControls.Controls.Add(this.btnDisplay);
             this.gbFormControls.Controls.Add(this.lblEnterID);
             this.gbFormControls.Controls.Add(this.textBox1);
-            this.gbFormControls.Location = new System.Drawing.Point(16, 495);
+            this.gbFormControls.Location = new System.Drawing.Point(21, 609);
+            this.gbFormControls.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbFormControls.Name = "gbFormControls";
-            this.gbFormControls.Size = new System.Drawing.Size(545, 100);
+            this.gbFormControls.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFormControls.Size = new System.Drawing.Size(727, 123);
             this.gbFormControls.TabIndex = 7;
             this.gbFormControls.TabStop = false;
             this.gbFormControls.Text = "Data Processing Controls";
@@ -467,36 +507,40 @@
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(435, 63);
+            this.btnDelete.Location = new System.Drawing.Point(580, 78);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(100, 28);
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(350, 63);
+            this.btnSave.Location = new System.Drawing.Point(467, 78);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 18;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(119, 63);
+            this.btnEdit.Location = new System.Drawing.Point(159, 78);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Size = new System.Drawing.Size(100, 28);
             this.btnEdit.TabIndex = 17;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnDisplay
             // 
-            this.btnDisplay.Location = new System.Drawing.Point(31, 63);
+            this.btnDisplay.Location = new System.Drawing.Point(41, 78);
+            this.btnDisplay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDisplay.Name = "btnDisplay";
-            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
+            this.btnDisplay.Size = new System.Drawing.Size(100, 28);
             this.btnDisplay.TabIndex = 16;
             this.btnDisplay.Text = "Display";
             this.btnDisplay.UseVisualStyleBackColor = true;
@@ -504,43 +548,72 @@
             // lblEnterID
             // 
             this.lblEnterID.AutoSize = true;
-            this.lblEnterID.Location = new System.Drawing.Point(30, 31);
+            this.lblEnterID.Location = new System.Drawing.Point(40, 38);
+            this.lblEnterID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEnterID.Name = "lblEnterID";
-            this.lblEnterID.Size = new System.Drawing.Size(130, 13);
+            this.lblEnterID.Size = new System.Drawing.Size(171, 17);
             this.lblEnterID.TabIndex = 15;
             this.lblEnterID.Text = "Please Enter Target TUID";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(170, 28);
+            this.textBox1.Location = new System.Drawing.Point(227, 34);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(132, 22);
             this.textBox1.TabIndex = 14;
             this.textBox1.Tag = "";
             // 
             // btnClearForm
             // 
-            this.btnClearForm.Location = new System.Drawing.Point(584, 128);
+            this.btnClearForm.Location = new System.Drawing.Point(779, 158);
+            this.btnClearForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClearForm.Name = "btnClearForm";
-            this.btnClearForm.Size = new System.Drawing.Size(64, 50);
+            this.btnClearForm.Size = new System.Drawing.Size(85, 62);
             this.btnClearForm.TabIndex = 8;
             this.btnClearForm.Text = "Clear Form";
             this.btnClearForm.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(584, 566);
+            this.btnExit.Location = new System.Drawing.Point(779, 697);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(64, 29);
+            this.btnExit.Size = new System.Drawing.Size(85, 36);
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // dtBD
+            // 
+            this.dtBD.CustomFormat = "dd-MM-yyyy";
+            this.dtBD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtBD.Location = new System.Drawing.Point(535, 23);
+            this.dtBD.MaxDate = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
+            this.dtBD.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtBD.Name = "dtBD";
+            this.dtBD.Size = new System.Drawing.Size(183, 22);
+            this.dtBD.TabIndex = 8;
+            this.dtBD.Value = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
+            // 
+            // cbYear
+            // 
+            this.cbYear.FormattingEnabled = true;
+            this.cbYear.Items.AddRange(new object[] {
+            "Fr",
+            "So",
+            "Jr",
+            "Sr"});
+            this.cbYear.Location = new System.Drawing.Point(177, 86);
+            this.cbYear.Name = "cbYear";
+            this.cbYear.Size = new System.Drawing.Size(121, 24);
+            this.cbYear.TabIndex = 14;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 630);
+            this.ClientSize = new System.Drawing.Size(884, 775);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnClearForm);
             this.Controls.Add(this.gbFormControls);
@@ -552,6 +625,7 @@
             this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -582,7 +656,6 @@
         public System.Windows.Forms.Button btnCreateFaculty;
         public System.Windows.Forms.Button btnCreateChair;
         public System.Windows.Forms.Label lblMemberBD;
-        public System.Windows.Forms.TextBox txtMemberBD;
         public System.Windows.Forms.Label lblMemberName;
         public System.Windows.Forms.TextBox txtMemberName;
         public System.Windows.Forms.Label lblMemberID;
@@ -622,5 +695,7 @@
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Button btnExit;
+        public System.Windows.Forms.DateTimePicker dtBD;
+        private System.Windows.Forms.ComboBox cbYear;
     }
 }

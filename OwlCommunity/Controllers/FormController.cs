@@ -9,7 +9,7 @@ using OwlCommunity.Views;
 
 namespace OwlCommunity.Controllers
 {
-    class FormController
+    public class FormController
     {
         private Views.MainForm f;
 
@@ -55,7 +55,7 @@ namespace OwlCommunity.Controllers
             // Reset Text boxes
             f.txtMemberID.Enabled = false;
             f.txtMemberName.Enabled = false;
-            f.txtMemberBD.Enabled = false;
+            f.dtBD.Enabled = false;
             f.txtFacultyDept.Enabled = false;
             f.txtFacultyRank.Enabled = false;
             f.txtStudentMajor.Enabled = false;
@@ -213,7 +213,7 @@ namespace OwlCommunity.Controllers
         public static void clear(Views.MainForm f)
         {
             f.txtMemberName.Text = "";
-            f.txtMemberBD.Text = "";
+            f.dtBD.Text = "";
             f.txtMemberID.Text = "";
             f.txtMemberID.Focus();
             f.txtFacultyDept.Text = "";

@@ -80,7 +80,7 @@ namespace OwlCommunity.Models
         public virtual void Save(Views.MainForm f)
         {
             hiddenName = f.txtMemberName.Text;
-            hiddenBirthDate = DateTime.Parse(f.txtMemberBD.Text);
+        //    hiddenBirthDate = DateTime.Parse(f.txtMemberBD.Text);
             hiddenID = Convert.ToInt32(f.txtMemberID.Text);
         }  // end Save
 
@@ -89,7 +89,7 @@ namespace OwlCommunity.Models
         public virtual void Display(Views.MainForm f)
         {
             f.txtMemberName.Text = hiddenName;
-            f.txtMemberBD.Text = hiddenBirthDate.ToShortDateString();
+        //    f.txtMemberBD.Text = hiddenBirthDate.ToShortDateString();
             f.txtMemberID.Text = hiddenID.ToString();
         }  // end Display
 
