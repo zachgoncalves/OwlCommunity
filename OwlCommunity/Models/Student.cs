@@ -24,7 +24,7 @@ namespace OwlCommunity.Models
 
 
         // Parameterized Constructor
-        public Student(int n, string id, DateTime dob, string m, decimal gpa) : base(n, id, dob)
+        public Student(string name, int id, DateTime dob, string m, decimal gpa) : base(id, name, dob)
         {
             hiddenStudentMajor = m;
             hiddenStudentGPA = gpa;

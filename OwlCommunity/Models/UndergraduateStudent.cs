@@ -8,9 +8,9 @@ namespace OwlCommunity.Models
 {
     class UndergraduateStudent : Student
     {
-        private int studentTuition;
+        private decimal studentTuition;
         private int studentCredits;
-        private string studentYear; 
+        private string studentYear;
 
         // Default Constructor
         public UndergraduateStudent()
@@ -21,7 +21,8 @@ namespace OwlCommunity.Models
         }
 
         // Constructor that sets attributes 
-        public UndergraduateStudent(int tuition, int credits, string year)
+        public UndergraduateStudent(int id, string name, DateTime dob, decimal gpa, string major, 
+            decimal tuition, int credits, string year) : base(name, id, dob, major, gpa)
         {
             studentTuition = tuition;
             studentCredits = credits;
@@ -29,7 +30,7 @@ namespace OwlCommunity.Models
         }
 
         // Get and Set Student Tuition
-        public int StudentTuition
+        public decimal StudentTuition
         {
             get {
                 return studentTuition;
@@ -63,6 +64,35 @@ namespace OwlCommunity.Models
             {
                 studentYear = value;
             }
+        }
+
+        // Save data from form to object
+        public override void Save(Views.MainForm f)
+        {
+            base.Save(f);
+            studentTuition = Convert.ToDecimal(f.txtStudentTuition.Text);
+            studentCredits = Convert.ToInt32(f.txtStudentCredits.Text);
+            studentYear = f.cbYear.SelectedItem.ToString();
+        }
+
+
+        // Display data in object on form
+        public override void Display(Views.MainForm f)
+        {
+            base.Display(f);
+            f.txtStudentTuition.Text = studentTuition.ToString();
+            f.txtStudentGPA.Text = studentGPA.ToString();
+            f.txtStudentCredits.Text = studentCredits.ToString();
+        }
+
+        // This toString function overrides the Object toString
+        //     function.  The base refers to Object because this class
+        //     inherits Object by default.
+        public override string ToString()
+        {
+            string s = base.ToString() + "\n";
+            s += "Undergraduate Student Info: " + "Tuition: " + studentTuition.ToString() + "Credits: " + studentCredits.ToString() + "Year: " + studentYear;
+            return s;
         }
     }
 }

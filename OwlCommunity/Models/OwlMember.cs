@@ -22,13 +22,12 @@ namespace OwlCommunity.Models
             hiddenID = 0;
             hiddenName = "";
             hiddenBirthDate = DateTime.Now;
-
         }
 
         // Parameterized Constructor
-        public OwlMember(int id, string n, DateTime bd)
+        public OwlMember(int id, string name, DateTime bd)
         {
-            hiddenName = n;
+            hiddenName = name;
             hiddenBirthDate = bd;
             hiddenID = id;
         }
