@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\GlobalData.cs" />
+    <Compile Include="Classes\OwlMemberList.cs" />
+    <Compile Include="Classes\SerializableFile.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Models\FacultyChairperson.cs" />
     <Compile Include="Models\FacultyMember.cs" />

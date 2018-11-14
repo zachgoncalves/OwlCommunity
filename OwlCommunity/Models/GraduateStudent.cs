@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OwlCommunity.Models
 {
-    class GraduateStudent
+    public class GraduateStudent
     {
     }
 }

@@ -551,6 +551,8 @@
             this.Controls.Add(this.btnCreateUndergrad);
             this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.gbOwlMember.ResumeLayout(false);
