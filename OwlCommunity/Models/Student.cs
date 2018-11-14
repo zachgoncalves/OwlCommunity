@@ -9,7 +9,7 @@ namespace OwlCommunity.Models
 {
     // Client inherits the data and methods in Person
     [Serializable()]
-    class Student : OwlMember
+    public class Student : OwlMember
     {
         private string hiddenStudentMajor;
         private decimal hiddenStudentGPA;
