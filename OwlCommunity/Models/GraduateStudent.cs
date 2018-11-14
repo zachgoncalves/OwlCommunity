@@ -70,7 +70,9 @@ namespace OwlCommunity.Models
         public override string ToString()
         {
             string s = base.ToString() + "\n";
-            s += "Graduate Student Info: " + "Stipend: " + stipend.ToString() + "Program: " + degreeProgram);
+            s += "Graduate Student Info: " + "\n";
+            s += "Stipend: " + stipend.ToString() + "\n";
+            s += "Program: " + degreeProgram;
             return s;
         }
     }
