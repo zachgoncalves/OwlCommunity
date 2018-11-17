@@ -43,7 +43,6 @@
             this.gbUndergrad = new System.Windows.Forms.GroupBox();
             this.cbYear = new System.Windows.Forms.ComboBox();
             this.lblStudentYear = new System.Windows.Forms.Label();
-            this.txtStudentYear = new System.Windows.Forms.TextBox();
             this.lblStudentCredits = new System.Windows.Forms.Label();
             this.txtStudentCredits = new System.Windows.Forms.TextBox();
             this.lblTuition = new System.Windows.Forms.Label();
@@ -138,6 +137,7 @@
             this.gbOwlMember.Controls.Add(this.lblMemberID);
             this.gbOwlMember.Controls.Add(this.txtMemberID);
             this.gbOwlMember.Controls.Add(this.gbFaculty);
+            this.gbOwlMember.Enabled = false;
             this.gbOwlMember.Location = new System.Drawing.Point(24, 186);
             this.gbOwlMember.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbOwlMember.Name = "gbOwlMember";
@@ -168,6 +168,7 @@
             this.gbStudent.Controls.Add(this.txtStudentGPA);
             this.gbStudent.Controls.Add(this.lblStudentMajor);
             this.gbStudent.Controls.Add(this.txtStudentMajor);
+            this.gbStudent.Enabled = false;
             this.gbStudent.Location = new System.Drawing.Point(10, 298);
             this.gbStudent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbStudent.Name = "gbStudent";
@@ -183,6 +184,7 @@
             this.gbGraduate.Controls.Add(this.txtGradProgram);
             this.gbGraduate.Controls.Add(this.txtGradStipend);
             this.gbGraduate.Controls.Add(this.lblGradStipend);
+            this.gbGraduate.Enabled = false;
             this.gbGraduate.Location = new System.Drawing.Point(393, 81);
             this.gbGraduate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbGraduate.Name = "gbGraduate";
@@ -234,11 +236,11 @@
             // 
             this.gbUndergrad.Controls.Add(this.cbYear);
             this.gbUndergrad.Controls.Add(this.lblStudentYear);
-            this.gbUndergrad.Controls.Add(this.txtStudentYear);
             this.gbUndergrad.Controls.Add(this.lblStudentCredits);
             this.gbUndergrad.Controls.Add(this.txtStudentCredits);
             this.gbUndergrad.Controls.Add(this.lblTuition);
             this.gbUndergrad.Controls.Add(this.txtStudentTuition);
+            this.gbUndergrad.Enabled = false;
             this.gbUndergrad.Location = new System.Drawing.Point(0, 81);
             this.gbUndergrad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbUndergrad.Name = "gbUndergrad";
@@ -256,11 +258,12 @@
             "So",
             "Jr",
             "Sr"});
-            this.cbYear.Location = new System.Drawing.Point(199, 108);
+            this.cbYear.Location = new System.Drawing.Point(108, 109);
             this.cbYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(136, 28);
             this.cbYear.TabIndex = 14;
+            this.cbYear.Text = "Select From Dropdown";
             // 
             // lblStudentYear
             // 
@@ -271,15 +274,6 @@
             this.lblStudentYear.Size = new System.Drawing.Size(43, 20);
             this.lblStudentYear.TabIndex = 13;
             this.lblStudentYear.Text = "Year";
-            // 
-            // txtStudentYear
-            // 
-            this.txtStudentYear.Location = new System.Drawing.Point(108, 109);
-            this.txtStudentYear.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStudentYear.Name = "txtStudentYear";
-            this.txtStudentYear.Size = new System.Drawing.Size(82, 26);
-            this.txtStudentYear.TabIndex = 12;
-            this.txtStudentYear.Tag = "";
             // 
             // lblStudentCredits
             // 
@@ -412,6 +406,7 @@
             this.gbFaculty.Controls.Add(this.lblFacultyDept);
             this.gbFaculty.Controls.Add(this.gbChair);
             this.gbFaculty.Controls.Add(this.txtFacultyDept);
+            this.gbFaculty.Enabled = false;
             this.gbFaculty.Location = new System.Drawing.Point(10, 102);
             this.gbFaculty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbFaculty.Name = "gbFaculty";
@@ -454,6 +449,7 @@
             // 
             this.gbChair.Controls.Add(this.lblChairStipend);
             this.gbChair.Controls.Add(this.txtChairStipend);
+            this.gbChair.Enabled = false;
             this.gbChair.Location = new System.Drawing.Point(0, 85);
             this.gbChair.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbChair.Name = "gbChair";
@@ -544,13 +540,14 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(525, 98);
+            this.btnSave.Location = new System.Drawing.Point(460, 98);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 35);
+            this.btnSave.Size = new System.Drawing.Size(177, 35);
             this.btnSave.TabIndex = 18;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Create / Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnEdit
             // 
@@ -600,6 +597,7 @@
             this.btnClearForm.TabIndex = 8;
             this.btnClearForm.Text = "Clear Form";
             this.btnClearForm.UseVisualStyleBackColor = true;
+            this.btnClearForm.Click += new System.EventHandler(this.btnClearForm_Click);
             // 
             // btnExit
             // 
@@ -610,6 +608,7 @@
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // MainForm
             // 
@@ -684,7 +683,6 @@
         public System.Windows.Forms.Label lblTuition;
         public System.Windows.Forms.TextBox txtStudentTuition;
         public System.Windows.Forms.Label lblStudentYear;
-        public System.Windows.Forms.TextBox txtStudentYear;
         public System.Windows.Forms.Label lblGradProgram;
         public System.Windows.Forms.TextBox txtGradProgram;
         public System.Windows.Forms.TextBox txtGradStipend;

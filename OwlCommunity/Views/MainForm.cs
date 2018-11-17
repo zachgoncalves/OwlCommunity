@@ -14,6 +14,7 @@ namespace OwlCommunity.Views
 {
     public partial class MainForm : Form
     {
+        private int selectedMember; 
         public MainForm()
         {
             InitializeComponent();
@@ -21,7 +22,36 @@ namespace OwlCommunity.Views
 
         private void btnCreateUndergrad_Click(object sender, EventArgs e)
         {
-            FormController.activateAddButtons(this);
+            selectedMember = 1;
+            btnCreateGraduate.Enabled = false;
+            btnCreateFaculty.Enabled = false;
+            btnCreateChair.Enabled = false;
+            FormController.formAddMode(this);
+            FormController.activateOwlMember(this);
+            FormController.activateStudent(this);
+            FormController.activateUndergraduateStudent(this);
+            FormController.deactivateChairperson(this);
+            FormController.deactivateFaculty(this);
+            FormController.deactivateGraduateStudent(this);
+        }
+
+        private void btnClearForm_Click(object sender, EventArgs e)
+        {
+            FormController.clear(this);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            // Validate Undergraduate Student
+            if(selectedMember == 1)
+            {
+
+            }
         }
     }
 }

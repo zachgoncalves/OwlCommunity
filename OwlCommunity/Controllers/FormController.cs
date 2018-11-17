@@ -61,7 +61,7 @@ namespace OwlCommunity.Controllers
             f.txtStudentMajor.Enabled = false;
             f.txtStudentMajor.Enabled = false;
             f.txtStudentTuition.Enabled = false;
-            f.txtStudentYear.Enabled = false;
+            f.cbYear.Enabled = false;
             f.txtStudentCredits.Enabled = false;
             f.txtGradProgram.Enabled = false;
             f.txtGradStipend.Enabled = false;
@@ -221,7 +221,7 @@ namespace OwlCommunity.Controllers
             f.txtStudentMajor.Text = "";
             f.txtStudentGPA.Text = "";
             f.txtStudentTuition.Text = "";
-            f.txtStudentYear.Text = "";
+            f.cbYear.Text = "Select From Dropdown";
             f.txtStudentCredits.Text = "";
             f.txtGradStipend.Text = "";
             f.txtGradProgram.Text = "";
