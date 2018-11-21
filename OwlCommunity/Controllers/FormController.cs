@@ -40,16 +40,10 @@ namespace OwlCommunity.Controllers
 
             // Reset group components
             f.gbOwlMember.Enabled = true;
-            f.gbOwlMember.BackColor = Color.Gainsboro;
             f.gbStudent.Enabled = false;
-            f.gbStudent.BackColor = Color.Gainsboro;
             f.gbFaculty.Enabled = false;
-            f.gbFaculty.BackColor = Color.Gainsboro;
             f.gbUndergrad.Enabled = false;
-            f.gbUndergrad.BackColor = Color.Gainsboro;
             f.gbGraduate.Enabled = false;
-            f.gbGraduate.BackColor = Color.Gainsboro;
-            f.gbChair.BackColor = Color.Gainsboro;
             f.gbChair.Enabled = false;
 
             // Reset Text boxes
@@ -105,8 +99,9 @@ namespace OwlCommunity.Controllers
         public static void activateOwlMember(Views.MainForm f)
         {
             f.gbOwlMember.Enabled = true;
-            f.gbOwlMember.BackColor = Color.LimeGreen;
-
+            f.txtMemberID.Enabled = true;
+            f.txtMemberName.Enabled = true;
+            f.dtBD.Enabled = true;
         }
 
 
@@ -115,7 +110,13 @@ namespace OwlCommunity.Controllers
         {
             activateOwlMember(f);
             f.gbStudent.Enabled = true;
-            f.gbStudent.BackColor = Color.LimeGreen;
+            foreach (Control c in f.gbStudent.Controls)
+            {
+                if(c is TextBox)
+                {
+                    c.Enabled = true;
+                }
+            }
         }  
 
 
@@ -124,8 +125,13 @@ namespace OwlCommunity.Controllers
         {
             activateOwlMember(f);
             f.gbFaculty.Enabled = true;
-            f.gbFaculty.BackColor = Color.LimeGreen;
-            f.gbStudent.BackColor = Color.Red;
+            foreach (Control c in f.gbFaculty.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Enabled = true;
+                }
+            }
         } 
 
 
@@ -134,7 +140,10 @@ namespace OwlCommunity.Controllers
         {
             activateStudent(f);   // Student must be activated too
             f.gbUndergrad.Enabled = true;
-            f.gbUndergrad.BackColor = Color.LimeGreen;
+            foreach (Control c in f.gbUndergrad.Controls)
+            {
+                c.Enabled = true;
+            }
         }  
 
 
@@ -143,7 +152,13 @@ namespace OwlCommunity.Controllers
         {
             activateStudent(f);  // Student must be activated too
             f.gbGraduate.Enabled = true;
-            f.gbGraduate.BackColor = Color.LimeGreen;
+            foreach (Control c in f.gbGraduate.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Enabled = true;
+                }
+            }
         }
 
 
@@ -152,7 +167,13 @@ namespace OwlCommunity.Controllers
         {
             activateFaculty(f);  // Faculty must be activated too
             f.gbChair.Enabled = true;
-            f.gbChair.BackColor = Color.LimeGreen;
+            foreach (Control c in f.gbChair.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Enabled = true;
+                }
+            }
         }
 
 
@@ -162,7 +183,7 @@ namespace OwlCommunity.Controllers
             deactivateStudent(f);
             deactivateFaculty(f);
             f.gbOwlMember.Enabled = false;
-            f.gbOwlMember.BackColor = Color.Red;
+            f.gbOwlMember.BackColor = Color.LightGray;
         }
 
 
@@ -172,7 +193,7 @@ namespace OwlCommunity.Controllers
             deactivateUndergraduateStudent(f);   // Must deactivate UG Student too
             deactivateGraduateStudent(f);        // Must deactivate Grad Student too
             f.gbStudent.Enabled = false;
-            f.gbStudent.BackColor = Color.Red;
+            f.gbStudent.BackColor = Color.LightGray;
         }  // end deactivateStudent
 
 
@@ -180,7 +201,7 @@ namespace OwlCommunity.Controllers
         public static void deactivateFaculty(Views.MainForm f)
         {
             f.gbFaculty.Enabled = false;
-            f.gbFaculty.BackColor = Color.Red;
+            f.gbFaculty.BackColor = Color.LightGray;
         } 
 
 
@@ -188,7 +209,7 @@ namespace OwlCommunity.Controllers
         public static void deactivateUndergraduateStudent(Views.MainForm f)
         {
             f.gbUndergrad.Enabled = false;
-            f.gbUndergrad.BackColor = Color.Red;
+            f.gbUndergrad.BackColor = Color.LightGray;
         }
 
 
@@ -196,7 +217,7 @@ namespace OwlCommunity.Controllers
         public static void deactivateGraduateStudent(Views.MainForm f)
         {
             f.gbGraduate.Enabled = false;
-            f.gbGraduate.BackColor = Color.Red;
+            f.gbGraduate.BackColor = Color.LightGray;
         } 
 
 
@@ -204,7 +225,7 @@ namespace OwlCommunity.Controllers
         public static void deactivateChairperson(Views.MainForm f)
         {
             f.gbFaculty.Enabled = false;
-            f.gbChair.BackColor = Color.Red;
+            f.gbChair.BackColor = Color.LightGray;
         }  
 
 
