@@ -18,15 +18,17 @@ namespace OwlCommunity.Views
         private int selectedMember; // Keeps track of selected member type
         private int ID;
         private string name;
+        private DateTime dob;
         private string facultyRank;
         private string facultyDepartment;
         private decimal chairStipend;
         private string studentMajor;
-        private double studentGPA;
+        private decimal studentGPA;
         private int studentCredits;
         private decimal studentTuition;
         private decimal gradStipend;
         private string gradProgram;
+        bool isValidated; 
 
         public MainForm()
         {
@@ -85,6 +87,7 @@ namespace OwlCommunity.Views
                 try
                 {
                     ID = Convert.ToInt32(txtMemberID.Text);
+                    isValidated = true;
                 }
                 catch
                 {
@@ -103,6 +106,7 @@ namespace OwlCommunity.Views
                 if (Regex.IsMatch(txtMemberName.Text, @"^[a-zA-Z ]*$"))
                 {
                     name = txtMemberName.Text;
+                    isValidated = true;
                 }
                 else { 
                     MessageBox.Show("Numbers or special characters are not allowed in your name.", "Validation Error");
@@ -125,6 +129,7 @@ namespace OwlCommunity.Views
                 if (Regex.IsMatch(txtStudentMajor.Text, @"^[a-zA-Z ]*$"))
                 {
                     studentMajor = txtStudentMajor.Text;
+                    isValidated = true;
                 }
                 else { 
                     MessageBox.Show("Numbers and special characters are not allowed in student major.", "Validation Error");
@@ -141,8 +146,8 @@ namespace OwlCommunity.Views
             {
                 try
                 {
-                    studentGPA = Math.Round(Convert.ToDouble(txtStudentGPA.Text), 2);
-                    if (studentGPA > 4.00 || studentGPA < 0.00)
+                    studentGPA = Math.Round(Convert.ToDecimal(txtStudentGPA.Text), 2);
+                    if (studentGPA > (decimal)4.00 || studentGPA < (decimal)0.00)
                     {
                         MessageBox.Show("Please enter a GPA both greater than 0 and less than 4.00", "Validation Error");
                         txtStudentGPA.Text = "";
@@ -152,6 +157,7 @@ namespace OwlCommunity.Views
                     else
                     {
                         txtStudentGPA.Text = studentGPA.ToString();
+                        isValidated = true;
                     }
                 }
                 catch
@@ -179,6 +185,10 @@ namespace OwlCommunity.Views
                         txtStudentTuition.Focus();
                         studentTuition = 0;
                     }
+                    else
+                    {
+                        isValidated = true;
+                    }
                 }
                 catch
                 {
@@ -204,6 +214,10 @@ namespace OwlCommunity.Views
                         txtStudentCredits.Focus();
                         studentCredits = 0;
                     }
+                    else
+                    {
+                        isValidated = true;
+                    }
                 }
                 catch
                 {
@@ -227,6 +241,10 @@ namespace OwlCommunity.Views
                         MessageBox.Show("Please enter a stipend for the graduate student greater than 0.", "Validation Error");
                         txtGradStipend.Text = "";
                         txtGradStipend.Focus();
+                    }
+                    else
+                    {
+                        isValidated = true;
                     }
                 }
                 catch
@@ -254,6 +272,7 @@ namespace OwlCommunity.Views
                 if (Regex.IsMatch(txtFacultyDept.Text, @"^[a-zA-Z ]*$"))
                 {
                     facultyDepartment = txtFacultyDept.Text;
+                    isValidated = true;
                 }
                 else
                 {
@@ -283,6 +302,9 @@ namespace OwlCommunity.Views
                         MessageBox.Show("Please enter a stipend for the department chair greater than 0.", "Validation Error");
                         txtChairStipend.Text = "";
                         txtChairStipend.Focus();
+                    } else
+                    {
+                        isValidated = true;
                     }
                 }
                 catch
@@ -315,6 +337,11 @@ namespace OwlCommunity.Views
             if(selectedMember == 1)
             {
                 validateUndergrad();
+                if(isValidated)
+                {
+                    Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dob, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
+                    GlobalData.userList.addToList(student);
+                }
             }
             // Validate Graduate Student
             if(selectedMember == 2)
