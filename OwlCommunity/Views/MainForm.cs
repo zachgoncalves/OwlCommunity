@@ -9,13 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OwlCommunity.Controllers;
 using OwlCommunity.Classes;
+using System.Text.RegularExpressions;
 
 namespace OwlCommunity.Views
 {
     public partial class MainForm : Form
     {
-        // Keeps track of selected member type
-        private int selectedMember;
+        private int selectedMember; // Keeps track of selected member type
+        private int ID;
+        private string name;
+        private string facultyRank;
+        private string facultyDepartment;
+        private decimal chairStipend;
+        private string studentMajor;
+        private double studentGPA;
+        private int studentCredits;
+        private decimal studentTuition;
+        private decimal gradStipend;
+        private string gradProgram;
 
         public MainForm()
         {
@@ -65,6 +76,229 @@ namespace OwlCommunity.Views
             FormController.formAddMode(this);
             FormController.activateChairperson(this);
         }
+
+        // Validate Owl Member ID / Name
+        private void validateOwlMember()
+        {
+            if (!String.IsNullOrEmpty(txtMemberID.Text))
+            {
+                try
+                {
+                    ID = Convert.ToInt32(txtMemberID.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter a valid integer, with no special characters.", "Validation Error");
+                    txtMemberID.Text = "";
+                    txtMemberID.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter an ID.", "Validation Error");
+                txtMemberID.Focus();
+            }
+            if(!String.IsNullOrEmpty(txtMemberName.Text))
+            {
+                if (Regex.IsMatch(txtMemberName.Text, @"^[a-zA-Z ]*$"))
+                {
+                    name = txtMemberName.Text;
+                }
+                else { 
+                    MessageBox.Show("Numbers or special characters are not allowed in your name.", "Validation Error");
+                    txtMemberName.Text = "";
+                    txtMemberName.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a name.", "Validation Error");
+            }
+        }
+
+        // Validates Student 
+        private void validateStudent()
+        {
+            if(!String.IsNullOrEmpty(txtStudentMajor.Text))
+            {
+                // TO DO: Allow Ampersand?
+                if (Regex.IsMatch(txtStudentMajor.Text, @"^[a-zA-Z ]*$"))
+                {
+                    studentMajor = txtStudentMajor.Text;
+                }
+                else { 
+                    MessageBox.Show("Numbers and special characters are not allowed in student major.", "Validation Error");
+                    txtStudentMajor.Text = "";
+                    txtStudentMajor.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a student major", "Validation Error");
+                txtStudentMajor.Focus(); 
+            }
+            if(!String.IsNullOrEmpty(txtStudentGPA.Text))
+            {
+                try
+                {
+                    studentGPA = Math.Round(Convert.ToDouble(txtStudentGPA.Text), 2);
+                    if (studentGPA > 4.00 || studentGPA < 0.00)
+                    {
+                        MessageBox.Show("Please enter a GPA both greater than 0 and less than 4.00", "Validation Error");
+                        txtStudentGPA.Text = "";
+                        txtStudentGPA.Focus();
+                        studentGPA = 0;
+                    }
+                    else
+                    {
+                        txtStudentGPA.Text = studentGPA.ToString();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter a valid student GPA up to two decimal places.", "Validation Error");
+                    txtStudentGPA.Text = "";
+                    txtStudentGPA.Focus(); 
+                }
+            }
+        }
+
+        // Validates Undergraduate Student 
+        private void validateUndergrad()
+        {
+            validateStudent();
+            if(!String.IsNullOrEmpty(txtStudentTuition.Text))
+            {
+                try
+                {
+                    studentTuition = Convert.ToDecimal(txtStudentTuition.Text);
+                    if(studentTuition < 0)
+                    {
+                        MessageBox.Show("Student tuition cannot be less than 0!", "Validation Error");
+                        txtStudentTuition.Text = "";
+                        txtStudentTuition.Focus();
+                        studentTuition = 0;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Student tuition must be a decimal.", "Validation Error");
+                    txtStudentTuition.Text = "";
+                    txtStudentTuition.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter the student's tuition");
+                txtStudentTuition.Focus();
+            }
+            if(!String.IsNullOrEmpty(txtStudentCredits.Text))
+            {
+                try
+                {
+                    studentCredits = Convert.ToInt16(txtStudentCredits.Text);
+                    if (studentCredits < 0)
+                    {
+                        MessageBox.Show("Student credits cannot be less than 0!", "Validation Error");
+                        txtStudentCredits.Text = "";
+                        txtStudentCredits.Focus();
+                        studentCredits = 0;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter the amount of credits the student is at.");
+                    txtStudentCredits.Focus();
+                }
+            }
+        }
+
+        // Validates Graduate Student 
+        private void validateGrad()
+        {
+            validateStudent();
+            if (!String.IsNullOrEmpty(txtGradStipend.Text))
+            {
+                try
+                {
+                    gradStipend = Convert.ToDecimal(txtGradStipend.Text);
+                    if (gradStipend <= 0)
+                    {
+                        MessageBox.Show("Please enter a stipend for the graduate student greater than 0.", "Validation Error");
+                        txtGradStipend.Text = "";
+                        txtGradStipend.Focus();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter a stipend for the gradudate student.", "Validation Error");
+                    txtGradStipend.Text = "";
+                    txtGradStipend.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a graduate student stipend.", "Validation Error");
+                txtGradStipend.Focus();
+            }
+        }
+
+        // Validates Faculty Department and Rank
+        private void validateFaculty()
+        {
+            validateOwlMember();
+
+            if(!String.IsNullOrEmpty(txtFacultyDept.Text))
+            {
+                // TO DO: Allow Ampersand? 
+                if (Regex.IsMatch(txtFacultyDept.Text, @"^[a-zA-Z ]*$"))
+                {
+                    facultyDepartment = txtFacultyDept.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a department.", "Validation Error");
+                    txtFacultyDept.Text = "";
+                    txtFacultyDept.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a faculty department.", "Validation Error");
+                txtFacultyDept.Focus();
+            }
+        }
+
+        // Validates Department Chairperson
+        private void validateChair()
+        {
+            validateFaculty();
+            if(!String.IsNullOrEmpty(txtChairStipend.Text))
+            {
+                try
+                {
+                    chairStipend = Convert.ToDecimal(txtChairStipend.Text);
+                    if(chairStipend <= 0)
+                    {
+                        MessageBox.Show("Please enter a stipend for the department chair greater than 0.", "Validation Error");
+                        txtChairStipend.Text = "";
+                        txtChairStipend.Focus();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter a stipend for the department chair.", "Validation Error");
+                    txtChairStipend.Text = "";
+                    txtChairStipend.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a chairperson stipend.", "Validation Error");
+                txtChairStipend.Focus();
+            }
+        }
+
         private void btnClearForm_Click(object sender, EventArgs e)
         {
             FormController.clear(this);
@@ -80,7 +314,22 @@ namespace OwlCommunity.Views
             // Validate Undergraduate Student
             if(selectedMember == 1)
             {
-
+                validateUndergrad();
+            }
+            // Validate Graduate Student
+            if(selectedMember == 2)
+            {
+                validateGrad();
+            }
+            // Validate Faculty
+            if(selectedMember == 3)
+            {
+                validateFaculty();
+            }
+            // Validate Department Chair
+            if(selectedMember == 4)
+            {
+                validateChair();
             }
         }
 

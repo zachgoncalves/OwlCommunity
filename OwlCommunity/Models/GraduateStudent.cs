@@ -46,22 +46,22 @@ namespace OwlCommunity.Models
                 degreeProgram = value;
             }
         }
-        
+
         // Save data from form to object
         public override void Save(Views.MainForm f)
         {
             base.Save(f);
             stipend = Convert.ToDecimal(f.txtGradStipend.Text);
-            degreeProgram = f.txtGradProgram.Text;
+            degreeProgram = f.cbProgram.SelectedItem.ToString();
+        
         }
-
 
         // Display data in object on form
         public override void Display(Views.MainForm f)
         {
             base.Display(f);
             f.txtGradStipend.Text = stipend.ToString();
-            f.txtGradProgram.Text = degreeProgram;
+            f.cbProgram.Text = degreeProgram;
         }
 
         // This toString function overrides the Object toString

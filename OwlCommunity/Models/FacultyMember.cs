@@ -55,7 +55,7 @@ namespace OwlCommunity.Models
         public override void Save(Views.MainForm f)
         {
             base.Save(f);
-            rank = f.txtFacultyRank.Text;
+            rank = f.cbRank.SelectedItem.ToString();
             department = f.txtFacultyDept.Text;
         }
 
@@ -63,7 +63,7 @@ namespace OwlCommunity.Models
         public override void Display(Views.MainForm f)
         {
             base.Display(f);
-            f.txtFacultyRank.Text = rank;
+            f.cbRank.Text = rank.ToString();
             f.txtFacultyDept.Text = department;
         } 
 

@@ -51,16 +51,15 @@ namespace OwlCommunity.Controllers
             f.txtMemberName.Enabled = false;
             f.dtBD.Enabled = false;
             f.txtFacultyDept.Enabled = false;
-            f.txtFacultyRank.Enabled = false;
             f.txtStudentMajor.Enabled = false;
             f.txtStudentMajor.Enabled = false;
             f.txtStudentTuition.Enabled = false;
             f.cbYear.Enabled = false;
             f.txtStudentCredits.Enabled = false;
-            f.txtGradProgram.Enabled = false;
+            f.cbRank.Enabled = false;
+            f.cbProgram.Enabled = false;
             f.txtGradStipend.Enabled = false;
             f.txtFacultyDept.Enabled = false;
-            f.txtFacultyRank.Enabled = false;
         }
 
 
@@ -154,10 +153,7 @@ namespace OwlCommunity.Controllers
             f.gbGraduate.Enabled = true;
             foreach (Control c in f.gbGraduate.Controls)
             {
-                if (c is TextBox)
-                {
-                    c.Enabled = true;
-                }
+                c.Enabled = true;
             }
         }
 
@@ -238,14 +234,14 @@ namespace OwlCommunity.Controllers
             f.txtMemberID.Text = "";
             f.txtMemberID.Focus();
             f.txtFacultyDept.Text = "";
-            f.txtFacultyRank.Text = "";
             f.txtStudentMajor.Text = "";
             f.txtStudentGPA.Text = "";
             f.txtStudentTuition.Text = "";
-            f.cbYear.Text = "Select From Dropdown";
             f.txtStudentCredits.Text = "";
             f.txtGradStipend.Text = "";
-            f.txtGradProgram.Text = "";
+            f.cbYear.SelectedIndex = -1;
+            f.cbRank.SelectedIndex = -1;
+            f.cbProgram.SelectedIndex = -1;
             f.txtChairStipend.Text = "";
             resetForm(f);
         } 

@@ -82,6 +82,7 @@ namespace OwlCommunity.Models
             base.Display(f);
             f.txtStudentTuition.Text = studentTuition.ToString();
             f.txtStudentGPA.Text = studentGPA.ToString();
+            f.cbYear.Text = studentYear.ToString();
             f.txtStudentCredits.Text = studentCredits.ToString();
         }
 
