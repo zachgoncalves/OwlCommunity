@@ -1,5 +1,4 @@
-﻿/*
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +7,9 @@ using OwlCommunity.Classes;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace OwlCommmunity.Classes
+namespace OwlCommunity.Classes
 {
-    public static class SFManager
+    public static class SerializableFile
     {
         // This class manages s serializable file object by reading from and writing to a file
 
@@ -74,7 +73,7 @@ namespace OwlCommmunity.Classes
                 catch (Exception ex)
                 {
                     MessageBox.Show("File open error: Open with new Owl Member List", "SFManager, File Open");
-                    plist = new Classes.OwlMemberList();
+                    plist = new OwlMemberList();
                     return false;
                 } 
 
@@ -85,7 +84,7 @@ namespace OwlCommmunity.Classes
                 catch (Exception ex)
                 {
                     MessageBox.Show("File read error: Open with new Owl Member List", "SFManager File Read");
-                    plist = new Classes.OwlMemberList();
+                    plist = new OwlMemberList();
                     return false;
                 }
                 finally
@@ -96,7 +95,7 @@ namespace OwlCommmunity.Classes
             else
             {
                 MessageBox.Show("File does not exist: Open with new Owl Member List", "SF Manager Exists ");
-                plist = new Classes.OwlMemberList();
+                plist = new OwlMemberList();
             }  
 
             return true;   // The file read succeeded
@@ -105,4 +104,3 @@ namespace OwlCommmunity.Classes
 
     }  
 }  
-*/

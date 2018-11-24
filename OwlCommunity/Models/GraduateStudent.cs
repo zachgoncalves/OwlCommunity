@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace OwlCommunity.Models
 {
+    [Serializable()]
+
     public class GraduateStudent : Student
     {
         private decimal stipend;

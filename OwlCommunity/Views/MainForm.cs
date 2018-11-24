@@ -19,7 +19,6 @@ namespace OwlCommunity.Views
         private int ID;
         private string name;
         private DateTime dob;
-        private string facultyRank;
         private string facultyDepartment;
         private decimal chairStipend;
         private string studentMajor;
@@ -27,8 +26,7 @@ namespace OwlCommunity.Views
         private int studentCredits;
         private decimal studentTuition;
         private decimal gradStipend;
-        private string gradProgram;
-        bool isValidated; 
+        private bool isValidated = false; 
 
         public MainForm()
         {
@@ -118,6 +116,7 @@ namespace OwlCommunity.Views
             {
                 MessageBox.Show("Please enter a name.", "Validation Error");
             }
+            dob = dtBD.Value;
         }
 
         // Validates Student 
@@ -342,23 +341,42 @@ namespace OwlCommunity.Views
                     Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dob, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
                     GlobalData.userList.addToList(student);
                 }
+                isValidated = false;
             }
             // Validate Graduate Student
             if(selectedMember == 2)
             {
                 validateGrad();
+                if(isValidated)
+                {
+                    Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dob, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
+                    GlobalData.userList.addToList(gradStudent);
+                }
+                isValidated = false;
             }
             // Validate Faculty
-            if(selectedMember == 3)
+            if (selectedMember == 3)
             {
                 validateFaculty();
+                if(isValidated)
+                {
+                    Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dob, facultyDepartment, cbRank.SelectedItem.ToString());
+                    GlobalData.userList.addToList(faculty);
+                }
+                isValidated = false;
             }
             // Validate Department Chair
             if(selectedMember == 4)
             {
                 validateChair();
+                if(isValidated)
+                {
+                    Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dob, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
+                    GlobalData.userList.addToList(facultyChair);
+                }
+                isValidated = false;
             }
+            SerializableFile.writeToFile(GlobalData.userList, "StoreFile");
         }
-
     }
 }

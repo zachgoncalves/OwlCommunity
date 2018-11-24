@@ -7,6 +7,7 @@ using OwlCommunity.Models;
 
 namespace OwlCommunity.Classes
 {
+    [Serializable()]
     public class OwlMemberList
     {
         List<OwlMember> memberList;
@@ -21,7 +22,7 @@ namespace OwlCommunity.Classes
         }
 
         // Returns number of members in the member list
-        public int getNumMembers()
+        public int Count()
         {
             return numMembers = memberList.Count();
         }
