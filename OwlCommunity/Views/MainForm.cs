@@ -33,6 +33,11 @@ namespace OwlCommunity.Views
             InitializeComponent();
         }
 
+        private void MainForm_Load(object sender, System.EventArgs e)
+        {
+            SerializableFile.readFromFile(ref GlobalData.userList, "StoreFile.txt");
+        }
+
         // For Creating Undergraduate Student
         private void btnCreateUndergrad_Click(object sender, EventArgs e)
         {
@@ -327,6 +332,7 @@ namespace OwlCommunity.Views
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            SerializableFile.writeToFile(GlobalData.userList, "StoreFile.txt");
             this.Close();
         }
 
@@ -376,7 +382,17 @@ namespace OwlCommunity.Views
                 }
                 isValidated = false;
             }
-            SerializableFile.writeToFile(GlobalData.userList, "StoreFile");
+        }
+
+        private void btnEnterName_Click(object sender, EventArgs e)
+        {
+            ID = Convert.ToInt32(txtTUIDEnter.Text);
+        }
+
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+            SerializableFile.readFromFile(ref GlobalData.userList, "StoreFile.txt");
+            MessageBox.Show(GlobalData.userList.ToString());
         }
     }
 }

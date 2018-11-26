@@ -70,7 +70,7 @@ namespace OwlCommunity.Classes
                 {
                     TestFileStream = File.OpenRead(fn);
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("File open error: Open with new Owl Member List", "SFManager, File Open");
                     plist = new OwlMemberList();
@@ -81,7 +81,7 @@ namespace OwlCommunity.Classes
                 {
                     plist = (OwlMemberList)deserializer.Deserialize(TestFileStream);
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("File read error: Open with new Owl Member List", "SFManager File Read");
                     plist = new OwlMemberList();
