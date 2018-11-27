@@ -126,10 +126,7 @@ namespace OwlCommunity.Controllers
             f.gbFaculty.Enabled = true;
             foreach (Control c in f.gbFaculty.Controls)
             {
-                if (c is TextBox)
-                {
-                    c.Enabled = true;
-                }
+                c.Enabled = true;
             }
         } 
 

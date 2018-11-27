@@ -36,6 +36,7 @@ namespace OwlCommunity.Views
         private void MainForm_Load(object sender, System.EventArgs e)
         {
             SerializableFile.readFromFile(ref GlobalData.userList, "StoreFile.txt");
+            MessageBox.Show(GlobalData.userList.displayList());
         }
 
         // For Creating Undergraduate Student
@@ -90,6 +91,7 @@ namespace OwlCommunity.Views
                 try
                 {
                     ID = Convert.ToInt32(txtMemberID.Text);
+                    MessageBox.Show(ID.ToString());
                     isValidated = true;
                 }
                 catch
@@ -127,6 +129,7 @@ namespace OwlCommunity.Views
         // Validates Student 
         private void validateStudent()
         {
+            validateOwlMember();
             if(!String.IsNullOrEmpty(txtStudentMajor.Text))
             {
                 // TO DO: Allow Ampersand?
@@ -344,7 +347,7 @@ namespace OwlCommunity.Views
                 validateUndergrad();
                 if(isValidated)
                 {
-                    Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dob, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
+                    Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
                     GlobalData.userList.addToList(student);
                 }
                 isValidated = false;
@@ -355,7 +358,7 @@ namespace OwlCommunity.Views
                 validateGrad();
                 if(isValidated)
                 {
-                    Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dob, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
+                    Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dtBD.Value, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
                     GlobalData.userList.addToList(gradStudent);
                 }
                 isValidated = false;
@@ -366,7 +369,7 @@ namespace OwlCommunity.Views
                 validateFaculty();
                 if(isValidated)
                 {
-                    Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dob, facultyDepartment, cbRank.SelectedItem.ToString());
+                    Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString());
                     GlobalData.userList.addToList(faculty);
                 }
                 isValidated = false;
@@ -377,7 +380,7 @@ namespace OwlCommunity.Views
                 validateChair();
                 if(isValidated)
                 {
-                    Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dob, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
+                    Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
                     GlobalData.userList.addToList(facultyChair);
                 }
                 isValidated = false;
@@ -391,8 +394,17 @@ namespace OwlCommunity.Views
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            SerializableFile.readFromFile(ref GlobalData.userList, "StoreFile.txt");
-            MessageBox.Show(GlobalData.userList.ToString());
+            bool isFound = false;
+            Models.OwlMember member = GlobalData.userList.searchList(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
+            if(isFound)
+            {
+                member.Display(this);
+            }
+            else
+            {
+                MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
+            }
         }
+
     }
 }

@@ -11,6 +11,8 @@ namespace OwlCommunity.Classes
     public class OwlMemberList
     {
         List<OwlMember> memberList;
+        OwlMember lookedUpUser; 
+
         int numMembers;
 
         // Parameterless Constructor
@@ -39,32 +41,33 @@ namespace OwlCommunity.Classes
         }
 
         // Searches for OwlMember in the list
-        public string searchList(OwlMember user, ref bool searchSuccessful)
+        public OwlMember searchList(int memberID, ref bool searchSuccessful)
         {
             searchSuccessful = false;
-            string returnMember = "";
             foreach (OwlMember member in memberList)
             {
-                bool match = false;
-                bool endOfList = false;
-              
-                if (match)
+                if (member.owlID == memberID)
                 {
-                    returnMember = member.ToString();
+                    lookedUpUser = member;
                     searchSuccessful = true;
                     break;
                 }
                 else
                 {
-                    if (endOfList)
-                    {
-                        returnMember = "No member found!";
-                        searchSuccessful = false;
-                    }
+                    lookedUpUser = null;
+                    searchSuccessful = false;
                 }
             }
-            return returnMember;
+            return lookedUpUser;
         }
-
+        public string displayList()
+        {
+            string display = "";
+            foreach (OwlMember member in memberList)
+            {
+                display += member.ToString();
+            }
+            return display;
+        }
     }
 }

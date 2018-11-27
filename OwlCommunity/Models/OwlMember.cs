@@ -88,9 +88,9 @@ namespace OwlCommunity.Models
         public virtual void Display(Views.MainForm f)
         {
             f.txtMemberName.Text = hiddenName;
-        //    f.txtMemberBD.Text = hiddenBirthDate.ToShortDateString();
+            f.dtBD.Value = hiddenBirthDate;
             f.txtMemberID.Text = hiddenID.ToString();
-        }  // end Display
+        } 
 
 
         // This toString function overrides the Object toString function
