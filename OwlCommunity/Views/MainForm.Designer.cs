@@ -231,6 +231,8 @@
             this.txtGradStipend.Size = new System.Drawing.Size(152, 26);
             this.txtGradStipend.TabIndex = 14;
             this.txtGradStipend.Tag = "";
+            this.txtGradStipend.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingGradStipend);
+            this.txtGradStipend.Validated += new System.EventHandler(this.ValidGradStipend);
             // 
             // lblGradStipend
             // 
@@ -303,6 +305,8 @@
             this.txtStudentCredits.Size = new System.Drawing.Size(82, 26);
             this.txtStudentCredits.TabIndex = 10;
             this.txtStudentCredits.Tag = "";
+            this.txtStudentCredits.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingCredits);
+            this.txtStudentCredits.Validated += new System.EventHandler(this.ValidCredits);
             // 
             // lblTuition
             // 
@@ -322,6 +326,8 @@
             this.txtStudentTuition.Size = new System.Drawing.Size(148, 26);
             this.txtStudentTuition.TabIndex = 8;
             this.txtStudentTuition.Tag = "";
+            this.txtStudentTuition.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingTuition);
+            this.txtStudentTuition.Validated += new System.EventHandler(this.ValidTuition);
             // 
             // lblStudentGPA
             // 
@@ -341,6 +347,8 @@
             this.txtStudentGPA.Size = new System.Drawing.Size(112, 26);
             this.txtStudentGPA.TabIndex = 10;
             this.txtStudentGPA.Tag = "";
+            this.txtStudentGPA.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingGPA);
+            this.txtStudentGPA.Validated += new System.EventHandler(this.ValidGPA);
             // 
             // lblStudentMajor
             // 
@@ -360,6 +368,8 @@
             this.txtStudentMajor.Size = new System.Drawing.Size(254, 26);
             this.txtStudentMajor.TabIndex = 8;
             this.txtStudentMajor.Tag = "";
+            this.txtStudentMajor.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingMajor);
+            this.txtStudentMajor.Validated += new System.EventHandler(this.ValidMajor);
             // 
             // lblMemberBD
             // 
@@ -403,6 +413,8 @@
             this.txtChairStipend.Size = new System.Drawing.Size(148, 26);
             this.txtChairStipend.TabIndex = 11;
             this.txtChairStipend.Tag = "";
+            this.txtChairStipend.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingChairStipend);
+            this.txtChairStipend.Validated += new System.EventHandler(this.ValidChairStipend);
             // 
             // lblMemberName
             // 
@@ -422,6 +434,8 @@
             this.txtMemberName.Size = new System.Drawing.Size(204, 26);
             this.txtMemberName.TabIndex = 3;
             this.txtMemberName.Tag = "";
+            this.txtMemberName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingName);
+            this.txtMemberName.Validated += new System.EventHandler(this.ValidatedName);
             // 
             // lblMemberID
             // 
@@ -505,6 +519,8 @@
             this.txtFacultyDept.Size = new System.Drawing.Size(148, 26);
             this.txtFacultyDept.TabIndex = 7;
             this.txtFacultyDept.Tag = "";
+            this.txtFacultyDept.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingDepartment);
+            this.txtFacultyDept.Validated += new System.EventHandler(this.ValidatedDept);
             // 
             // btnCreateFaculty
             // 
