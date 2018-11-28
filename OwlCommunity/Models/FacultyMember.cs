@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OwlCommunity.Views;
 
 namespace OwlCommunity.Models
 {
@@ -50,6 +51,15 @@ namespace OwlCommunity.Models
             {
                 rank = value;
             }
+        }
+
+        // Enable controls on form to edit object
+        public override void Edit(MainForm f)
+        {
+            base.Edit(f);
+            f.gbFaculty.Enabled = true;
+            f.txtFacultyDept.Enabled = true;
+            f.cbRank.Enabled = true;
         }
 
         // Save data from form to object

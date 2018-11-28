@@ -74,12 +74,20 @@ namespace OwlCommunity.Models
             }
         }
 
+        // Enable controls for the object to be edited 
+        public virtual void Edit(Views.MainForm f)
+        {
+            f.gbOwlMember.Enabled = true;
+            f.txtMemberID.Enabled = true;
+            f.txtMemberName.Enabled = true;
+            f.dtBD.Enabled = true;
+        }
 
         // Save data from form to object
         public virtual void Save(Views.MainForm f)
         {
             hiddenName = f.txtMemberName.Text;
-        //    hiddenBirthDate = DateTime.Parse(f.txtMemberBD.Text);
+            hiddenBirthDate = f.dtBD.Value;
             hiddenID = Convert.ToInt32(f.txtMemberID.Text);
         }  // end Save
 

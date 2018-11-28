@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OwlCommunity.Views;
 
 namespace OwlCommunity.Models
 {
@@ -35,6 +36,14 @@ namespace OwlCommunity.Models
             {
                 stipend = value;
             }
+        }
+
+        // Enable controls on form to edit object
+        public override void Edit(MainForm f)
+        {
+            base.Edit(f);
+            f.gbChair.Enabled = true;
+            f.txtChairStipend.Enabled = true;
         }
 
         // Save data from form to object

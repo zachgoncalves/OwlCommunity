@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
             this.btnCreateUndergrad = new System.Windows.Forms.Button();
@@ -52,6 +53,9 @@
             this.lblStudentMajor = new System.Windows.Forms.Label();
             this.txtStudentMajor = new System.Windows.Forms.TextBox();
             this.lblMemberBD = new System.Windows.Forms.Label();
+            this.gbChair = new System.Windows.Forms.GroupBox();
+            this.lblChairStipend = new System.Windows.Forms.Label();
+            this.txtChairStipend = new System.Windows.Forms.TextBox();
             this.lblMemberName = new System.Windows.Forms.Label();
             this.txtMemberName = new System.Windows.Forms.TextBox();
             this.lblMemberID = new System.Windows.Forms.Label();
@@ -60,9 +64,6 @@
             this.cbRank = new System.Windows.Forms.ComboBox();
             this.lblFacultyRank = new System.Windows.Forms.Label();
             this.lblFacultyDept = new System.Windows.Forms.Label();
-            this.gbChair = new System.Windows.Forms.GroupBox();
-            this.lblChairStipend = new System.Windows.Forms.Label();
-            this.txtChairStipend = new System.Windows.Forms.TextBox();
             this.txtFacultyDept = new System.Windows.Forms.TextBox();
             this.btnCreateFaculty = new System.Windows.Forms.Button();
             this.btnCreateChair = new System.Windows.Forms.Button();
@@ -76,13 +77,15 @@
             this.txtTUIDEnter = new System.Windows.Forms.TextBox();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.validateError = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbOwlMember.SuspendLayout();
             this.gbStudent.SuspendLayout();
             this.gbGraduate.SuspendLayout();
             this.gbUndergrad.SuspendLayout();
-            this.gbFaculty.SuspendLayout();
             this.gbChair.SuspendLayout();
+            this.gbFaculty.SuspendLayout();
             this.gbFormControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validateError)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -368,6 +371,39 @@
             this.lblMemberBD.TabIndex = 6;
             this.lblMemberBD.Text = "Birthdate";
             // 
+            // gbChair
+            // 
+            this.gbChair.Controls.Add(this.lblChairStipend);
+            this.gbChair.Controls.Add(this.txtChairStipend);
+            this.gbChair.Enabled = false;
+            this.gbChair.Location = new System.Drawing.Point(10, 169);
+            this.gbChair.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbChair.Name = "gbChair";
+            this.gbChair.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbChair.Size = new System.Drawing.Size(798, 98);
+            this.gbChair.TabIndex = 0;
+            this.gbChair.TabStop = false;
+            this.gbChair.Text = "Chairperson";
+            // 
+            // lblChairStipend
+            // 
+            this.lblChairStipend.AutoSize = true;
+            this.lblChairStipend.Location = new System.Drawing.Point(34, 45);
+            this.lblChairStipend.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblChairStipend.Name = "lblChairStipend";
+            this.lblChairStipend.Size = new System.Drawing.Size(154, 20);
+            this.lblChairStipend.TabIndex = 12;
+            this.lblChairStipend.Text = "Chairperson Stipend";
+            // 
+            // txtChairStipend
+            // 
+            this.txtChairStipend.Location = new System.Drawing.Point(200, 40);
+            this.txtChairStipend.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtChairStipend.Name = "txtChairStipend";
+            this.txtChairStipend.Size = new System.Drawing.Size(148, 26);
+            this.txtChairStipend.TabIndex = 11;
+            this.txtChairStipend.Tag = "";
+            // 
             // lblMemberName
             // 
             this.lblMemberName.AutoSize = true;
@@ -405,6 +441,8 @@
             this.txtMemberID.Size = new System.Drawing.Size(148, 26);
             this.txtMemberID.TabIndex = 1;
             this.txtMemberID.Tag = "";
+            this.txtMemberID.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingID);
+            this.txtMemberID.Validated += new System.EventHandler(this.ValidatedID);
             // 
             // gbFaculty
             // 
@@ -458,39 +496,6 @@
             this.lblFacultyDept.Size = new System.Drawing.Size(94, 20);
             this.lblFacultyDept.TabIndex = 8;
             this.lblFacultyDept.Text = "Department";
-            // 
-            // gbChair
-            // 
-            this.gbChair.Controls.Add(this.lblChairStipend);
-            this.gbChair.Controls.Add(this.txtChairStipend);
-            this.gbChair.Enabled = false;
-            this.gbChair.Location = new System.Drawing.Point(10, 169);
-            this.gbChair.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbChair.Name = "gbChair";
-            this.gbChair.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbChair.Size = new System.Drawing.Size(798, 98);
-            this.gbChair.TabIndex = 0;
-            this.gbChair.TabStop = false;
-            this.gbChair.Text = "Chairperson";
-            // 
-            // lblChairStipend
-            // 
-            this.lblChairStipend.AutoSize = true;
-            this.lblChairStipend.Location = new System.Drawing.Point(34, 45);
-            this.lblChairStipend.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblChairStipend.Name = "lblChairStipend";
-            this.lblChairStipend.Size = new System.Drawing.Size(154, 20);
-            this.lblChairStipend.TabIndex = 12;
-            this.lblChairStipend.Text = "Chairperson Stipend";
-            // 
-            // txtChairStipend
-            // 
-            this.txtChairStipend.Location = new System.Drawing.Point(200, 40);
-            this.txtChairStipend.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtChairStipend.Name = "txtChairStipend";
-            this.txtChairStipend.Size = new System.Drawing.Size(148, 26);
-            this.txtChairStipend.TabIndex = 11;
-            this.txtChairStipend.Tag = "";
             // 
             // txtFacultyDept
             // 
@@ -555,6 +560,7 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.Enabled = false;
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
@@ -579,6 +585,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.Enabled = false;
             this.btnEdit.Location = new System.Drawing.Point(178, 98);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEdit.Name = "btnEdit";
@@ -586,9 +593,11 @@
             this.btnEdit.TabIndex = 17;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDisplay
             // 
+            this.btnDisplay.Enabled = false;
             this.btnDisplay.Location = new System.Drawing.Point(46, 98);
             this.btnDisplay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDisplay.Name = "btnDisplay";
@@ -639,6 +648,10 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // validateError
+            // 
+            this.validateError.ContainerControl = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -668,12 +681,13 @@
             this.gbGraduate.PerformLayout();
             this.gbUndergrad.ResumeLayout(false);
             this.gbUndergrad.PerformLayout();
-            this.gbFaculty.ResumeLayout(false);
-            this.gbFaculty.PerformLayout();
             this.gbChair.ResumeLayout(false);
             this.gbChair.PerformLayout();
+            this.gbFaculty.ResumeLayout(false);
+            this.gbFaculty.PerformLayout();
             this.gbFormControls.ResumeLayout(false);
             this.gbFormControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validateError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -728,5 +742,6 @@
         public System.Windows.Forms.ComboBox cbProgram;
         public System.Windows.Forms.Label lblEnterID;
         public System.Windows.Forms.TextBox txtTUIDEnter;
+        private System.Windows.Forms.ErrorProvider validateError;
     }
 }

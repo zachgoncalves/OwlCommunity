@@ -67,6 +67,16 @@ namespace OwlCommunity.Models
             }
         }
 
+        // Enable controls on form to edit object
+        public override void Edit(Views.MainForm f)
+        {
+            base.Edit(f);
+            f.gbUndergrad.Enabled = true;
+            f.txtStudentTuition.Enabled = true;
+            f.txtStudentCredits.Enabled = true;
+            f.cbYear.Enabled = true;
+        }
+
         // Save data from form to object
         public override void Save(Views.MainForm f)
         {

@@ -16,17 +16,23 @@ namespace OwlCommunity.Views
     public partial class MainForm : Form
     {
         private int selectedMember; // Keeps track of selected member type
+        // Owl Member Attributes
         private int ID;
         private string name;
         private DateTime dob;
+        // Faculty Attributes
         private string facultyDepartment;
         private decimal chairStipend;
+        // Student Attributes
         private string studentMajor;
         private decimal studentGPA;
         private int studentCredits;
         private decimal studentTuition;
         private decimal gradStipend;
-        private bool isValidated = false; 
+        // Attributes used for tracking state
+        Models.OwlMember member;
+        private bool isValidated = false;
+        private bool editMode = false;
 
         public MainForm()
         {
@@ -35,7 +41,7 @@ namespace OwlCommunity.Views
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            SerializableFile.readFromFile(ref GlobalData.userList, "StoreFile.txt");
+            SerializableFile.readFromFile(ref GlobalData.userList, "StoreFile.bin");
             MessageBox.Show(GlobalData.userList.displayList());
         }
 
@@ -82,31 +88,133 @@ namespace OwlCommunity.Views
             FormController.formAddMode(this);
             FormController.activateChairperson(this);
         }
+        
+        // Validate ID
+        public bool ValidID(string strID, out string errorMessage)
+        {
+            if (strID.Length == 0)
+            {
+                errorMessage = "ID is required.";
+                return false;
+            }
 
+            if (strID.Length != 9)
+            {
+                errorMessage = "Please enter an integer ID of length 9.";
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    ID = Convert.ToInt32(strID);
+                    errorMessage = "";
+                    return true;
+                }
+                catch
+                {
+                    errorMessage = "Please enter a valid integer.";
+                    return false;
+                }
+            }
+        }
+        // ID is being validated
+        private void ValidatingID(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidID(txtMemberID.Text, out errorMsg))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                txtMemberID.Select(0, txtMemberID.Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.validateError.SetError(txtMemberID, errorMsg);
+            }
+        }
+        // ID has been validated 
+        private void ValidatedID(object sender, System.EventArgs e)
+        {
+            validateError.SetError(txtMemberName, "");
+        }
+
+        // Validate Name
+        public bool ValidName(string strName, out string errorMessage)
+        {
+            if (strName.Length == 0)
+            {
+                errorMessage = "Name is required.";
+                return false;
+            }
+
+            if (!Regex.IsMatch(txtMemberName.Text, @"^[a-zA-Z ]*$"))
+            {
+                errorMessage = "You have illegal characters in your name.";
+                return false;
+            }
+            else
+            {
+                errorMessage = "";
+                return true;
+            }
+        }
+        // Name is being validated
+        private void ValidatingName(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidName(txtMemberName.Text, out errorMsg))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                txtMemberName.Select(0, txtMemberName.Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.validateError.SetError(txtMemberName, errorMsg);
+            }
+        }
+        // Name has been validated 
+        private void ValidatedName(object sender, System.EventArgs e)
+        {
+            validateError.SetError(txtMemberName, "");
+        }
+
+        /*
         // Validate Owl Member ID / Name
         private void validateOwlMember()
         {
             if (!String.IsNullOrEmpty(txtMemberID.Text))
             {
-                try
+                if (txtMemberID.Text.Length == 9)
                 {
-                    ID = Convert.ToInt32(txtMemberID.Text);
-                    MessageBox.Show(ID.ToString());
-                    isValidated = true;
+                    try
+                    {
+                        ID = Convert.ToInt32(txtMemberID.Text);
+                        isValidated = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Please enter a valid integer ID with no special characters.", "Validation Error");
+                        txtMemberID.Text = "";
+                        txtMemberID.Focus();
+                        isValidated = false;
+                    }
+
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Please enter a valid integer, with no special characters.", "Validation Error");
+                    MessageBox.Show("Please enter an ID of 9 integers.", "Validation Error");
                     txtMemberID.Text = "";
                     txtMemberID.Focus();
+                    isValidated = false;
                 }
             }
             else
             {
                 MessageBox.Show("Please enter an ID.", "Validation Error");
                 txtMemberID.Focus();
+                isValidated = false;
             }
-            if(!String.IsNullOrEmpty(txtMemberName.Text))
+            if (!String.IsNullOrEmpty(txtMemberName.Text))
             {
                 if (Regex.IsMatch(txtMemberName.Text, @"^[a-zA-Z ]*$"))
                 {
@@ -117,19 +225,21 @@ namespace OwlCommunity.Views
                     MessageBox.Show("Numbers or special characters are not allowed in your name.", "Validation Error");
                     txtMemberName.Text = "";
                     txtMemberName.Focus();
+                    isValidated = false;
                 }
             }
             else
             {
                 MessageBox.Show("Please enter a name.", "Validation Error");
+                isValidated = false;
             }
             dob = dtBD.Value;
         }
-
+        */
         // Validates Student 
         private void validateStudent()
         {
-            validateOwlMember();
+           // validateOwlMember();
             if(!String.IsNullOrEmpty(txtStudentMajor.Text))
             {
                 // TO DO: Allow Ampersand?
@@ -142,14 +252,16 @@ namespace OwlCommunity.Views
                     MessageBox.Show("Numbers and special characters are not allowed in student major.", "Validation Error");
                     txtStudentMajor.Text = "";
                     txtStudentMajor.Focus();
+                    isValidated = false;
                 }
             }
             else
             {
                 MessageBox.Show("Please enter a student major", "Validation Error");
-                txtStudentMajor.Focus(); 
+                txtStudentMajor.Focus();
+                isValidated = false;
             }
-            if(!String.IsNullOrEmpty(txtStudentGPA.Text))
+            if (!String.IsNullOrEmpty(txtStudentGPA.Text))
             {
                 try
                 {
@@ -160,6 +272,7 @@ namespace OwlCommunity.Views
                         txtStudentGPA.Text = "";
                         txtStudentGPA.Focus();
                         studentGPA = 0;
+                        isValidated = false;
                     }
                     else
                     {
@@ -171,7 +284,8 @@ namespace OwlCommunity.Views
                 {
                     MessageBox.Show("Please enter a valid student GPA up to two decimal places.", "Validation Error");
                     txtStudentGPA.Text = "";
-                    txtStudentGPA.Focus(); 
+                    txtStudentGPA.Focus();
+                    isValidated = false;
                 }
             }
         }
@@ -191,6 +305,7 @@ namespace OwlCommunity.Views
                         txtStudentTuition.Text = "";
                         txtStudentTuition.Focus();
                         studentTuition = 0;
+                        isValidated = false;
                     }
                     else
                     {
@@ -202,14 +317,16 @@ namespace OwlCommunity.Views
                     MessageBox.Show("Student tuition must be a decimal.", "Validation Error");
                     txtStudentTuition.Text = "";
                     txtStudentTuition.Focus();
+                    isValidated = false;
                 }
             }
             else
             {
                 MessageBox.Show("Please enter the student's tuition");
                 txtStudentTuition.Focus();
+                isValidated = false;
             }
-            if(!String.IsNullOrEmpty(txtStudentCredits.Text))
+            if (!String.IsNullOrEmpty(txtStudentCredits.Text))
             {
                 try
                 {
@@ -220,6 +337,7 @@ namespace OwlCommunity.Views
                         txtStudentCredits.Text = "";
                         txtStudentCredits.Focus();
                         studentCredits = 0;
+                        isValidated = false;
                     }
                     else
                     {
@@ -230,6 +348,7 @@ namespace OwlCommunity.Views
                 {
                     MessageBox.Show("Please enter the amount of credits the student is at.");
                     txtStudentCredits.Focus();
+                    isValidated = false;
                 }
             }
         }
@@ -248,6 +367,7 @@ namespace OwlCommunity.Views
                         MessageBox.Show("Please enter a stipend for the graduate student greater than 0.", "Validation Error");
                         txtGradStipend.Text = "";
                         txtGradStipend.Focus();
+                        isValidated = false;
                     }
                     else
                     {
@@ -259,19 +379,21 @@ namespace OwlCommunity.Views
                     MessageBox.Show("Please enter a stipend for the gradudate student.", "Validation Error");
                     txtGradStipend.Text = "";
                     txtGradStipend.Focus();
+                    isValidated = false;
                 }
             }
             else
             {
                 MessageBox.Show("Please enter a graduate student stipend.", "Validation Error");
                 txtGradStipend.Focus();
+                isValidated = false;
             }
         }
 
         // Validates Faculty Department and Rank
         private void validateFaculty()
         {
-            validateOwlMember();
+            // validateOwlMember();
 
             if(!String.IsNullOrEmpty(txtFacultyDept.Text))
             {
@@ -286,12 +408,14 @@ namespace OwlCommunity.Views
                     MessageBox.Show("Please enter a department.", "Validation Error");
                     txtFacultyDept.Text = "";
                     txtFacultyDept.Focus();
+                    isValidated = false;
                 }
             }
             else
             {
                 MessageBox.Show("Please enter a faculty department.", "Validation Error");
                 txtFacultyDept.Focus();
+                isValidated = false;
             }
         }
 
@@ -309,7 +433,9 @@ namespace OwlCommunity.Views
                         MessageBox.Show("Please enter a stipend for the department chair greater than 0.", "Validation Error");
                         txtChairStipend.Text = "";
                         txtChairStipend.Focus();
-                    } else
+                        isValidated = false;
+                    }
+                    else
                     {
                         isValidated = true;
                     }
@@ -319,23 +445,28 @@ namespace OwlCommunity.Views
                     MessageBox.Show("Please enter a stipend for the department chair.", "Validation Error");
                     txtChairStipend.Text = "";
                     txtChairStipend.Focus();
+                    isValidated = false;
                 }
             }
             else
             {
                 MessageBox.Show("Please enter a chairperson stipend.", "Validation Error");
                 txtChairStipend.Focus();
+                isValidated = false;
             }
         }
 
         private void btnClearForm_Click(object sender, EventArgs e)
         {
             FormController.clear(this);
+            btnDisplay.Enabled = false;
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            SerializableFile.writeToFile(GlobalData.userList, "StoreFile.txt");
+            SerializableFile.writeToFile(GlobalData.userList, "StoreFile.bin");
             this.Close();
         }
 
@@ -349,6 +480,7 @@ namespace OwlCommunity.Views
                 {
                     Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
                     GlobalData.userList.addToList(student);
+                    successfullyCreated();
                 }
                 isValidated = false;
             }
@@ -360,6 +492,7 @@ namespace OwlCommunity.Views
                 {
                     Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dtBD.Value, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
                     GlobalData.userList.addToList(gradStudent);
+                    successfullyCreated();
                 }
                 isValidated = false;
             }
@@ -371,6 +504,7 @@ namespace OwlCommunity.Views
                 {
                     Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString());
                     GlobalData.userList.addToList(faculty);
+                    successfullyCreated();
                 }
                 isValidated = false;
             }
@@ -382,20 +516,53 @@ namespace OwlCommunity.Views
                 {
                     Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
                     GlobalData.userList.addToList(facultyChair);
+                    successfullyCreated();
                 }
                 isValidated = false;
             }
+            // Update existing entry 
+            if(editMode)
+            {
+                member.Save(this);
+                MessageBox.Show("OwlMember successfully updated!", "Success");
+            }
+        }
+
+        private void successfullyCreated()
+        {
+            MessageBox.Show("OwlMember succesfully created!");
+            FormController.clear(this);
         }
 
         private void btnEnterName_Click(object sender, EventArgs e)
         {
-            ID = Convert.ToInt32(txtTUIDEnter.Text);
+            try
+            {
+                if(txtTUIDEnter.Text.Length != 9)
+                {
+                    MessageBox.Show("Please enter an ID of 9 integers.", "Validation Error");
+                    txtTUIDEnter.Text = "";
+                    txtTUIDEnter.Focus();
+                } else
+                {
+                    ID = Convert.ToInt32(txtTUIDEnter.Text);
+                    btnDisplay.Enabled = true;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please enter a valid 9 integer ID number.", "Validation Error");
+                txtTUIDEnter.Text = "";
+                txtTUIDEnter.Focus();
+            }
         }
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             bool isFound = false;
-            Models.OwlMember member = GlobalData.userList.searchList(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
+            member = GlobalData.userList.searchList(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
             if(isFound)
             {
                 member.Display(this);
@@ -406,5 +573,20 @@ namespace OwlCommunity.Views
             }
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            bool isFound = false;
+            editMode = true;
+            Models.OwlMember member = GlobalData.userList.searchList(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
+            if (isFound)
+            {
+                member.Display(this);
+                member.Edit(this);
+            }
+            else
+            {
+                MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
+            }
+        }
     }
 }

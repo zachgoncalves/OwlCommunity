@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OwlCommunity.Views;
 
 namespace OwlCommunity.Models
 {
@@ -49,6 +50,14 @@ namespace OwlCommunity.Models
             }
         }
 
+        // Enable controls on form to edit object
+        public override void Edit(MainForm f)
+        {
+            base.Edit(f);
+            f.gbGraduate.Enabled = true;
+            f.txtGradStipend.Enabled = true;
+            f.cbProgram.Enabled = true;
+        }
         // Save data from form to object
         public override void Save(Views.MainForm f)
         {

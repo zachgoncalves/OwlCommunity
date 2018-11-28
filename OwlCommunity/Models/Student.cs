@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
+using OwlCommunity.Views;
 
 namespace OwlCommunity.Models
 {
@@ -56,7 +57,16 @@ namespace OwlCommunity.Models
             {
                 hiddenStudentGPA = value;
             }  
-        } 
+        }
+
+        // Enable controls for object to be edited
+        public override void Edit(MainForm f)
+        {
+            base.Edit(f);
+            f.gbStudent.Enabled = true;
+            f.txtStudentMajor.Enabled = true;
+            f.txtStudentGPA.Enabled = true;
+        }
 
         // Save data from form to object
         public override void Save(Views.MainForm f)
