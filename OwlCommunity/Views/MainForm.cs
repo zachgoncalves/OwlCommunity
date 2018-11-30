@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* Temple University
+ * Component Based Software Design (CIS 3309) 
+ * Project 4: OwlCommunity
+ * Form: Main Form
+ * Written by: Zachary Goncalves
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -523,6 +530,7 @@ namespace OwlCommunity.Views
             validateError.SetError(txtFacultyDept, "");
         }
 
+        // Clears form and disables edit mode buttons
         private void btnClearForm_Click(object sender, EventArgs e)
         {
             FormController.clear(this);
@@ -531,12 +539,14 @@ namespace OwlCommunity.Views
             btnDelete.Enabled = false;
         }
 
+        // Writes out file and closes the form
         private void btnExit_Click(object sender, EventArgs e)
         {
             SerializableFile.writeToFile(GlobalData.userList, "StoreFile.bin");
             this.Close();
         }
 
+        // Checks GroupBox controls for validation errors or empty textboxes/dropdowns
         public bool checkValidationStatus(GroupBox control)
         {
             bool isInvalid = true;
@@ -575,6 +585,7 @@ namespace OwlCommunity.Views
             return isInvalid;
         }
 
+        // Instantiates owl member objects, confirms validation rules are met, and updates OwlMembers
         private void btnSave_Click(object sender, EventArgs e)
         {
             if(addMode)
@@ -640,14 +651,16 @@ namespace OwlCommunity.Views
             }
         }
 
+        // Outputs message about succesful OwlMember creation and clears form
         private void successfullyCreated()
         {
             MessageBox.Show("OwlMember succesfully created!");
             FormController.clear(this);
    
         }
-
-        private void btnEnterName_Click(object sender, EventArgs e)
+        
+        // Validates ID entered and enables additional controls 
+        private void btnEnterID_Click(object sender, EventArgs e)
         {
             try
             {
@@ -656,7 +669,8 @@ namespace OwlCommunity.Views
                     MessageBox.Show("Please enter an ID of 9 integers.", "Validation Error");
                     txtTUIDEnter.Text = "";
                     txtTUIDEnter.Focus();
-                } else
+                }
+                else
                 {
                     ID = Convert.ToInt32(txtTUIDEnter.Text);
                     btnDisplay.Enabled = true;
@@ -672,6 +686,7 @@ namespace OwlCommunity.Views
             }
         }
 
+        // Loads OwlMember Data into form
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             bool isFound = false;
@@ -686,6 +701,7 @@ namespace OwlCommunity.Views
             }
         }
 
+        // Loads OwlMember Data into form and allows for editing 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             bool isFound = false;
@@ -703,6 +719,7 @@ namespace OwlCommunity.Views
             txtMemberID.Enabled = false;
         }
 
+        // Deletes OwlMember objects
         private void btnDelete_Click(object sender, EventArgs e)
         {
             bool isFound = false;

@@ -68,7 +68,7 @@
             this.btnCreateFaculty = new System.Windows.Forms.Button();
             this.btnCreateChair = new System.Windows.Forms.Button();
             this.gbFormControls = new System.Windows.Forms.GroupBox();
-            this.btnEnterName = new System.Windows.Forms.Button();
+            this.btnEnterIDEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -548,7 +548,7 @@
             // 
             // gbFormControls
             // 
-            this.gbFormControls.Controls.Add(this.btnEnterName);
+            this.gbFormControls.Controls.Add(this.btnEnterIDEdit);
             this.gbFormControls.Controls.Add(this.btnDelete);
             this.gbFormControls.Controls.Add(this.btnSave);
             this.gbFormControls.Controls.Add(this.btnEdit);
@@ -564,16 +564,16 @@
             this.gbFormControls.TabStop = false;
             this.gbFormControls.Text = "Data Processing Controls";
             // 
-            // btnEnterName
+            // btnEnterIDEdit
             // 
-            this.btnEnterName.Location = new System.Drawing.Point(414, 40);
-            this.btnEnterName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnEnterName.Name = "btnEnterName";
-            this.btnEnterName.Size = new System.Drawing.Size(78, 35);
-            this.btnEnterName.TabIndex = 20;
-            this.btnEnterName.Text = "Enter";
-            this.btnEnterName.UseVisualStyleBackColor = true;
-            this.btnEnterName.Click += new System.EventHandler(this.btnEnterName_Click);
+            this.btnEnterIDEdit.Location = new System.Drawing.Point(414, 40);
+            this.btnEnterIDEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEnterIDEdit.Name = "btnEnterIDEdit";
+            this.btnEnterIDEdit.Size = new System.Drawing.Size(78, 35);
+            this.btnEnterIDEdit.TabIndex = 20;
+            this.btnEnterIDEdit.Text = "Enter";
+            this.btnEnterIDEdit.UseVisualStyleBackColor = true;
+            this.btnEnterIDEdit.Click += new System.EventHandler(this.btnEnterID_Click);
             // 
             // btnDelete
             // 
@@ -768,6 +768,6 @@
         public System.Windows.Forms.Label lblEnterID;
         public System.Windows.Forms.TextBox txtTUIDEnter;
         private System.Windows.Forms.ErrorProvider validateError;
-        public System.Windows.Forms.Button btnEnterName;
+        public System.Windows.Forms.Button btnEnterIDEdit;
     }
 }

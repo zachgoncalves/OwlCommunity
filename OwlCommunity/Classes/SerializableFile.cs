@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Temple University
+ * Component Based Software Design (CIS 3309) 
+ * Project 4: OwlCommunity
+ * Class: SerializableFile
+ * Written by: Professor Frank Friedman (provided code)
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
