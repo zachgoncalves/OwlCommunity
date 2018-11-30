@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using OwlCommunity.Controllers;
 using OwlCommunity.Classes;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace OwlCommunity.Views
 {
@@ -700,6 +701,27 @@ namespace OwlCommunity.Views
                 MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
             }
             txtMemberID.Enabled = false;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            bool isFound = false;
+            member = GlobalData.userList.searchList(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
+            if (isFound)
+            {
+                member.Display(this);
+                GlobalData.userList.removeFromList(member);
+                MessageBox.Show("OwlMember successfully deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormController.clear(this);
+                if (File.Exists("StoreFile.bin"))
+                {
+                    File.Delete("StoreFile.bin");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
+            }
         }
     }
 }

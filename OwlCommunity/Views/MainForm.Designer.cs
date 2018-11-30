@@ -35,7 +35,16 @@
             this.btnCreateGraduate = new System.Windows.Forms.Button();
             this.gbOwlMember = new System.Windows.Forms.GroupBox();
             this.dtBD = new System.Windows.Forms.DateTimePicker();
+            this.lblMemberBD = new System.Windows.Forms.Label();
+            this.lblMemberName = new System.Windows.Forms.Label();
+            this.txtMemberName = new System.Windows.Forms.TextBox();
+            this.lblMemberID = new System.Windows.Forms.Label();
+            this.txtMemberID = new System.Windows.Forms.TextBox();
             this.gbStudent = new System.Windows.Forms.GroupBox();
+            this.lblStudentGPA = new System.Windows.Forms.Label();
+            this.txtStudentGPA = new System.Windows.Forms.TextBox();
+            this.lblStudentMajor = new System.Windows.Forms.Label();
+            this.txtStudentMajor = new System.Windows.Forms.TextBox();
             this.gbGraduate = new System.Windows.Forms.GroupBox();
             this.cbProgram = new System.Windows.Forms.ComboBox();
             this.lblGradProgram = new System.Windows.Forms.Label();
@@ -48,18 +57,9 @@
             this.txtStudentCredits = new System.Windows.Forms.TextBox();
             this.lblTuition = new System.Windows.Forms.Label();
             this.txtStudentTuition = new System.Windows.Forms.TextBox();
-            this.lblStudentGPA = new System.Windows.Forms.Label();
-            this.txtStudentGPA = new System.Windows.Forms.TextBox();
-            this.lblStudentMajor = new System.Windows.Forms.Label();
-            this.txtStudentMajor = new System.Windows.Forms.TextBox();
-            this.lblMemberBD = new System.Windows.Forms.Label();
             this.gbChair = new System.Windows.Forms.GroupBox();
             this.lblChairStipend = new System.Windows.Forms.Label();
             this.txtChairStipend = new System.Windows.Forms.TextBox();
-            this.lblMemberName = new System.Windows.Forms.Label();
-            this.txtMemberName = new System.Windows.Forms.TextBox();
-            this.lblMemberID = new System.Windows.Forms.Label();
-            this.txtMemberID = new System.Windows.Forms.TextBox();
             this.gbFaculty = new System.Windows.Forms.GroupBox();
             this.cbRank = new System.Windows.Forms.ComboBox();
             this.lblFacultyRank = new System.Windows.Forms.Label();
@@ -163,6 +163,58 @@
             this.dtBD.TabIndex = 8;
             this.dtBD.Value = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
             // 
+            // lblMemberBD
+            // 
+            this.lblMemberBD.AutoSize = true;
+            this.lblMemberBD.Location = new System.Drawing.Point(520, 34);
+            this.lblMemberBD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMemberBD.Name = "lblMemberBD";
+            this.lblMemberBD.Size = new System.Drawing.Size(74, 20);
+            this.lblMemberBD.TabIndex = 6;
+            this.lblMemberBD.Text = "Birthdate";
+            // 
+            // lblMemberName
+            // 
+            this.lblMemberName.AutoSize = true;
+            this.lblMemberName.Location = new System.Drawing.Point(231, 34);
+            this.lblMemberName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMemberName.Name = "lblMemberName";
+            this.lblMemberName.Size = new System.Drawing.Size(51, 20);
+            this.lblMemberName.TabIndex = 4;
+            this.lblMemberName.Text = "Name";
+            // 
+            // txtMemberName
+            // 
+            this.txtMemberName.Location = new System.Drawing.Point(286, 29);
+            this.txtMemberName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMemberName.Name = "txtMemberName";
+            this.txtMemberName.Size = new System.Drawing.Size(204, 26);
+            this.txtMemberName.TabIndex = 3;
+            this.txtMemberName.Tag = "";
+            this.txtMemberName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingName);
+            this.txtMemberName.Validated += new System.EventHandler(this.ValidatedName);
+            // 
+            // lblMemberID
+            // 
+            this.lblMemberID.AutoSize = true;
+            this.lblMemberID.Location = new System.Drawing.Point(16, 34);
+            this.lblMemberID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMemberID.Name = "lblMemberID";
+            this.lblMemberID.Size = new System.Drawing.Size(26, 20);
+            this.lblMemberID.TabIndex = 2;
+            this.lblMemberID.Text = "ID";
+            // 
+            // txtMemberID
+            // 
+            this.txtMemberID.Location = new System.Drawing.Point(52, 29);
+            this.txtMemberID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMemberID.Name = "txtMemberID";
+            this.txtMemberID.Size = new System.Drawing.Size(148, 26);
+            this.txtMemberID.TabIndex = 1;
+            this.txtMemberID.Tag = "";
+            this.txtMemberID.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingID);
+            this.txtMemberID.Validated += new System.EventHandler(this.ValidatedID);
+            // 
             // gbStudent
             // 
             this.gbStudent.Controls.Add(this.lblStudentGPA);
@@ -178,6 +230,48 @@
             this.gbStudent.TabIndex = 7;
             this.gbStudent.TabStop = false;
             this.gbStudent.Text = "Student";
+            // 
+            // lblStudentGPA
+            // 
+            this.lblStudentGPA.AutoSize = true;
+            this.lblStudentGPA.Location = new System.Drawing.Point(411, 34);
+            this.lblStudentGPA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStudentGPA.Name = "lblStudentGPA";
+            this.lblStudentGPA.Size = new System.Drawing.Size(43, 20);
+            this.lblStudentGPA.TabIndex = 11;
+            this.lblStudentGPA.Text = "GPA";
+            // 
+            // txtStudentGPA
+            // 
+            this.txtStudentGPA.Location = new System.Drawing.Point(470, 29);
+            this.txtStudentGPA.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStudentGPA.Name = "txtStudentGPA";
+            this.txtStudentGPA.Size = new System.Drawing.Size(112, 26);
+            this.txtStudentGPA.TabIndex = 10;
+            this.txtStudentGPA.Tag = "";
+            this.txtStudentGPA.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingGPA);
+            this.txtStudentGPA.Validated += new System.EventHandler(this.ValidatedGPA);
+            // 
+            // lblStudentMajor
+            // 
+            this.lblStudentMajor.AutoSize = true;
+            this.lblStudentMajor.Location = new System.Drawing.Point(34, 34);
+            this.lblStudentMajor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStudentMajor.Name = "lblStudentMajor";
+            this.lblStudentMajor.Size = new System.Drawing.Size(48, 20);
+            this.lblStudentMajor.TabIndex = 9;
+            this.lblStudentMajor.Text = "Major";
+            // 
+            // txtStudentMajor
+            // 
+            this.txtStudentMajor.Location = new System.Drawing.Point(93, 29);
+            this.txtStudentMajor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStudentMajor.Name = "txtStudentMajor";
+            this.txtStudentMajor.Size = new System.Drawing.Size(254, 26);
+            this.txtStudentMajor.TabIndex = 8;
+            this.txtStudentMajor.Tag = "";
+            this.txtStudentMajor.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingMajor);
+            this.txtStudentMajor.Validated += new System.EventHandler(this.ValidatedMajor);
             // 
             // gbGraduate
             // 
@@ -331,58 +425,6 @@
             this.txtStudentTuition.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingTuition);
             this.txtStudentTuition.Validated += new System.EventHandler(this.ValidatedTuition);
             // 
-            // lblStudentGPA
-            // 
-            this.lblStudentGPA.AutoSize = true;
-            this.lblStudentGPA.Location = new System.Drawing.Point(411, 34);
-            this.lblStudentGPA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblStudentGPA.Name = "lblStudentGPA";
-            this.lblStudentGPA.Size = new System.Drawing.Size(43, 20);
-            this.lblStudentGPA.TabIndex = 11;
-            this.lblStudentGPA.Text = "GPA";
-            // 
-            // txtStudentGPA
-            // 
-            this.txtStudentGPA.Location = new System.Drawing.Point(470, 29);
-            this.txtStudentGPA.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStudentGPA.Name = "txtStudentGPA";
-            this.txtStudentGPA.Size = new System.Drawing.Size(112, 26);
-            this.txtStudentGPA.TabIndex = 10;
-            this.txtStudentGPA.Tag = "";
-            this.txtStudentGPA.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingGPA);
-            this.txtStudentGPA.Validated += new System.EventHandler(this.ValidatedGPA);
-            // 
-            // lblStudentMajor
-            // 
-            this.lblStudentMajor.AutoSize = true;
-            this.lblStudentMajor.Location = new System.Drawing.Point(34, 34);
-            this.lblStudentMajor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblStudentMajor.Name = "lblStudentMajor";
-            this.lblStudentMajor.Size = new System.Drawing.Size(48, 20);
-            this.lblStudentMajor.TabIndex = 9;
-            this.lblStudentMajor.Text = "Major";
-            // 
-            // txtStudentMajor
-            // 
-            this.txtStudentMajor.Location = new System.Drawing.Point(93, 29);
-            this.txtStudentMajor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStudentMajor.Name = "txtStudentMajor";
-            this.txtStudentMajor.Size = new System.Drawing.Size(254, 26);
-            this.txtStudentMajor.TabIndex = 8;
-            this.txtStudentMajor.Tag = "";
-            this.txtStudentMajor.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingMajor);
-            this.txtStudentMajor.Validated += new System.EventHandler(this.ValidatedMajor);
-            // 
-            // lblMemberBD
-            // 
-            this.lblMemberBD.AutoSize = true;
-            this.lblMemberBD.Location = new System.Drawing.Point(520, 34);
-            this.lblMemberBD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMemberBD.Name = "lblMemberBD";
-            this.lblMemberBD.Size = new System.Drawing.Size(74, 20);
-            this.lblMemberBD.TabIndex = 6;
-            this.lblMemberBD.Text = "Birthdate";
-            // 
             // gbChair
             // 
             this.gbChair.Controls.Add(this.lblChairStipend);
@@ -417,48 +459,6 @@
             this.txtChairStipend.Tag = "";
             this.txtChairStipend.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingChairStipend);
             this.txtChairStipend.Validated += new System.EventHandler(this.ValidatedChairStipend);
-            // 
-            // lblMemberName
-            // 
-            this.lblMemberName.AutoSize = true;
-            this.lblMemberName.Location = new System.Drawing.Point(231, 34);
-            this.lblMemberName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMemberName.Name = "lblMemberName";
-            this.lblMemberName.Size = new System.Drawing.Size(51, 20);
-            this.lblMemberName.TabIndex = 4;
-            this.lblMemberName.Text = "Name";
-            // 
-            // txtMemberName
-            // 
-            this.txtMemberName.Location = new System.Drawing.Point(286, 29);
-            this.txtMemberName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMemberName.Name = "txtMemberName";
-            this.txtMemberName.Size = new System.Drawing.Size(204, 26);
-            this.txtMemberName.TabIndex = 3;
-            this.txtMemberName.Tag = "";
-            this.txtMemberName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingName);
-            this.txtMemberName.Validated += new System.EventHandler(this.ValidatedName);
-            // 
-            // lblMemberID
-            // 
-            this.lblMemberID.AutoSize = true;
-            this.lblMemberID.Location = new System.Drawing.Point(16, 34);
-            this.lblMemberID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMemberID.Name = "lblMemberID";
-            this.lblMemberID.Size = new System.Drawing.Size(26, 20);
-            this.lblMemberID.TabIndex = 2;
-            this.lblMemberID.Text = "ID";
-            // 
-            // txtMemberID
-            // 
-            this.txtMemberID.Location = new System.Drawing.Point(52, 29);
-            this.txtMemberID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMemberID.Name = "txtMemberID";
-            this.txtMemberID.Size = new System.Drawing.Size(148, 26);
-            this.txtMemberID.TabIndex = 1;
-            this.txtMemberID.Tag = "";
-            this.txtMemberID.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingID);
-            this.txtMemberID.Validated += new System.EventHandler(this.ValidatedID);
             // 
             // gbFaculty
             // 
@@ -589,6 +589,7 @@
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
