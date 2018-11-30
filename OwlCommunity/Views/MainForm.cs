@@ -186,7 +186,7 @@ namespace OwlCommunity.Views
                 return false;
             }
 
-            if (!Regex.IsMatch(strMajor, @"^[a-zA-Z ]*$"))
+            if (!Regex.IsMatch(strMajor, @"^[a-zA-Z\s&]*$"))
             {
                 errorMessage = "You have illegal characters in your major.";
                 return false;
@@ -202,7 +202,7 @@ namespace OwlCommunity.Views
         private void ValidatingMajor(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string errorMsg;
-            if (!ValidName(txtStudentMajor.Text, out errorMsg))
+            if (!ValidMajor(txtStudentMajor.Text, out errorMsg))
             {
                 // Cancel the event and select the text to be corrected by the user.
                 e.Cancel = true;
@@ -230,16 +230,14 @@ namespace OwlCommunity.Views
             {
                 try
                 {
-                    decimal tempGPA = Convert.ToDecimal(GPA);
-                    if (studentGPA > (decimal)4.00 || studentGPA < (decimal)0.00 /* || !Regex.IsMatch(GPA, @"^(\d{ 0,1}|\d{ 0,1}\.\d{ 1,2})$")*/)
+                    if (!Regex.IsMatch(GPA, @"^[0-4]+(\.\d{2})$"))
                     {
                         errorMessage = "Please enter a GPA both greater than 0 and less than 4.00";
                         return false;
                     }
                     else
                     {
-                        txtStudentGPA.Text = studentGPA.ToString();
-                        studentGPA = tempGPA;
+                        studentGPA = Convert.ToDecimal(GPA);
                         errorMessage = "";
                         return true;
                     }
@@ -284,17 +282,16 @@ namespace OwlCommunity.Views
                 try
                 {
                     decimal tempTuition = Convert.ToDecimal(tuition);
-                    if (studentTuition < 0)
-                    {
-                        studentTuition = 0;
-                        errorMessage = "Tuition cannot be less than 0.";
-                        return false;
-                    }
-                    else
-                    {
+                    if(Regex.IsMatch(tuition, @"^\d+(\.\d{2})?$")) {
                         studentTuition = tempTuition;
                         errorMessage = "";
                         return true;
+                    }
+                    else
+                    {
+                        studentTuition = 0;
+                        errorMessage = "Tuition must be zero or greater and can go up to two decimal places.";
+                        return false;
                     }
                 }
                 catch
@@ -488,7 +485,7 @@ namespace OwlCommunity.Views
                 return false;
             }
 
-            if (!Regex.IsMatch(strDept, @"^[a-zA-Z ]*$"))
+            if (!Regex.IsMatch(strDept, @"^[a-zA-Z\s&]*$"))
             {
                 errorMessage = "You have illegal characters in the department name.";
                 return false;
