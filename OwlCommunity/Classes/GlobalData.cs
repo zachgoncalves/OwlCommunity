@@ -10,7 +10,6 @@ namespace OwlCommunity.Classes
     public class GlobalData
     {
         public static Views.MainForm ff = new Views.MainForm();
-        FormController form = new FormController(ff);
         public static OwlMemberList userList = new OwlMemberList();
     }
 

@@ -41,7 +41,7 @@ namespace OwlCommunity.Views
         private void MainForm_Load(object sender, System.EventArgs e)
         {
             SerializableFile.readFromFile(ref GlobalData.userList, "StoreFile.bin");
-            MessageBox.Show(GlobalData.userList.displayList());
+            //MessageBox.Show(GlobalData.userList.displayList());
         }
 
         // For Creating Undergraduate Student
@@ -87,11 +87,11 @@ namespace OwlCommunity.Views
             FormController.formAddMode(this);
             FormController.activateChairperson(this);
         }
-        
+
         // Validate ID
         public bool ValidID(string strID, out string errorMessage)
         {
-            if (strID.Length == 0)
+            if (String.IsNullOrEmpty(strID))
             {
                 errorMessage = "ID is required.";
                 return false;
@@ -134,13 +134,13 @@ namespace OwlCommunity.Views
         // ID has been validated 
         private void ValidatedID(object sender, System.EventArgs e)
         {
-            validateError.SetError(txtMemberName, "");
+            validateError.SetError(txtMemberID, "");
         }
 
         // Validate Name
         public bool ValidName(string strName, out string errorMessage)
         {
-            if (strName.Length == 0)
+            if (String.IsNullOrEmpty(strName))
             {
                 errorMessage = "Name is required.";
                 return false;
@@ -181,7 +181,7 @@ namespace OwlCommunity.Views
         // Validate Major
         public bool ValidMajor(string strMajor, out string errorMessage)
         {
-            if (strMajor.Length == 0)
+            if (String.IsNullOrEmpty(strMajor))
             {
                 errorMessage = "Major is required.";
                 return false;
@@ -214,7 +214,7 @@ namespace OwlCommunity.Views
             }
         }
         // Major has been validated 
-        private void ValidMajor(object sender, System.EventArgs e)
+        private void ValidatedMajor(object sender, System.EventArgs e)
         {
             validateError.SetError(txtStudentMajor, "");
         }
@@ -222,7 +222,7 @@ namespace OwlCommunity.Views
         // Validate GPA
         public bool ValidGPA(string GPA, out string errorMessage)
         {
-            if (GPA.Length == 0)
+            if (String.IsNullOrEmpty(GPA))
             {
                 errorMessage = "GPA is required.";
                 return false;
@@ -231,8 +231,8 @@ namespace OwlCommunity.Views
             {
                 try
                 {
-                    decimal roundedGPA = Math.Round(Convert.ToDecimal(GPA), 2);
-                    if (studentGPA > (decimal)4.00 || studentGPA < (decimal)0.00)
+                    decimal tempGPA = Convert.ToDecimal(GPA);
+                    if (studentGPA > (decimal)4.00 || studentGPA < (decimal)0.00 /* || !Regex.IsMatch(GPA, @"^(\d{ 0,1}|\d{ 0,1}\.\d{ 1,2})$")*/)
                     {
                         errorMessage = "Please enter a GPA both greater than 0 and less than 4.00";
                         return false;
@@ -240,7 +240,7 @@ namespace OwlCommunity.Views
                     else
                     {
                         txtStudentGPA.Text = studentGPA.ToString();
-                        studentGPA = roundedGPA;
+                        studentGPA = tempGPA;
                         errorMessage = "";
                         return true;
                     }
@@ -267,7 +267,7 @@ namespace OwlCommunity.Views
             }
         }
         // GPA has been validated 
-        private void ValidGPA(object sender, System.EventArgs e)
+        private void ValidatedGPA(object sender, System.EventArgs e)
         {
             validateError.SetError(txtStudentGPA, "");
         }
@@ -275,7 +275,7 @@ namespace OwlCommunity.Views
         // Validate Tutition 
         public bool ValidTuition(string tuition, out string errorMessage)
         {
-            if(tuition.Length == 0)
+            if(String.IsNullOrEmpty(tuition))
             {
                 errorMessage = "Tuition is required.";
                 return false;
@@ -320,7 +320,7 @@ namespace OwlCommunity.Views
             }
         }
         // Tuition has been validated
-        private void ValidTuition(object sender, System.EventArgs e)
+        private void ValidatedTuition(object sender, System.EventArgs e)
         {
             validateError.SetError(txtStudentTuition, "");
         }
@@ -328,7 +328,7 @@ namespace OwlCommunity.Views
         // Validate Credits 
         public bool ValidCredits(string credits, out string errorMessage)
         {
-            if (credits.Length == 0)
+            if (String.IsNullOrEmpty(credits))
             {
                 errorMessage = "The amount of credits is required.";
                 return false;
@@ -372,7 +372,7 @@ namespace OwlCommunity.Views
             }
         }
         // Credits have been validated
-        private void ValidCredits(object sender, System.EventArgs e)
+        private void ValidatedCredits(object sender, System.EventArgs e)
         {
             validateError.SetError(txtStudentCredits, "");
         }
@@ -380,7 +380,7 @@ namespace OwlCommunity.Views
         // Validate Graduate Stipend 
         public bool ValidGradStipend(string stipend, out string errorMessage)
         {
-            if (stipend.Length == 0)
+            if (String.IsNullOrEmpty(stipend))
             {
                 errorMessage = "A stipend amount is required.";
                 return false;
@@ -424,7 +424,7 @@ namespace OwlCommunity.Views
             }
         }
         // Grad Stipend has been validated
-        private void ValidGradStipend(object sender, System.EventArgs e)
+        private void ValidatedGradStipend(object sender, System.EventArgs e)
         {
             validateError.SetError(txtGradStipend, "");
         }
@@ -432,7 +432,7 @@ namespace OwlCommunity.Views
         // Validate Chair Stipend 
         public bool ValidChairStipend(string stipend, out string errorMessage)
         {
-            if (stipend.Length == 0)
+            if (String.IsNullOrEmpty(stipend))
             {
                 errorMessage = "A stipend amount is required.";
                 return false;
@@ -476,14 +476,14 @@ namespace OwlCommunity.Views
             }
         }
         // Chair Stipend has been validated
-        private void ValidChairStipend(object sender, System.EventArgs e)
+        private void ValidatedChairStipend(object sender, System.EventArgs e)
         {
             validateError.SetError(txtChairStipend, "");
         }
         // Validate Department
         public bool ValidDepartment(string strDept, out string errorMessage)
         {
-            if (strDept.Length == 0)
+            if (String.IsNullOrEmpty(strDept))
             {
                 errorMessage = "Department is required.";
                 return false;
@@ -521,239 +521,6 @@ namespace OwlCommunity.Views
             validateError.SetError(txtFacultyDept, "");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Validates Student 
-        private void validateStudent()
-        {
-           // validateOwlMember();
-            if(!String.IsNullOrEmpty(txtStudentMajor.Text))
-            {
-                // TO DO: Allow Ampersand?
-                if (Regex.IsMatch(txtStudentMajor.Text, @"^[a-zA-Z ]*$"))
-                {
-                    studentMajor = txtStudentMajor.Text;
-                    isValidated = true;
-                }
-                else { 
-                    MessageBox.Show("Numbers and special characters are not allowed in student major.", "Validation Error");
-                    txtStudentMajor.Text = "";
-                    txtStudentMajor.Focus();
-                    isValidated = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a student major", "Validation Error");
-                txtStudentMajor.Focus();
-                isValidated = false;
-            }
-            if (!String.IsNullOrEmpty(txtStudentGPA.Text))
-            {
-                try
-                {
-                    studentGPA = Math.Round(Convert.ToDecimal(txtStudentGPA.Text), 2);
-                    if (studentGPA > (decimal)4.00 || studentGPA < (decimal)0.00)
-                    {
-                        MessageBox.Show("Please enter a GPA both greater than 0 and less than 4.00", "Validation Error");
-                        txtStudentGPA.Text = "";
-                        txtStudentGPA.Focus();
-                        studentGPA = 0;
-                        isValidated = false;
-                    }
-                    else
-                    {
-                        txtStudentGPA.Text = studentGPA.ToString();
-                        isValidated = true;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Please enter a valid student GPA up to two decimal places.", "Validation Error");
-                    txtStudentGPA.Text = "";
-                    txtStudentGPA.Focus();
-                    isValidated = false;
-                }
-            }
-        }
-
-        // Validates Undergraduate Student 
-        private void validateUndergrad()
-        {
-            validateStudent();
-            if(!String.IsNullOrEmpty(txtStudentTuition.Text))
-            {
-                try
-                {
-                    studentTuition = Convert.ToDecimal(txtStudentTuition.Text);
-                    if(studentTuition < 0)
-                    {
-                        MessageBox.Show("Student tuition cannot be less than 0!", "Validation Error");
-                        txtStudentTuition.Text = "";
-                        txtStudentTuition.Focus();
-                        studentTuition = 0;
-                        isValidated = false;
-                    }
-                    else
-                    {
-                        isValidated = true;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Student tuition must be a decimal.", "Validation Error");
-                    txtStudentTuition.Text = "";
-                    txtStudentTuition.Focus();
-                    isValidated = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter the student's tuition");
-                txtStudentTuition.Focus();
-                isValidated = false;
-            }
-            if (!String.IsNullOrEmpty(txtStudentCredits.Text))
-            {
-                try
-                {
-                    studentCredits = Convert.ToInt16(txtStudentCredits.Text);
-                    if (studentCredits < 0)
-                    {
-                        MessageBox.Show("Student credits cannot be less than 0!", "Validation Error");
-                        txtStudentCredits.Text = "";
-                        txtStudentCredits.Focus();
-                        studentCredits = 0;
-                        isValidated = false;
-                    }
-                    else
-                    {
-                        isValidated = true;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Please enter the amount of credits the student is at.");
-                    txtStudentCredits.Focus();
-                    isValidated = false;
-                }
-            }
-        }
-
-        // Validates Graduate Student 
-        private void validateGrad()
-        {
-            validateStudent();
-            if (!String.IsNullOrEmpty(txtGradStipend.Text))
-            {
-                try
-                {
-                    gradStipend = Convert.ToDecimal(txtGradStipend.Text);
-                    if (gradStipend <= 0)
-                    {
-                        MessageBox.Show("Please enter a stipend for the graduate student greater than 0.", "Validation Error");
-                        txtGradStipend.Text = "";
-                        txtGradStipend.Focus();
-                        isValidated = false;
-                    }
-                    else
-                    {
-                        isValidated = true;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Please enter a stipend for the gradudate student.", "Validation Error");
-                    txtGradStipend.Text = "";
-                    txtGradStipend.Focus();
-                    isValidated = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a graduate student stipend.", "Validation Error");
-                txtGradStipend.Focus();
-                isValidated = false;
-            }
-        }
-
-        // Validates Faculty Department and Rank
-        private void validateFaculty()
-        {
-            // validateOwlMember();
-
-            if(!String.IsNullOrEmpty(txtFacultyDept.Text))
-            {
-                // TO DO: Allow Ampersand? 
-                if (Regex.IsMatch(txtFacultyDept.Text, @"^[a-zA-Z ]*$"))
-                {
-                    facultyDepartment = txtFacultyDept.Text;
-                    isValidated = true;
-                }
-                else
-                {
-                    MessageBox.Show("Please enter a department.", "Validation Error");
-                    txtFacultyDept.Text = "";
-                    txtFacultyDept.Focus();
-                    isValidated = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a faculty department.", "Validation Error");
-                txtFacultyDept.Focus();
-                isValidated = false;
-            }
-        }
-
-        // Validates Department Chairperson
-        private void validateChair()
-        {
-            validateFaculty();
-            if(!String.IsNullOrEmpty(txtChairStipend.Text))
-            {
-                try
-                {
-                    chairStipend = Convert.ToDecimal(txtChairStipend.Text);
-                    if(chairStipend <= 0)
-                    {
-                        MessageBox.Show("Please enter a stipend for the department chair greater than 0.", "Validation Error");
-                        txtChairStipend.Text = "";
-                        txtChairStipend.Focus();
-                        isValidated = false;
-                    }
-                    else
-                    {
-                        isValidated = true;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Please enter a stipend for the department chair.", "Validation Error");
-                    txtChairStipend.Text = "";
-                    txtChairStipend.Focus();
-                    isValidated = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a chairperson stipend.", "Validation Error");
-                txtChairStipend.Focus();
-                isValidated = false;
-            }
-        }
-
         private void btnClearForm_Click(object sender, EventArgs e)
         {
             FormController.clear(this);
@@ -768,56 +535,88 @@ namespace OwlCommunity.Views
             this.Close();
         }
 
+        public bool checkValidationStatus(GroupBox control)
+        {
+            bool isInvalid = true;
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    if (validateError.GetError(c) != "" || String.IsNullOrEmpty(c.Text))
+                    {
+                        isInvalid = true;
+                        break;
+                    }
+                    else
+                    {
+                        isInvalid = false;
+                    }
+                }
+                if (c is ComboBox)
+                {
+                    ComboBox cb = (ComboBox)c;
+                    if (cb.SelectedItem == null || cb.SelectedIndex == -1 || string.IsNullOrEmpty(cb.Text))
+                    {
+                        isInvalid = true;
+                        break;
+                    }
+                    else
+                    {
+                        isInvalid = false;
+                    }
+                }
+            }
+            if(isInvalid == true)
+            {
+                MessageBox.Show("Please correct validation errors." + "\n", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return isInvalid;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Validate Undergraduate Student
-            if(selectedMember == 1)
+            // Create Undergraduate Student
+            if (selectedMember == 1)
             {
-                validateUndergrad();
-                if(isValidated)
+                if(checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbUndergrad) == false) 
                 {
                     Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
                     GlobalData.userList.addToList(student);
                     successfullyCreated();
                 }
-                isValidated = false;
             }
-            // Validate Graduate Student
-            if(selectedMember == 2)
+            // Create Graduate Student
+            if (selectedMember == 2)
             {
-                validateGrad();
-                if(isValidated)
+                if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbGraduate) == false)
                 {
                     Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dtBD.Value, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
                     GlobalData.userList.addToList(gradStudent);
                     successfullyCreated();
                 }
-                isValidated = false;
             }
-            // Validate Faculty
+            // Create Faculty
             if (selectedMember == 3)
             {
-                validateFaculty();
-                if(isValidated)
+                if(checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false)
                 {
                     Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString());
                     GlobalData.userList.addToList(faculty);
                     successfullyCreated();
                 }
-                isValidated = false;
             }
-            // Validate Department Chair
-            if(selectedMember == 4)
+            // Create Department Chair
+            if (selectedMember == 4)
             {
-                validateChair();
-                if(isValidated)
+                if(checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false && checkValidationStatus(gbChair) == false)
                 {
                     Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
                     GlobalData.userList.addToList(facultyChair);
                     successfullyCreated();
                 }
-                isValidated = false;
             }
+
+            
             // Update existing entry 
             if(editMode)
             {
@@ -830,6 +629,7 @@ namespace OwlCommunity.Views
         {
             MessageBox.Show("OwlMember succesfully created!");
             FormController.clear(this);
+   
         }
 
         private void btnEnterName_Click(object sender, EventArgs e)

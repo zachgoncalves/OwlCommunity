@@ -101,6 +101,7 @@ namespace OwlCommunity.Controllers
             f.txtMemberID.Enabled = true;
             f.txtMemberName.Enabled = true;
             f.dtBD.Enabled = true;
+            f.txtMemberID.Focus();
         }
 
 

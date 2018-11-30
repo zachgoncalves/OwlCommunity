@@ -68,7 +68,7 @@
             this.btnCreateFaculty = new System.Windows.Forms.Button();
             this.btnCreateChair = new System.Windows.Forms.Button();
             this.gbFormControls = new System.Windows.Forms.GroupBox();
-            this.btnEnterName = new System.Windows.Forms.Button();
+            this.btnEnterTargetID = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -135,23 +135,20 @@
             // gbOwlMember
             // 
             this.gbOwlMember.Controls.Add(this.dtBD);
-            this.gbOwlMember.Controls.Add(this.gbStudent);
             this.gbOwlMember.Controls.Add(this.lblMemberBD);
-            this.gbOwlMember.Controls.Add(this.gbChair);
             this.gbOwlMember.Controls.Add(this.lblMemberName);
             this.gbOwlMember.Controls.Add(this.txtMemberName);
             this.gbOwlMember.Controls.Add(this.lblMemberID);
             this.gbOwlMember.Controls.Add(this.txtMemberID);
-            this.gbOwlMember.Controls.Add(this.gbFaculty);
             this.gbOwlMember.Enabled = false;
             this.gbOwlMember.Location = new System.Drawing.Point(24, 186);
             this.gbOwlMember.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbOwlMember.Name = "gbOwlMember";
             this.gbOwlMember.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbOwlMember.Size = new System.Drawing.Size(818, 549);
+            this.gbOwlMember.Size = new System.Drawing.Size(818, 73);
             this.gbOwlMember.TabIndex = 4;
             this.gbOwlMember.TabStop = false;
-            this.gbOwlMember.Text = "Create Owl Member";
+            this.gbOwlMember.Text = "Owl Member";
             // 
             // dtBD
             // 
@@ -168,18 +165,16 @@
             // 
             // gbStudent
             // 
-            this.gbStudent.Controls.Add(this.gbGraduate);
-            this.gbStudent.Controls.Add(this.gbUndergrad);
             this.gbStudent.Controls.Add(this.lblStudentGPA);
             this.gbStudent.Controls.Add(this.txtStudentGPA);
             this.gbStudent.Controls.Add(this.lblStudentMajor);
             this.gbStudent.Controls.Add(this.txtStudentMajor);
             this.gbStudent.Enabled = false;
-            this.gbStudent.Location = new System.Drawing.Point(10, 298);
+            this.gbStudent.Location = new System.Drawing.Point(24, 455);
             this.gbStudent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbStudent.Name = "gbStudent";
             this.gbStudent.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbStudent.Size = new System.Drawing.Size(798, 252);
+            this.gbStudent.Size = new System.Drawing.Size(818, 74);
             this.gbStudent.TabIndex = 7;
             this.gbStudent.TabStop = false;
             this.gbStudent.Text = "Student";
@@ -191,11 +186,11 @@
             this.gbGraduate.Controls.Add(this.txtGradStipend);
             this.gbGraduate.Controls.Add(this.lblGradStipend);
             this.gbGraduate.Enabled = false;
-            this.gbGraduate.Location = new System.Drawing.Point(393, 82);
+            this.gbGraduate.Location = new System.Drawing.Point(428, 539);
             this.gbGraduate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbGraduate.Name = "gbGraduate";
             this.gbGraduate.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbGraduate.Size = new System.Drawing.Size(405, 171);
+            this.gbGraduate.Size = new System.Drawing.Size(414, 171);
             this.gbGraduate.TabIndex = 13;
             this.gbGraduate.TabStop = false;
             this.gbGraduate.Text = "Graduate Student";
@@ -206,7 +201,14 @@
             this.cbProgram.FormattingEnabled = true;
             this.cbProgram.Items.AddRange(new object[] {
             "Ph.D",
-            "Master"});
+            "MA",
+            "MS ",
+            "MBA",
+            "EMBA",
+            "PhDBA",
+            "MFA",
+            "MEd",
+            "MD"});
             this.cbProgram.Location = new System.Drawing.Point(170, 72);
             this.cbProgram.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.cbProgram.Name = "cbProgram";
@@ -232,7 +234,7 @@
             this.txtGradStipend.TabIndex = 14;
             this.txtGradStipend.Tag = "";
             this.txtGradStipend.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingGradStipend);
-            this.txtGradStipend.Validated += new System.EventHandler(this.ValidGradStipend);
+            this.txtGradStipend.Validated += new System.EventHandler(this.ValidatedGradStipend);
             // 
             // lblGradStipend
             // 
@@ -253,11 +255,11 @@
             this.gbUndergrad.Controls.Add(this.lblTuition);
             this.gbUndergrad.Controls.Add(this.txtStudentTuition);
             this.gbUndergrad.Enabled = false;
-            this.gbUndergrad.Location = new System.Drawing.Point(0, 82);
+            this.gbUndergrad.Location = new System.Drawing.Point(24, 539);
             this.gbUndergrad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbUndergrad.Name = "gbUndergrad";
             this.gbUndergrad.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbUndergrad.Size = new System.Drawing.Size(394, 171);
+            this.gbUndergrad.Size = new System.Drawing.Size(407, 171);
             this.gbUndergrad.TabIndex = 12;
             this.gbUndergrad.TabStop = false;
             this.gbUndergrad.Text = "Undergraduate Student";
@@ -306,7 +308,7 @@
             this.txtStudentCredits.TabIndex = 10;
             this.txtStudentCredits.Tag = "";
             this.txtStudentCredits.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingCredits);
-            this.txtStudentCredits.Validated += new System.EventHandler(this.ValidCredits);
+            this.txtStudentCredits.Validated += new System.EventHandler(this.ValidatedCredits);
             // 
             // lblTuition
             // 
@@ -327,7 +329,7 @@
             this.txtStudentTuition.TabIndex = 8;
             this.txtStudentTuition.Tag = "";
             this.txtStudentTuition.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingTuition);
-            this.txtStudentTuition.Validated += new System.EventHandler(this.ValidTuition);
+            this.txtStudentTuition.Validated += new System.EventHandler(this.ValidatedTuition);
             // 
             // lblStudentGPA
             // 
@@ -348,7 +350,7 @@
             this.txtStudentGPA.TabIndex = 10;
             this.txtStudentGPA.Tag = "";
             this.txtStudentGPA.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingGPA);
-            this.txtStudentGPA.Validated += new System.EventHandler(this.ValidGPA);
+            this.txtStudentGPA.Validated += new System.EventHandler(this.ValidatedGPA);
             // 
             // lblStudentMajor
             // 
@@ -369,7 +371,7 @@
             this.txtStudentMajor.TabIndex = 8;
             this.txtStudentMajor.Tag = "";
             this.txtStudentMajor.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingMajor);
-            this.txtStudentMajor.Validated += new System.EventHandler(this.ValidMajor);
+            this.txtStudentMajor.Validated += new System.EventHandler(this.ValidatedMajor);
             // 
             // lblMemberBD
             // 
@@ -386,11 +388,11 @@
             this.gbChair.Controls.Add(this.lblChairStipend);
             this.gbChair.Controls.Add(this.txtChairStipend);
             this.gbChair.Enabled = false;
-            this.gbChair.Location = new System.Drawing.Point(10, 169);
+            this.gbChair.Location = new System.Drawing.Point(23, 364);
             this.gbChair.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbChair.Name = "gbChair";
             this.gbChair.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbChair.Size = new System.Drawing.Size(798, 98);
+            this.gbChair.Size = new System.Drawing.Size(819, 80);
             this.gbChair.TabIndex = 0;
             this.gbChair.TabStop = false;
             this.gbChair.Text = "Chairperson";
@@ -398,7 +400,7 @@
             // lblChairStipend
             // 
             this.lblChairStipend.AutoSize = true;
-            this.lblChairStipend.Location = new System.Drawing.Point(34, 45);
+            this.lblChairStipend.Location = new System.Drawing.Point(34, 35);
             this.lblChairStipend.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChairStipend.Name = "lblChairStipend";
             this.lblChairStipend.Size = new System.Drawing.Size(154, 20);
@@ -407,14 +409,14 @@
             // 
             // txtChairStipend
             // 
-            this.txtChairStipend.Location = new System.Drawing.Point(200, 40);
+            this.txtChairStipend.Location = new System.Drawing.Point(200, 31);
             this.txtChairStipend.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtChairStipend.Name = "txtChairStipend";
             this.txtChairStipend.Size = new System.Drawing.Size(148, 26);
             this.txtChairStipend.TabIndex = 11;
             this.txtChairStipend.Tag = "";
             this.txtChairStipend.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingChairStipend);
-            this.txtChairStipend.Validated += new System.EventHandler(this.ValidChairStipend);
+            this.txtChairStipend.Validated += new System.EventHandler(this.ValidatedChairStipend);
             // 
             // lblMemberName
             // 
@@ -465,11 +467,11 @@
             this.gbFaculty.Controls.Add(this.lblFacultyDept);
             this.gbFaculty.Controls.Add(this.txtFacultyDept);
             this.gbFaculty.Enabled = false;
-            this.gbFaculty.Location = new System.Drawing.Point(10, 102);
+            this.gbFaculty.Location = new System.Drawing.Point(24, 278);
             this.gbFaculty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbFaculty.Name = "gbFaculty";
             this.gbFaculty.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbFaculty.Size = new System.Drawing.Size(798, 76);
+            this.gbFaculty.Size = new System.Drawing.Size(818, 76);
             this.gbFaculty.TabIndex = 0;
             this.gbFaculty.TabStop = false;
             this.gbFaculty.Text = "Faculty";
@@ -546,7 +548,7 @@
             // 
             // gbFormControls
             // 
-            this.gbFormControls.Controls.Add(this.btnEnterName);
+            this.gbFormControls.Controls.Add(this.btnEnterTargetID);
             this.gbFormControls.Controls.Add(this.btnDelete);
             this.gbFormControls.Controls.Add(this.btnSave);
             this.gbFormControls.Controls.Add(this.btnEdit);
@@ -562,16 +564,16 @@
             this.gbFormControls.TabStop = false;
             this.gbFormControls.Text = "Data Processing Controls";
             // 
-            // btnEnterName
+            // btnEnterTargetID
             // 
-            this.btnEnterName.Location = new System.Drawing.Point(414, 40);
-            this.btnEnterName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnEnterName.Name = "btnEnterName";
-            this.btnEnterName.Size = new System.Drawing.Size(78, 35);
-            this.btnEnterName.TabIndex = 20;
-            this.btnEnterName.Text = "Enter";
-            this.btnEnterName.UseVisualStyleBackColor = true;
-            this.btnEnterName.Click += new System.EventHandler(this.btnEnterName_Click);
+            this.btnEnterTargetID.Location = new System.Drawing.Point(414, 40);
+            this.btnEnterTargetID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEnterTargetID.Name = "btnEnterTargetID";
+            this.btnEnterTargetID.Size = new System.Drawing.Size(78, 35);
+            this.btnEnterTargetID.TabIndex = 20;
+            this.btnEnterTargetID.Text = "Enter";
+            this.btnEnterTargetID.UseVisualStyleBackColor = true;
+            this.btnEnterTargetID.Click += new System.EventHandler(this.btnEnterName_Click);
             // 
             // btnDelete
             // 
@@ -666,19 +668,26 @@
             // 
             // validateError
             // 
+            this.validateError.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.validateError.ContainerControl = this;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(994, 969);
+            this.Controls.Add(this.gbGraduate);
+            this.Controls.Add(this.gbUndergrad);
             this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.gbStudent);
+            this.Controls.Add(this.gbChair);
             this.Controls.Add(this.btnClearForm);
             this.Controls.Add(this.gbFormControls);
             this.Controls.Add(this.btnCreateChair);
             this.Controls.Add(this.btnCreateFaculty);
             this.Controls.Add(this.gbOwlMember);
+            this.Controls.Add(this.gbFaculty);
             this.Controls.Add(this.btnCreateGraduate);
             this.Controls.Add(this.btnCreateUndergrad);
             this.Controls.Add(this.lblDesc);
@@ -753,11 +762,11 @@
         public System.Windows.Forms.Button btnExit;
         public System.Windows.Forms.DateTimePicker dtBD;
         public System.Windows.Forms.ComboBox cbYear;
-        private System.Windows.Forms.Button btnEnterName;
         public System.Windows.Forms.ComboBox cbRank;
         public System.Windows.Forms.ComboBox cbProgram;
         public System.Windows.Forms.Label lblEnterID;
         public System.Windows.Forms.TextBox txtTUIDEnter;
         private System.Windows.Forms.ErrorProvider validateError;
+        public System.Windows.Forms.Button btnEnterTargetID;
     }
 }
