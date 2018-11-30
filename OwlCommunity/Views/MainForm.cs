@@ -30,7 +30,6 @@ namespace OwlCommunity.Views
         private decimal gradStipend;
         // Attributes used for tracking state
         Models.OwlMember member;
-        private bool isValidated = false;
         private bool editMode = false;
 
         public MainForm()
@@ -575,48 +574,58 @@ namespace OwlCommunity.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Create Undergraduate Student
-            if (selectedMember == 1)
+            bool isFound = false;
+            GlobalData.userList.searchList(Convert.ToInt32(txtMemberID.Text), ref isFound);
+            if (isFound)
             {
-                if(checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbUndergrad) == false) 
-                {
-                    Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
-                    GlobalData.userList.addToList(student);
-                    successfullyCreated();
-                }
+                MessageBox.Show("A user by this TUID already exists. Please enter a new TUID.", "User Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMemberID.Text = "";
+                txtMemberID.Focus();
             }
-            // Create Graduate Student
-            if (selectedMember == 2)
-            {
-                if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbGraduate) == false)
+            else
+            { 
+                // Create Undergraduate Student
+                if (selectedMember == 1)
                 {
-                    Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dtBD.Value, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
-                    GlobalData.userList.addToList(gradStudent);
-                    successfullyCreated();
+                    if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbUndergrad) == false)
+                    {
+                        Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
+                        GlobalData.userList.addToList(student);
+                        successfullyCreated();
+                    }
                 }
-            }
-            // Create Faculty
-            if (selectedMember == 3)
-            {
-                if(checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false)
+                // Create Graduate Student
+                if (selectedMember == 2)
                 {
-                    Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString());
-                    GlobalData.userList.addToList(faculty);
-                    successfullyCreated();
+                    if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbGraduate) == false)
+                    {
+                        Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dtBD.Value, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
+                        GlobalData.userList.addToList(gradStudent);
+                        successfullyCreated();
+                    }
                 }
-            }
-            // Create Department Chair
-            if (selectedMember == 4)
-            {
-                if(checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false && checkValidationStatus(gbChair) == false)
+                // Create Faculty
+                if (selectedMember == 3)
                 {
-                    Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
-                    GlobalData.userList.addToList(facultyChair);
-                    successfullyCreated();
+                    if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false)
+                    {
+                        Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString());
+                        GlobalData.userList.addToList(faculty);
+                        successfullyCreated();
+                    }
+                }
+                // Create Department Chair
+                if (selectedMember == 4)
+                {
+                    if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false && checkValidationStatus(gbChair) == false)
+                    {
+                        Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
+                        GlobalData.userList.addToList(facultyChair);
+                        successfullyCreated();
+                    }
                 }
             }
 
-            
             // Update existing entry 
             if(editMode)
             {
