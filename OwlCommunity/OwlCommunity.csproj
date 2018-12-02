@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GlobalData.cs" />
+    <Compile Include="Classes\OwlMemberDB.cs" />
     <Compile Include="Classes\OwlMemberList.cs" />
     <Compile Include="Classes\SerializableFile.cs" />
     <Compile Include="Controllers\FormController.cs" />
