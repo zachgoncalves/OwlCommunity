@@ -606,7 +606,8 @@ namespace OwlCommunity.Views
                         if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbUndergrad) == false)
                         {
                             Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
-                            GlobalData.userList.addToList(student);
+                            GlobalData.database.insertUGStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
+                            // GlobalData.userList.addToList(student);
                             successfullyCreated();
                         }
                     }

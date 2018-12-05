@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OwlMemberDataSet" targetNamespace="http://tempuri.org/OwlMemberDataSet.xsd" xmlns:mstns="http://tempuri.org/OwlMemberDataSet.xsd" xmlns="http://tempuri.org/OwlMemberDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="OwlMemberConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="OwlMemberConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.OwlCommunity.Properties.Settings.GlobalReference.Default.OwlMemberConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OwlMemberDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="OwlMemberDataSet" msprop:Generator_UserDSName="OwlMemberDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OwlMember" msprop:Generator_TableClassName="OwlMemberDataTable" msprop:Generator_TableVarName="tableOwlMember" msprop:Generator_TablePropName="OwlMember" msprop:Generator_RowDeletingName="OwlMemberRowDeleting" msprop:Generator_RowChangingName="OwlMemberRowChanging" msprop:Generator_RowEvHandlerName="OwlMemberRowChangeEventHandler" msprop:Generator_RowDeletedName="OwlMemberRowDeleted" msprop:Generator_UserTableName="OwlMember" msprop:Generator_RowChangedName="OwlMemberRowChanged" msprop:Generator_RowEvArgName="OwlMemberRowChangeEvent" msprop:Generator_RowClassName="OwlMemberRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="FULL_NAME" msprop:Generator_ColumnVarNameInTable="columnFULL_NAME" msprop:Generator_ColumnPropNameInRow="FULL_NAME" msprop:Generator_ColumnPropNameInTable="FULL_NAMEColumn" msprop:Generator_UserColumnName="FULL_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="BIRTHDATE" msprop:Generator_ColumnVarNameInTable="columnBIRTHDATE" msprop:Generator_ColumnPropNameInRow="BIRTHDATE" msprop:Generator_ColumnPropNameInTable="BIRTHDATEColumn" msprop:Generator_UserColumnName="BIRTHDATE" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Student" msprop:Generator_TableClassName="StudentDataTable" msprop:Generator_TableVarName="tableStudent" msprop:Generator_TablePropName="Student" msprop:Generator_RowDeletingName="StudentRowDeleting" msprop:Generator_RowChangingName="StudentRowChanging" msprop:Generator_RowEvHandlerName="StudentRowChangeEventHandler" msprop:Generator_RowDeletedName="StudentRowDeleted" msprop:Generator_UserTableName="Student" msprop:Generator_RowChangedName="StudentRowChanged" msprop:Generator_RowEvArgName="StudentRowChangeEvent" msprop:Generator_RowClassName="StudentRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Major" msprop:Generator_ColumnVarNameInTable="columnMajor" msprop:Generator_ColumnPropNameInRow="Major" msprop:Generator_ColumnPropNameInTable="MajorColumn" msprop:Generator_UserColumnName="Major" type="xs:string" minOccurs="0" />
+              <xs:element name="GPA" msprop:Generator_ColumnVarNameInTable="columnGPA" msprop:Generator_ColumnPropNameInRow="GPA" msprop:Generator_ColumnPropNameInTable="GPAColumn" msprop:Generator_UserColumnName="GPA" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Undergraduate_Student" msprop:Generator_TableClassName="Undergraduate_StudentDataTable" msprop:Generator_TableVarName="tableUndergraduate_Student" msprop:Generator_TablePropName="Undergraduate_Student" msprop:Generator_RowDeletingName="Undergraduate_StudentRowDeleting" msprop:Generator_RowChangingName="Undergraduate_StudentRowChanging" msprop:Generator_RowEvHandlerName="Undergraduate_StudentRowChangeEventHandler" msprop:Generator_RowDeletedName="Undergraduate_StudentRowDeleted" msprop:Generator_UserTableName="Undergraduate_Student" msprop:Generator_RowChangedName="Undergraduate_StudentRowChanged" msprop:Generator_RowEvArgName="Undergraduate_StudentRowChangeEvent" msprop:Generator_RowClassName="Undergraduate_StudentRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Tuition" msprop:Generator_ColumnVarNameInTable="columnTuition" msprop:Generator_ColumnPropNameInRow="Tuition" msprop:Generator_ColumnPropNameInTable="TuitionColumn" msprop:Generator_UserColumnName="Tuition" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Year" msprop:Generator_ColumnVarNameInTable="columnYear" msprop:Generator_ColumnPropNameInRow="Year" msprop:Generator_ColumnPropNameInTable="YearColumn" msprop:Generator_UserColumnName="Year" type="xs:string" minOccurs="0" />
+              <xs:element name="Credits" msprop:Generator_ColumnVarNameInTable="columnCredits" msprop:Generator_ColumnPropNameInRow="Credits" msprop:Generator_ColumnPropNameInTable="CreditsColumn" msprop:Generator_UserColumnName="Credits" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Faculty" msprop:Generator_TableClassName="FacultyDataTable" msprop:Generator_TableVarName="tableFaculty" msprop:Generator_TablePropName="Faculty" msprop:Generator_RowDeletingName="FacultyRowDeleting" msprop:Generator_RowChangingName="FacultyRowChanging" msprop:Generator_RowEvHandlerName="FacultyRowChangeEventHandler" msprop:Generator_RowDeletedName="FacultyRowDeleted" msprop:Generator_UserTableName="Faculty" msprop:Generator_RowChangedName="FacultyRowChanged" msprop:Generator_RowEvArgName="FacultyRowChangeEvent" msprop:Generator_RowClassName="FacultyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Department" msprop:Generator_ColumnVarNameInTable="columnDepartment" msprop:Generator_ColumnPropNameInRow="Department" msprop:Generator_ColumnPropNameInTable="DepartmentColumn" msprop:Generator_UserColumnName="Department" type="xs:string" minOccurs="0" />
+              <xs:element name="Rank" msprop:Generator_ColumnVarNameInTable="columnRank" msprop:Generator_ColumnPropNameInRow="Rank" msprop:Generator_ColumnPropNameInTable="RankColumn" msprop:Generator_UserColumnName="Rank" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Faculty_Chairperson" msprop:Generator_TableClassName="Faculty_ChairpersonDataTable" msprop:Generator_TableVarName="tableFaculty_Chairperson" msprop:Generator_TablePropName="Faculty_Chairperson" msprop:Generator_RowDeletingName="Faculty_ChairpersonRowDeleting" msprop:Generator_RowChangingName="Faculty_ChairpersonRowChanging" msprop:Generator_RowEvHandlerName="Faculty_ChairpersonRowChangeEventHandler" msprop:Generator_RowDeletedName="Faculty_ChairpersonRowDeleted" msprop:Generator_UserTableName="Faculty_Chairperson" msprop:Generator_RowChangedName="Faculty_ChairpersonRowChanged" msprop:Generator_RowEvArgName="Faculty_ChairpersonRowChangeEvent" msprop:Generator_RowClassName="Faculty_ChairpersonRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Stipend" msprop:Generator_ColumnVarNameInTable="columnStipend" msprop:Generator_ColumnPropNameInRow="Stipend" msprop:Generator_ColumnPropNameInTable="StipendColumn" msprop:Generator_UserColumnName="Stipend" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Graduate_Student" msprop:Generator_TableClassName="Graduate_StudentDataTable" msprop:Generator_TableVarName="tableGraduate_Student" msprop:Generator_RowChangedName="Graduate_StudentRowChanged" msprop:Generator_TablePropName="Graduate_Student" msprop:Generator_RowDeletingName="Graduate_StudentRowDeleting" msprop:Generator_RowChangingName="Graduate_StudentRowChanging" msprop:Generator_RowEvHandlerName="Graduate_StudentRowChangeEventHandler" msprop:Generator_RowDeletedName="Graduate_StudentRowDeleted" msprop:Generator_RowClassName="Graduate_StudentRow" msprop:Generator_UserTableName="Graduate_Student" msprop:Generator_RowEvArgName="Graduate_StudentRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Stipend" msprop:Generator_ColumnVarNameInTable="columnStipend" msprop:Generator_ColumnPropNameInRow="Stipend" msprop:Generator_ColumnPropNameInTable="StipendColumn" msprop:Generator_UserColumnName="Stipend" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Program" msprop:Generator_ColumnVarNameInTable="columnProgram" msprop:Generator_ColumnPropNameInRow="Program" msprop:Generator_ColumnPropNameInTable="ProgramColumn" msprop:Generator_UserColumnName="Program" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:OwlMember" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Student_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Student" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Undergraduate_Student_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Undergraduate_Student" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Faculty_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Faculty" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Faculty_Chairperson_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Faculty_Chairperson" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Graduate_Student_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:Graduate_Student" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

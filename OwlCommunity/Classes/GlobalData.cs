@@ -17,6 +17,7 @@ namespace OwlCommunity.Classes
     {
         public static Views.MainForm ff = new Views.MainForm();
         public static OwlMemberList userList = new OwlMemberList();
+        public static DatabaseManager database = new DatabaseManager();
     }
 
 } 
