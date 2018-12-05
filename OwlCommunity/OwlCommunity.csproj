@@ -73,14 +73,6 @@
     <Compile Include="Models\OwlMember.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\UndergraduateStudent.cs" />
-    <Compile Include="OwlMemberDataSet.cs">
-      <DependentUpon>OwlMemberDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="OwlMemberDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OwlMemberDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,17 +93,6 @@
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="OwlMemberDataSet.xsc">
-      <DependentUpon>OwlMemberDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="OwlMemberDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OwlMemberDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OwlMemberDataSet.xss">
-      <DependentUpon>OwlMemberDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
