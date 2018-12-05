@@ -129,10 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OwlMember.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="OwlMember_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>OwlMember.mdf</DependentUpon>
     </Content>
   </ItemGroup>
