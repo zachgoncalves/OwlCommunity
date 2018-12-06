@@ -15,33 +15,26 @@ namespace OwlCommunity.Classes
     public class DatabaseManager
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["OwlCommunity.Properties.Settings.OwlMemberConnectionString"].ConnectionString;
-        private string InsertIntoOwlMember = "INSERT INTO OwlMember (ID, FULL_NAME, BIRTHDATE) VALUES ('','')";
+        private OwlMember member;
+        private UndergraduateStudent undergrad;
+        private GraduateStudent grad;
+        private FacultyMember facultyMember;
+        private FacultyChairperson facultyChairperson;
+         
 
-        public void selectUGStudent(int OwlMemberID)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand selectUGStudent = new SqlCommand(
-                    "SELECT ID, FULL_NAME, BIRTHDATE, Major, GPA, Tuition, Year, Credits " +
-                    "FROM dbo.Undergraduate_Student" +
-                    "JOIN OwlMember USING (ID)" +
-                    "JOIN Student USING (ID)" +
-                    "WHERE ID = " + OwlMemberID +
-                    ";", connection);
-            }
-        }
-
-        public void insertUGStudent(string Name, int OwlMemberID, DateTime BD, decimal GPA, string Major, decimal Tuition, int Credits, string Year)
+        // Insert Data into Undergraduate Student related Tables
+        public void insertUGStudent(string Name, int OwlMemberID, DateTime BD, string AccType, decimal GPA, string Major, decimal Tuition, int Credits, string Year)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand insertIntoOwlMember = new SqlCommand(
-                    "INSERT INTO OwlMember VALUES (@ID, @Name, @BD);"
+                    "INSERT INTO OwlMember VALUES (@ID, @Name, @BD, @AccType);"
                 ,connection);
             
                 insertIntoOwlMember.Parameters.AddWithValue("@Name", Name);
                 insertIntoOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
                 insertIntoOwlMember.Parameters.AddWithValue("@BD", BD);
+                insertIntoOwlMember.Parameters.AddWithValue("@AccType", AccType);
 
                 SqlCommand insertIntoStudent = new SqlCommand(
                     "INSERT INTO Student VALUES (@ID, @GPA, @Major);"
@@ -62,7 +55,6 @@ namespace OwlCommunity.Classes
 
                 try
                 {
-
                     connection.Open();
                     insertIntoOwlMember.ExecuteNonQuery();
                     insertIntoStudent.ExecuteNonQuery();
@@ -78,6 +70,330 @@ namespace OwlCommunity.Classes
                 }
             }
         }
+
+        // Insert Data into Graduate Student related Tables
+        public void insertGraduateStudent(string Name, int OwlMemberID, DateTime BD, string AccType, decimal GPA, string Major, decimal Stipend, string Program)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand insertIntoOwlMember = new SqlCommand(
+                    "INSERT INTO OwlMember VALUES (@ID, @Name, @BD, @AccType);"
+                , connection);
+
+                insertIntoOwlMember.Parameters.AddWithValue("@Name", Name);
+                insertIntoOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoOwlMember.Parameters.AddWithValue("@BD", BD);
+                insertIntoOwlMember.Parameters.AddWithValue("@AccType", AccType);
+
+                SqlCommand insertIntoStudent = new SqlCommand(
+                    "INSERT INTO Student VALUES (@ID, @GPA, @Major);"
+                , connection);
+
+                insertIntoStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoStudent.Parameters.AddWithValue("@GPA", GPA);
+                insertIntoStudent.Parameters.AddWithValue("@Major", Major);
+
+                SqlCommand insertIntoUndergraduateStudent = new SqlCommand(
+                    "INSERT INTO Graduate_Student VALUES (@ID, @Stipend, @Program);"
+                , connection);
+
+                insertIntoUndergraduateStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoUndergraduateStudent.Parameters.AddWithValue("@Stipend", Stipend);
+                insertIntoUndergraduateStudent.Parameters.AddWithValue("@Program", Program);
+
+                try
+                {
+                    connection.Open();
+                    insertIntoOwlMember.ExecuteNonQuery();
+                    insertIntoStudent.ExecuteNonQuery();
+                    insertIntoUndergraduateStudent.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        // Insert Data into Faculty related Tables
+        public void insertFaculty(string Name, int OwlMemberID, DateTime BD, string AccType,  string Department, string Rank)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand insertIntoOwlMember = new SqlCommand(
+                    "INSERT INTO OwlMember VALUES (@ID, @Name, @BD, @AccType);"
+                , connection);
+
+                insertIntoOwlMember.Parameters.AddWithValue("@Name", Name);
+                insertIntoOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoOwlMember.Parameters.AddWithValue("@BD", BD);
+                insertIntoOwlMember.Parameters.AddWithValue("@AccType", AccType);
+
+                SqlCommand insertIntoFaculty = new SqlCommand(
+                    "INSERT INTO Faculty VALUES (@ID, @Dept, @Rank);"
+                , connection);
+
+                insertIntoFaculty.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoFaculty.Parameters.AddWithValue("@Dept", Department);
+                insertIntoFaculty.Parameters.AddWithValue("@Rank", Rank);
+
+                try
+                {
+                    connection.Open();
+                    insertIntoOwlMember.ExecuteNonQuery();
+                    insertIntoFaculty.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        // Insert Data into Faculty Chair related Tables
+        public void insertChairperson(string Name, int OwlMemberID, DateTime BD, string AccType, string Department, string Rank, decimal Stipend)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand insertIntoOwlMember = new SqlCommand(
+                    "INSERT INTO OwlMember VALUES (@ID, @Name, @BD, @AccType);"
+                , connection);
+
+                insertIntoOwlMember.Parameters.AddWithValue("@Name", Name);
+                insertIntoOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoOwlMember.Parameters.AddWithValue("@BD", BD);
+                insertIntoOwlMember.Parameters.AddWithValue("@AccType", AccType);
+
+                SqlCommand insertIntoFaculty = new SqlCommand(
+                    "INSERT INTO Faculty VALUES (@ID, @Dept, @Rank);"
+                , connection);
+
+                insertIntoFaculty.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoFaculty.Parameters.AddWithValue("@Dept", Department);
+                insertIntoFaculty.Parameters.AddWithValue("@Rank", Rank);
+
+                SqlCommand insertIntoChair = new SqlCommand(
+                    "INSERT INTO Faculty_Chairperson VALUES (@ID, @Stipend);"
+                , connection);
+
+                insertIntoChair.Parameters.AddWithValue("@ID", OwlMemberID);
+                insertIntoChair.Parameters.AddWithValue("@Stipend", Stipend);
+
+                try
+                {
+                    connection.Open();
+                    insertIntoOwlMember.ExecuteNonQuery();
+                    insertIntoFaculty.ExecuteNonQuery();
+                    insertIntoChair.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void selectItem(int OwlMemberID, ref bool isSelectable)
+        {
+            string owlMemberType = "";
+            isSelectable = false;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand selectFromOwlMember = new SqlCommand(
+                    "SELECT * FROM OwlMember WHERE ID = @ID"
+                , connection);
+
+                selectFromOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = selectFromOwlMember.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        owlMemberType = reader["OwlType"].ToString();
+                    }
+                    reader.Close();
+
+                    // Undergraduate Student Lookup 
+                    if (owlMemberType.Equals("Undergraduate Student"))
+                    {
+                        SqlCommand selectUndergrad = new SqlCommand(@"
+                            SELECT * FROM OwlMember 
+                            JOIN Student ON OwlMember.ID = Student.ID
+                            JOIN Undergraduate_Student ON OwlMember.ID = Undergraduate_Student.ID
+                            WHERE OwlMember.ID = @ID;"
+                        , connection);
+
+                        selectUndergrad.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlDataReader undergradReader = selectUndergrad.ExecuteReader();
+
+                        while (undergradReader.Read())
+                        {
+                            if(undergradReader.HasRows)
+                            {
+                                int readID = Convert.ToInt32(undergradReader["ID"]);
+                                DateTime readBD = Convert.ToDateTime(undergradReader["BD"]);
+                                string readName = undergradReader["Name"].ToString();
+                                decimal readGPA = Convert.ToDecimal(undergradReader["GPA"]);
+                                string readMajor = undergradReader["Major"].ToString();
+                                decimal readTuition = Convert.ToDecimal(undergradReader["Tuition"]);
+                                string readYear = undergradReader["Year"].ToString();
+                                int readCredits = Convert.ToInt32(undergradReader["Credits"]);
+
+                                undergrad = new UndergraduateStudent(readName, readID, readBD, readGPA, readMajor, readTuition, readCredits, readYear);
+                                setMember(undergrad);
+                                isSelectable = true;
+                            }
+
+                        }
+                        reader.Close();
+                        connection.Close();
+                    }
+                    else if(owlMemberType.Equals("Graduate Student")) 
+                    {
+                        SqlCommand selectGrad = new SqlCommand(@"
+                            SELECT * FROM OwlMember 
+                            JOIN Student ON OwlMember.ID = Student.ID
+                            JOIN Graduate_Student ON OwlMember.ID = Graduate_Student.ID
+                            WHERE OwlMember.ID = @ID;"
+                        , connection);
+
+                        selectGrad.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlDataReader graduateReader = selectGrad.ExecuteReader();
+
+                        while (graduateReader.Read())
+                        {
+                            if (graduateReader.HasRows)
+                            {
+                                int readID = Convert.ToInt32(graduateReader["ID"]);
+                                DateTime readBD = Convert.ToDateTime(graduateReader["BD"]);
+                                string readName = graduateReader["Name"].ToString();
+                                decimal readGPA = Convert.ToDecimal(graduateReader["GPA"]);
+                                string readMajor = graduateReader["Major"].ToString();
+                                decimal readStipend = Convert.ToDecimal(graduateReader["Stipend"]);
+                                string readProgram = graduateReader["Program"].ToString();
+
+                                grad = new GraduateStudent(readName, readID, readBD, readMajor, readGPA, readStipend, readProgram);
+                                setMember(grad);
+                                isSelectable = true;
+                            }
+
+                        }
+                        reader.Close();
+                        connection.Close();
+                    }
+                    else if (owlMemberType.Equals("Faculty"))
+                    {
+                        SqlCommand selectFaculty = new SqlCommand(@"
+                            SELECT * FROM OwlMember 
+                            JOIN Faculty ON OwlMember.ID = Faculty.ID
+                            WHERE OwlMember.ID = @ID;"
+                        , connection);
+
+                        selectFaculty.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlDataReader facultyReader = selectFaculty.ExecuteReader();
+
+                        while (facultyReader.Read())
+                        {
+                            if (facultyReader.HasRows)
+                            {
+                                int readID = Convert.ToInt32(facultyReader["ID"]);
+                                DateTime readBD = Convert.ToDateTime(facultyReader["BD"]);
+                                string readName = facultyReader["Name"].ToString();
+                                string readDepartment = facultyReader["Department"].ToString();
+                                string readRank = facultyReader["Rank"].ToString();
+
+                                facultyMember = new FacultyMember(readName, readID, readBD, readDepartment, readRank);
+                                setMember(facultyMember);
+                                isSelectable = true;
+                            }
+                        }
+                        reader.Close();
+                        connection.Close();
+                    }
+                    else if (owlMemberType.Equals("Faculty Chair"))
+                    {
+                        SqlCommand selectChair = new SqlCommand(@"
+                            SELECT * FROM OwlMember 
+                            JOIN Faculty ON OwlMember.ID = Faculty.ID
+                            JOIN Faculty_Chairperson ON OwlMember.ID = Faculty_Chairperson.ID
+                            WHERE OwlMember.ID = @ID;"
+                        , connection);
+
+                        selectChair.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlDataReader facultyReader = selectChair.ExecuteReader();
+
+                        while (facultyReader.Read())
+                        {
+                            if (facultyReader.HasRows)
+                            {
+                                int readID = Convert.ToInt32(facultyReader["ID"]);
+                                DateTime readBD = Convert.ToDateTime(facultyReader["BD"]);
+                                string readName = facultyReader["Name"].ToString();
+                                string readDepartment = facultyReader["Department"].ToString();
+                                string readRank = facultyReader["Rank"].ToString();
+                                decimal readStipend = Convert.ToDecimal(facultyReader["Stipend"]);
+
+                                facultyChairperson = new FacultyChairperson(readName, readID, readBD, readDepartment, readRank, readStipend);
+                                setMember(facultyChairperson);
+                                isSelectable = true;
+                            }
+                        }
+                        reader.Close();
+                        connection.Close();
+                    }
+
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.ToString());
+                }
+
+            }
+        }
+
+        // Sets object created by select to generic OwlMember
+        public OwlMember setMember(OwlMember newMember)
+        {
+            return member = newMember; 
+        }
+        // Return object created by select
+        public OwlMember getMember()
+        {
+            return member;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /*
         public void displayDbInformation(OwlMember p)
         {

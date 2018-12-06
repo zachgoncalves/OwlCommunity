@@ -606,7 +606,7 @@ namespace OwlCommunity.Views
                         if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbUndergrad) == false)
                         {
                             Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
-                            GlobalData.database.insertUGStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
+                            GlobalData.database.insertUGStudent(name, ID, dtBD.Value, "Undergraduate Student", studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
                             // GlobalData.userList.addToList(student);
                             successfullyCreated();
                         }
@@ -617,7 +617,8 @@ namespace OwlCommunity.Views
                         if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbStudent) == false && checkValidationStatus(gbGraduate) == false)
                         {
                             Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dtBD.Value, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
-                            GlobalData.userList.addToList(gradStudent);
+                            GlobalData.database.insertGraduateStudent(name, ID, dtBD.Value, "Graduate Student", studentGPA, studentMajor, gradStipend, cbProgram.SelectedItem.ToString());
+                            // GlobalData.userList.addToList(gradStudent);
                             successfullyCreated();
                         }
                     }
@@ -627,7 +628,8 @@ namespace OwlCommunity.Views
                         if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false)
                         {
                             Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString());
-                            GlobalData.userList.addToList(faculty);
+                            GlobalData.database.insertFaculty(name, ID, dtBD.Value, "Faculty", facultyDepartment, cbRank.SelectedItem.ToString());
+                            // GlobalData.userList.addToList(faculty);
                             successfullyCreated();
                         }
                     }
@@ -637,7 +639,8 @@ namespace OwlCommunity.Views
                         if (checkValidationStatus(gbOwlMember) == false && checkValidationStatus(gbFaculty) == false && checkValidationStatus(gbChair) == false)
                         {
                             Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
-                            GlobalData.userList.addToList(facultyChair);
+                            GlobalData.database.insertChairperson(name, ID, dtBD.Value, "Faculty Chair", facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
+                            // GlobalData.userList.addToList(facultyChair);
                             successfullyCreated();
                         }
                     }
@@ -690,6 +693,18 @@ namespace OwlCommunity.Views
         // Loads OwlMember Data into form
         private void btnDisplay_Click(object sender, EventArgs e)
         {
+            FormController.deactivateAddButtons(this);
+            bool isFound = false;
+            GlobalData.database.selectItem(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
+            if(isFound)
+            {
+                GlobalData.database.getMember().Display(this);
+            }
+            else
+            {
+                MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
+            }
+            /*  
             bool isFound = false;
             member = GlobalData.userList.searchList(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
             if(isFound)
@@ -700,6 +715,7 @@ namespace OwlCommunity.Views
             {
                 MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
             }
+            */
         }
 
         // Loads OwlMember Data into form and allows for editing 
