@@ -227,7 +227,7 @@ namespace OwlCommunity.Classes
                     }
                     reader.Close();
 
-                    // Undergraduate Student Lookup 
+
                     if (owlMemberType.Equals("Undergraduate Student"))
                     {
                         SqlCommand selectUndergrad = new SqlCommand(@"
@@ -369,6 +369,326 @@ namespace OwlCommunity.Classes
             }
         }
 
+        // Update UG Student
+        public void updateUGStudent(string Name, int OwlMemberID, DateTime BD, string AccType, decimal GPA, string Major, decimal Tuition, int Credits, string Year)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand updateOwlMember = new SqlCommand(
+                    "UPDATE OwlMember SET ID = @ID, Name = @Name, BD = @BD, OwlType = @AccType WHERE ID = @ID;"
+                , connection);
+
+                updateOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateOwlMember.Parameters.AddWithValue("@Name", Name);
+                updateOwlMember.Parameters.AddWithValue("@BD", BD);
+                updateOwlMember.Parameters.AddWithValue("@AccType", AccType);
+
+                SqlCommand updateStudent = new SqlCommand(
+                    "UPDATE Student SET ID = @ID, GPA = @GPA, Major = @Major WHERE ID = @ID;"
+                , connection);
+
+                updateStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateStudent.Parameters.AddWithValue("@GPA", GPA);
+                updateStudent.Parameters.AddWithValue("@Major", Major);
+
+                SqlCommand updateUndergraduateStudent = new SqlCommand(
+                    @"UPDATE Undergraduate_Student 
+                      SET ID = @ID, Tuition = @Tuition, Year = @Year, Credits = @Credits
+                      WHERE ID = @ID;"
+                , connection);
+
+                updateUndergraduateStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateUndergraduateStudent.Parameters.AddWithValue("@Tuition", Tuition);
+                updateUndergraduateStudent.Parameters.AddWithValue("@Credits", Credits);
+                updateUndergraduateStudent.Parameters.AddWithValue("@Year", Year);
+
+                try
+                {
+                    connection.Open();
+                    updateOwlMember.ExecuteNonQuery();
+                    updateStudent.ExecuteNonQuery();
+                    updateUndergraduateStudent.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Update failed!" + "\n" + Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        // Update Graduate Student
+        public void updateGraduateStudent(string Name, int OwlMemberID, DateTime BD, string AccType, decimal GPA, string Major, decimal Stipend, string Program)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand updateOwlMember = new SqlCommand(
+                    "UPDATE OwlMember SET ID = @ID, Name = @Name, BD = @BD, OwlType = @AccType WHERE ID = @ID;"
+                , connection);
+
+                updateOwlMember.Parameters.AddWithValue("@Name", Name);
+                updateOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateOwlMember.Parameters.AddWithValue("@BD", BD);
+                updateOwlMember.Parameters.AddWithValue("@AccType", AccType);
+
+
+                SqlCommand updateStudent = new SqlCommand(
+                    "UPDATE Student SET ID = @ID, GPA = @GPA, Major = @Major WHERE ID = @ID;"
+                , connection);
+
+                updateStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateStudent.Parameters.AddWithValue("@GPA", GPA);
+                updateStudent.Parameters.AddWithValue("@Major", Major);
+
+                SqlCommand updateGraduateStudent = new SqlCommand(
+                   @"UPDATE Graduate_Student 
+                      SET ID = @ID, Stipend = @Stipend, Program = @Program
+                      WHERE ID = @ID;"
+               , connection);
+
+                updateGraduateStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateGraduateStudent.Parameters.AddWithValue("@Stipend", Stipend);
+                updateGraduateStudent.Parameters.AddWithValue("@Program", Program);
+
+                try
+                {
+                    connection.Open();
+                    updateOwlMember.ExecuteNonQuery();
+                    updateStudent.ExecuteNonQuery();
+                    updateGraduateStudent.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        // Update Faculty 
+        public void updateFaculty(string Name, int OwlMemberID, DateTime BD, string AccType, string Department, string Rank)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand updateOwlMember = new SqlCommand(
+                    "UPDATE OwlMember SET ID = @ID, Name = @Name, BD = @BD, OwlType = @AccType WHERE ID = @ID;"
+                , connection);
+
+                updateOwlMember.Parameters.AddWithValue("@Name", Name);
+                updateOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateOwlMember.Parameters.AddWithValue("@BD", BD);
+                updateOwlMember.Parameters.AddWithValue("@AccType", AccType);
+
+
+                SqlCommand updateFaculty = new SqlCommand(
+                    "UPDATE Faculty SET ID = @ID, Department = @Department, Rank = @Rank WHERE ID = @ID;"
+                , connection);
+
+                updateFaculty.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateFaculty.Parameters.AddWithValue("@Department", Department);
+                updateFaculty.Parameters.AddWithValue("@Rank", Rank);
+
+                try
+                {
+                    connection.Open();
+                    updateOwlMember.ExecuteNonQuery();
+                    updateFaculty.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Updating faculty failed!" + "\n" + Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        // Update Faculty Chairperson
+        public void updateFacultyChair(string Name, int OwlMemberID, DateTime BD, string AccType, string Department, string Rank, decimal Stipend)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand updateOwlMember = new SqlCommand(
+                    "UPDATE OwlMember SET ID = @ID, Name = @Name, BD = @BD, OwlType = @AccType WHERE ID = @ID;"
+                , connection);
+
+                updateOwlMember.Parameters.AddWithValue("@Name", Name);
+                updateOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateOwlMember.Parameters.AddWithValue("@BD", BD);
+                updateOwlMember.Parameters.AddWithValue("@AccType", AccType);
+
+
+                SqlCommand updateFaculty = new SqlCommand(
+                    "UPDATE Faculty SET ID = @ID, Department = @Department, Rank = @Rank WHERE ID = @ID;"
+                , connection);
+
+                updateFaculty.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateFaculty.Parameters.AddWithValue("@Department", Department);
+                updateFaculty.Parameters.AddWithValue("@Rank", Rank);
+
+                SqlCommand updateFacultyChair = new SqlCommand(
+                    "UPDATE Faculty_Chairperson SET ID = @ID, Department = @Department, Rank = @Rank, Stipend = @Stipend WHERE ID = @ID;"
+                , connection);
+
+                updateFacultyChair.Parameters.AddWithValue("@ID", OwlMemberID);
+                updateFacultyChair.Parameters.AddWithValue("@Stipend", Stipend);
+
+                try
+                {
+                    connection.Open();
+                    updateOwlMember.ExecuteNonQuery();
+                    updateFaculty.ExecuteNonQuery();
+                    updateFacultyChair.ExecuteNonQuery();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Updating faculty failed!" + "\n" + Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        // Checks DB for entry with ID, and deletes entry depending on type
+        public void deleteItem(int OwlMemberID)
+        {
+            string owlMemberType = "";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand selectFromOwlMember = new SqlCommand(
+                    "SELECT * FROM OwlMember WHERE ID = @ID"
+                , connection);
+
+                selectFromOwlMember.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = selectFromOwlMember.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        owlMemberType = reader["OwlType"].ToString();
+                    }
+                    reader.Close();
+
+
+                    if (owlMemberType.Equals("Undergraduate Student"))
+                    {
+                        SqlCommand deleteMember = new SqlCommand(@"
+                            DELETE FROM OwlMember WHERE ID = @ID;"
+                        , connection);
+
+                        deleteMember.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlCommand deleteStudent = new SqlCommand(@"
+                            DELETE FROM Student WHERE ID = @ID;"
+                        , connection);
+
+                        deleteStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlCommand deleteUndergrad = new SqlCommand(@"
+                            DELETE FROM Undergraduate_Student WHERE ID = @ID;"
+                        , connection);
+
+                        deleteUndergrad.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        deleteMember.ExecuteNonQuery();
+                        deleteStudent.ExecuteNonQuery();
+                        deleteUndergrad.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    else if (owlMemberType.Equals("Graduate Student"))
+                    {
+                        SqlCommand deleteMember = new SqlCommand(@"
+                            DELETE FROM OwlMember WHERE ID = @ID;"
+                        , connection);
+
+                        deleteMember.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlCommand deleteStudent = new SqlCommand(@"
+                            DELETE FROM Student WHERE ID = @ID;"
+                        , connection);
+
+                        deleteStudent.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlCommand deleteGrad = new SqlCommand(@"
+                            DELETE FROM Graduate_Student WHERE ID = @ID"
+                        , connection);
+
+                        deleteGrad.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        deleteMember.ExecuteNonQuery();
+                        deleteStudent.ExecuteNonQuery();
+                        deleteGrad.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    else if (owlMemberType.Equals("Faculty"))
+                    {
+                        SqlCommand deleteMember = new SqlCommand(@"
+                            DELETE FROM OwlMember WHERE ID = @ID;"
+                        , connection);
+
+                        deleteMember.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlCommand deleteFaculty = new SqlCommand(@"
+                            DELETE FROM Faculty WHERE ID = @ID;"
+                        , connection);
+
+                        deleteFaculty.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        deleteMember.ExecuteNonQuery();
+                        deleteFaculty.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    else if (owlMemberType.Equals("Faculty Chair"))
+                    {
+                        SqlCommand deleteMember = new SqlCommand(@"
+                            DELETE FROM OwlMember WHERE ID = @ID;"
+                       , connection);
+
+                        deleteMember.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlCommand deleteFaculty = new SqlCommand(@"
+                            DELETE FROM Faculty WHERE ID = @ID;"
+                        , connection);
+
+                        deleteFaculty.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        SqlCommand deleteChair = new SqlCommand(@"
+                            DELETE FROM Faculty_Chairperson WHERE ID = @ID;"
+                        , connection);
+
+                        deleteChair.Parameters.AddWithValue("@ID", OwlMemberID);
+
+                        deleteMember.ExecuteNonQuery();
+                        deleteFaculty.ExecuteNonQuery();
+                        deleteFaculty.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+            }
+        }
+
         // Sets object created by select to generic OwlMember
         public OwlMember setMember(OwlMember newMember)
         {
@@ -379,139 +699,5 @@ namespace OwlCommunity.Classes
         {
             return member;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        public void displayDbInformation(OwlMember p)
-        {
-            bool successFlag;
-            if (p == null)
-            {
-                MessageBox.Show("Owl p reference is null. System Error. Reenter ID.",
-                          "displayDbInformation Reference Error", MessageBoxButtons.OK);
-                txtOwlMemberID.Text = "";
-                txtOwlMemberID.Focus();
-            }  // end p == null if
-
-            OleDbDataReader myDataReader;
-            string dbStringOwl = " ";
-            string dbStringRest = " ";
-
-            if (p.GetType() == typeof(FacultyMember))     // Process Faculty
-            {
-                myDataReader = dbFunctions.SelectOwlMemberFromFaculty
-                                 (Convert.ToInt32(txtOwlMemberID.Text), out successFlag);
-                if (myDataReader == null)
-                {
-                    MessageBox.Show("On Faculty Select, null returned. No match found. DB and Serializable File not synched.  Reenter ID",
-                            "Faculty SELECT Error", MessageBoxButtons.OK);
-                    // this.Close();
-                    txtOwlMemberID.Text = "";
-                    txtOwlMemberID.Focus();
-                }
-                else
-                {
-                    myDataReader.Read();
-                    if (!myDataReader.HasRows)
-                    {
-                        MessageBox.Show("Select Faculty produced no rows. No match found. DB and Serializable File not synched. Reenter ID.", "Faculty SELECT Error", MessageBoxButtons.OK);
-                        txtOwlMemberID.Text = "";
-                        txtOwlMemberID.Focus();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Faculty record found and read.  ", "Faculty Record Found", MessageBoxButtons.OK);
-                        try
-                        {
-                            dbStringOwl = myDataReader[0].ToString() + "   " + myDataReader[1].ToString() + "   ";
-                            dbStringOwl = dbStringOwl + ((DateTime)myDataReader[2]).ToString("MM/dd/yyyy") + Environment.NewLine;
-                            dbStringRest = "   " + myDataReader[3].ToString() + "   " + myDataReader[4].ToString();
-                        }
-                        catch
-                        {
-                            MessageBox.Show("DataReader Faculty Data Conversion Error. Reenter ID. ", "Faculty SELECT Error", MessageBoxButtons.OK);
-                            txtOwlMemberID.Text = "";
-                            txtOwlMemberID.Focus();
-                        }  // end try-catch
-                    }  // end else on myDataReader HasRows
-                }  // end else on myDataReader == null
-            }  // end processing Faculty
-
-            else if (p.GetType() == typeof(Chairperson))     // Process Chairperson
-            {
-
-          . . . code to process Chairperson goes here
-     
-       }  // end processing Chairperson 
-
-            else if (p.GetType() == typeof(UndergraduateStudent))     // Process Undergrad
-            {	
-
-        . . . code to process UndergraduateStudent goes here
-     
-       }  // end Processing Undergrad
-
-            else if (p.GetType() == typeof(GraduateStudent))   /// Process GradStudent
-            {
-   				
-         . . . code to process Graduate Student goes here
-     
-       }  // end processing GradStudent
-            else
-            {
-                MessageBox.Show("Type of object to Edit/Update is not valid. Contact System Admin.", "Delete Object Type Error", MessageBoxButtons.OK);
-                MessageBox.Show("Number of records processed = " + recordsProcessedCount.ToString(),
-                            "Exit Message", MessageBoxButtons.OK);
-                this.Close();
-            }  // end multiple alternative if
-            MessageBox.Show(dbStringOwl + dbStringRest, "DataBase Retrieval", MessageBoxButtons.OK);
-        }  // end displayDbInformation
-
-        public OleDbDataReader SelectOwlMemberFromGraduateStudent(int OwlMemberID, out bool OKFlag)
-        {
-            string strSelectOwlMember = "SELECT OWLMEMBER.fldID, OWLMEMBER.fldName, 
-             OWLMEMBER.fldBirthdate, " + "STUDENT.fldMajor, STUDENT.fldGPA, "
-                + "GRADUATESTUDENT.fldStipend, GRADUATESTUDENT.fldDegreeProgram FROM (OWLMEMBER "
-                + "INNER JOIN STUDENT ON STUDENT.fldID = OWLMEMBER.fldID) "
-                + "INNER JOIN GRADUATESTUDENT ON GRADUATESTUDENT.fldID = OWLMEMBER.fldID "
-                + "WHERE OWLMEMBER.fldID = " + OwlMemberID + ";";
-
-            OleDbConnection myConnection = new OleDbConnection(strConnection);
-            OleDbCommand myCommand = new OleDbCommand(strSelectOwlMember, myConnection);
-            OleDbDataReader myDataReader;
-
-            try
-            {
-                myConnection.Open();
-                myDataReader = myCommand.ExecuteReader();
-                OKFlag = true;
-            }
-            catch (OleDbException ex)
-            {
-                Console.Write("There was a Select Graduate Student error: " + ex.Message);
-                myConnection.Close();
-                myDataReader = null;
-                OKFlag = false; // returns false if Select was unsuccessful
-            }
-
-            return myDataReader;
-        } // end SelectOwlMemberFromGraduateStudent
-
-
-        */
-
     }
 }
