@@ -653,22 +653,38 @@ namespace OwlCommunity.Views
                 if(member.GetType() == typeof(Models.UndergraduateStudent))
                 {                    
                     GlobalData.database.updateUGStudent(txtMemberName.Text, ID, dtBD.Value.Date, "Undergraduate Student", Convert.ToDecimal(txtStudentGPA.Text), txtStudentMajor.Text, Convert.ToDecimal(txtStudentTuition.Text), Convert.ToInt32(txtStudentCredits.Text), cbYear.SelectedItem.ToString());
-                    MessageBox.Show("OwlMember successfully updated!", "Success");
+                    MessageBox.Show("Undergraduate Student successfully updated!", "Success");
+                    FormController.clear(this);
+                    btnDisplay.Enabled = false;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
                 }
                 else if (member.GetType() == typeof(Models.GraduateStudent))
                 {
                     GlobalData.database.updateGraduateStudent(txtMemberName.Text, ID, dtBD.Value.Date, "Graduate Student", Convert.ToDecimal(txtStudentGPA.Text), txtStudentMajor.Text, Convert.ToDecimal(txtGradStipend.Text), cbProgram.SelectedItem.ToString());
-                    MessageBox.Show("OwlMember successfully updated!", "Success");
+                    MessageBox.Show("Graduate Student successfully updated!", "Success");
+                    FormController.clear(this);
+                    btnDisplay.Enabled = false;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
                 }
                 else if (member.GetType() == typeof(Models.FacultyMember))
                 {
                     GlobalData.database.updateFaculty(txtMemberName.Text, ID, dtBD.Value.Date, "Faculty", txtFacultyDept.Text, cbRank.SelectedItem.ToString());
-                    MessageBox.Show("OwlMember successfully updated!", "Success");
+                    MessageBox.Show("Faculty Member successfully updated!", "Success");
+                    FormController.clear(this);
+                    btnDisplay.Enabled = false;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
                 }
-                else if (member.GetType() == typeof(Models.GraduateStudent))
+                else if (member.GetType() == typeof(Models.FacultyChairperson))
                 {
                     GlobalData.database.updateFacultyChair(txtMemberName.Text, ID, dtBD.Value.Date, "Faculty Chair", txtFacultyDept.Text, cbProgram.SelectedItem.ToString(), Convert.ToDecimal(txtChairStipend.Text));
-                    MessageBox.Show("OwlMember successfully updated!", "Success");
+                    MessageBox.Show("Faculty Chair successfully updated!", "Success");
+                    FormController.clear(this);
+                    btnDisplay.Enabled = false;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
                 }
             }
         }
@@ -678,7 +694,6 @@ namespace OwlCommunity.Views
         {
             MessageBox.Show("OwlMember succesfully added!");
             FormController.clear(this);
-   
         }
         
         // Validates ID entered and enables additional controls 
@@ -722,6 +737,7 @@ namespace OwlCommunity.Views
             {
                 MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
             }
+            btnDisplay.Enabled = false;
             /*  
             bool isFound = false;
             member = GlobalData.userList.searchList(Convert.ToInt32(txtTUIDEnter.Text), ref isFound);
@@ -755,6 +771,7 @@ namespace OwlCommunity.Views
                 MessageBox.Show("No member exists with that ID.", "Error: User Not Found");
             }
             txtMemberID.Enabled = false;
+            btnEdit.Enabled = false;
         }
 
         // Deletes OwlMember objects

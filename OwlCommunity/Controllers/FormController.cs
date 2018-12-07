@@ -247,6 +247,7 @@ namespace OwlCommunity.Controllers
             f.cbRank.SelectedIndex = -1;
             f.cbProgram.SelectedIndex = -1;
             f.txtChairStipend.Text = "";
+            f.txtTUIDEnter.Text = "";
             resetForm(f);
         } 
 
