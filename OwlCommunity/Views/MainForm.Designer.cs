@@ -156,12 +156,12 @@
             this.dtBD.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtBD.Location = new System.Drawing.Point(602, 29);
             this.dtBD.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.dtBD.MaxDate = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
+            this.dtBD.MaxDate = new System.DateTime(2018, 12, 7, 0, 0, 0, 0);
             this.dtBD.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtBD.Name = "dtBD";
             this.dtBD.Size = new System.Drawing.Size(205, 26);
             this.dtBD.TabIndex = 8;
-            this.dtBD.Value = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
+            this.dtBD.Value = new System.DateTime(2018, 12, 7, 0, 0, 0, 0);
             // 
             // lblMemberBD
             // 

@@ -62,7 +62,7 @@ namespace OwlCommunity.Classes
                 }
                 catch(Exception Ex)
                 {
-                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                    MessageBox.Show("Insertion Failed! ID Already in use.", "Error");
                 }
                 finally
                 {
@@ -110,7 +110,7 @@ namespace OwlCommunity.Classes
                 }
                 catch (Exception Ex)
                 {
-                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                    MessageBox.Show("Insertion Failed! ID Already in use.", "Error");
                 }
                 finally
                 {
@@ -149,7 +149,7 @@ namespace OwlCommunity.Classes
                 }
                 catch (Exception Ex)
                 {
-                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                    MessageBox.Show("Insertion Failed! ID Already in use.", "Error");
                 }
                 finally
                 {
@@ -196,7 +196,7 @@ namespace OwlCommunity.Classes
                 }
                 catch (Exception Ex)
                 {
-                    MessageBox.Show("It failed!" + "\n" + Ex.ToString());
+                    MessageBox.Show("Insertion Failed! ID Already in use.", "Error");
                 }
                 finally
                 {
