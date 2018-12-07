@@ -672,7 +672,7 @@ namespace OwlCommunity.Classes
 
                         deleteMember.ExecuteNonQuery();
                         deleteFaculty.ExecuteNonQuery();
-                        deleteFaculty.ExecuteNonQuery();
+                        deleteChair.ExecuteNonQuery();
                         connection.Close();
                     }
 

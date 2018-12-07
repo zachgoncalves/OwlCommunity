@@ -606,7 +606,7 @@ namespace OwlCommunity.Views
                         {
                             // Models.UndergraduateStudent student = new Models.UndergraduateStudent(name, ID, dtBD.Value, studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
                             // GlobalData.userList.addToList(student);
-                            GlobalData.database.insertUGStudent(name, ID, dtBD.Value, "Undergraduate Student", studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
+                            GlobalData.database.insertUGStudent(name, ID, dtBD.Value.Date, "Undergraduate Student", studentGPA, studentMajor, studentTuition, studentCredits, cbYear.SelectedItem.ToString());
                             successfullyCreated();
                         }
                     }
@@ -617,7 +617,7 @@ namespace OwlCommunity.Views
                         {
                             // Models.GraduateStudent gradStudent = new Models.GraduateStudent(name, ID, dtBD.Value, studentMajor, studentGPA, gradStipend, cbProgram.SelectedItem.ToString());
                             // GlobalData.userList.addToList(gradStudent);
-                            GlobalData.database.insertGraduateStudent(name, ID, dtBD.Value, "Graduate Student", studentGPA, studentMajor, gradStipend, cbProgram.SelectedItem.ToString());
+                            GlobalData.database.insertGraduateStudent(name, ID, dtBD.Value.Date, "Graduate Student", studentGPA, studentMajor, gradStipend, cbProgram.SelectedItem.ToString());
                             successfullyCreated();
                         }
                     }
@@ -628,7 +628,7 @@ namespace OwlCommunity.Views
                         {
                             // Models.FacultyMember faculty = new Models.FacultyMember(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString());
                             // GlobalData.userList.addToList(faculty);
-                            GlobalData.database.insertFaculty(name, ID, dtBD.Value, "Faculty", facultyDepartment, cbRank.SelectedItem.ToString());
+                            GlobalData.database.insertFaculty(name, ID, dtBD.Value.Date, "Faculty", facultyDepartment, cbRank.SelectedItem.ToString());
                             successfullyCreated();
                         }
                     }
@@ -639,7 +639,7 @@ namespace OwlCommunity.Views
                         {
                             // Models.FacultyChairperson facultyChair = new Models.FacultyChairperson(name, ID, dtBD.Value, facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
                             // GlobalData.userList.addToList(facultyChair);
-                            GlobalData.database.insertChairperson(name, ID, dtBD.Value, "Faculty Chair", facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
+                            GlobalData.database.insertChairperson(name, ID, dtBD.Value.Date, "Faculty Chair", facultyDepartment, cbRank.SelectedItem.ToString(), chairStipend);
                             successfullyCreated();
                         }
                     }
@@ -652,22 +652,22 @@ namespace OwlCommunity.Views
                 member.Save(this);
                 if(member.GetType() == typeof(Models.UndergraduateStudent))
                 {                    
-                    GlobalData.database.updateUGStudent(txtMemberName.Text, ID, dtBD.Value, "Undergraduate Student", Convert.ToDecimal(txtStudentGPA.Text), txtStudentMajor.Text, Convert.ToDecimal(txtStudentTuition.Text), Convert.ToInt32(txtStudentCredits.Text), cbYear.SelectedItem.ToString());
+                    GlobalData.database.updateUGStudent(txtMemberName.Text, ID, dtBD.Value.Date, "Undergraduate Student", Convert.ToDecimal(txtStudentGPA.Text), txtStudentMajor.Text, Convert.ToDecimal(txtStudentTuition.Text), Convert.ToInt32(txtStudentCredits.Text), cbYear.SelectedItem.ToString());
                     MessageBox.Show("OwlMember successfully updated!", "Success");
                 }
                 else if (member.GetType() == typeof(Models.GraduateStudent))
                 {
-                    GlobalData.database.updateGraduateStudent(txtMemberName.Text, ID, dtBD.Value, "Graduate Student", Convert.ToDecimal(txtStudentGPA.Text), txtStudentMajor.Text, Convert.ToDecimal(txtGradStipend.Text), cbProgram.SelectedItem.ToString());
+                    GlobalData.database.updateGraduateStudent(txtMemberName.Text, ID, dtBD.Value.Date, "Graduate Student", Convert.ToDecimal(txtStudentGPA.Text), txtStudentMajor.Text, Convert.ToDecimal(txtGradStipend.Text), cbProgram.SelectedItem.ToString());
                     MessageBox.Show("OwlMember successfully updated!", "Success");
                 }
                 else if (member.GetType() == typeof(Models.FacultyMember))
                 {
-                    GlobalData.database.updateFaculty(txtMemberName.Text, ID, dtBD.Value, "Faculty", txtFacultyDept.Text, cbRank.SelectedItem.ToString());
+                    GlobalData.database.updateFaculty(txtMemberName.Text, ID, dtBD.Value.Date, "Faculty", txtFacultyDept.Text, cbRank.SelectedItem.ToString());
                     MessageBox.Show("OwlMember successfully updated!", "Success");
                 }
                 else if (member.GetType() == typeof(Models.GraduateStudent))
                 {
-                    GlobalData.database.updateFacultyChair(txtMemberName.Text, ID, dtBD.Value, "Faculty Chair", txtFacultyDept.Text, cbProgram.SelectedItem.ToString(), Convert.ToDecimal(txtChairStipend.Text));
+                    GlobalData.database.updateFacultyChair(txtMemberName.Text, ID, dtBD.Value.Date, "Faculty Chair", txtFacultyDept.Text, cbProgram.SelectedItem.ToString(), Convert.ToDecimal(txtChairStipend.Text));
                     MessageBox.Show("OwlMember successfully updated!", "Success");
                 }
             }
