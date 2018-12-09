@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Temple University
+ * Component Based Software Design (CIS 3309) 
+ * Project 4: OwlCommunity
+ * Class: DatabaseManager
+ * Written by: Zachary Goncalves
+ */
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Data.SqlClient;
@@ -14,6 +20,7 @@ namespace OwlCommunity.Classes
 {
     public class DatabaseManager
     {
+        // Class Attributes 
         private static string connectionString = ConfigurationManager.ConnectionStrings["OwlCommunity.Properties.Settings.OwlMemberConnectionString"].ConnectionString;
         private OwlMember member;
         private UndergraduateStudent undergrad;
@@ -205,6 +212,7 @@ namespace OwlCommunity.Classes
             }
         }
 
+        // Check if OwlMember exists in Database, and Select OwlMember from database
         public void selectItem(int OwlMemberID, ref bool isSelectable)
         {
             string owlMemberType = "";
